@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "129170949462",
+    "firebase_url": "https://sancusnetworkssosfaindirect.firebaseio.com",
+    "project_id": "sancusnetworkssosfaindirect",
+    "storage_bucket": "sancusnetworkssosfaindirect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129170949462:android:18381a2d002f5668",
+        "android_client_info": {
+          "package_name": "project.astix.com.sancusnetworkssosfaindirect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129170949462-e24k3grbs73vd2ijn9g4pi2vn4mct8as.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTn_R0aDAILTn0tBRNEOrXt84bmR6bjgk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

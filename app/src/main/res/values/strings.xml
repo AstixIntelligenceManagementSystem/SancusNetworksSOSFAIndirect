@@ -1,0 +1,1096 @@
+<resources>
+
+    <!-- <string name="app_name">SancusNetworks SO SFA</string>-->
+
+    <!-- <string name="app_name">SancusNetworks SO SFA Stagging</string>-->
+    <!-- <string name="app_name">SancusNetworks SO SFA Test</string>-->
+    <string name="app_name">SancusNetworks SO SFA Dev</string>
+    <!--<string name="app_name">SancusNetworks SO SFA Training</string>-->
+    <!-- <string name="app_name">SancusNetworks SO SFA Test Release</string>-->
+
+
+    <string name="genTermFetchingTime">Fetching Current Time..</string>
+    <string name="coverage_area">Select Coverage Area</string>
+    <string name="dsrcoverage_area">Select DSR Coverage Area </string>
+
+    <string name="DSR_Wise_Report">DSR Wise Report</string>
+
+    <string name="today_working">Today Working</string>
+    <string name="today_Notworking">Not Working</string>
+    <string name="select_attendance_scope">View Attendance Report</string>
+    <string name="select_attendance_report">DSR Attendance Report</string>
+
+
+    <string name="working">Working</string>
+    <string name="not_working">Not Working</string>
+
+
+    <!--Day Start message start-->
+    <string name="DayStartButtonText">Day Start</string>
+    <string name="ExitButtonText">Exit</string>
+    <string name="submittingDayStart">Submitting Day Start Details...</string>
+    <string name="selectAtleastOneOption">Please Select atleast one option to proceed.</string>
+    <string name="selectAtleastOneOptionwithedittext">Please Specify the reason first, to proceed.</string>
+
+    <string name="specifyDBRName">Please Specify Distributor Name, to proceed.</string>
+    <string name="specifyLocatione">Please Specify Other Location, to proceed.</string>
+
+    <!--Day Start message end-->
+
+    <string name="ManageDSRMsg">Manage DSR &amp; IMEI</string>
+    <!--Alert Box message-->
+    <string name="AlertDialogHeaderMsg">Alert</string>
+    <string name="AlertDialogHeaderErrorMsg">Error</string>
+    <string name="AlertDialogOkButton">OK</string>
+    <string name="AlertDialogCancelButton">Cancel</string>
+    <string name="AlertDialogYesButton">Yes</string>
+    <string name="AlertDialogNoButton">No</string>
+    <string name="genTermInformation">Information</string>
+    <string name="genTermNoDataConnectionFullMsg">Your device has no Data Connection. \n Please ensure Internet is accessible to Continue.</string>
+
+
+    <string name="BackButConfirm">Have you saved your data before going back?</string>
+
+
+    <!--Distributo Activity starts here-->
+    <string name="distributorSubmitMessage">Do you want to submit distributors information</string>
+
+
+    <!--Distributor Check In First Activity starts here-->
+    <string name="LocalAreaMessage">Address</string>
+    <string name="PinCodeMessage">Pin Code</string>
+    <string name="CityMessage">City</string>
+    <string name="StateMessage">State</string>
+
+    <string name="PleaseSelectDistributor">Please Select Distributor.</string>
+    <string name="PleaseFillAddress">Please Fill Address Value.</string>
+    <string name="PleaseFillProperAddress">Please fill Proper address.</string>
+    <string name="PleaseFillPincode">Please Fill Pincode Value.</string>
+    <string name="PleaseFillPincodeAllDigits">Pin Code value cannot be less than 6 digits.</string>
+    <string name="PleaseFillCity">Please Fill City Value.</string>
+    <string name="PleaseFillState">Please Fill State Value.</string>
+    <!--Distributor Check In First Activity starts here-->
+
+    <!--All Button  Activity starts here-->
+    <string name="DayEndBeforeLogout">Please Day End Before Logging Out.</string>
+
+    <!--All Button  Activity ends here-->
+
+
+    <!--Splash screen starts here-->
+    <string name="genTermNoDataConnection">Information</string>
+
+    <string name="internetError">Internet connection is slow ,please try again.</string>
+    <string name="phnRegisterError">This phone is not registered, please contact administrator.</string>
+    <string name="phnDateError">Your Phone Date is not correct.Please Correct it.</string>
+    <string name="regID">Create Registration ID.</string>
+    <string name="errorTxt">Error :</string>
+    <string name="errorPlayServices">This device does not support Play services, App will not work normally</string>
+    <string name="NewVersionMsg">New Version of this application is available now. \nPlease click on OK to install new Version!</string>
+    <string name="UpdatingNewVersionMsg">Updating New Version…</string>
+    <string name="routeNoAvail">Routes are not Available for this Phone</string>
+    <string name="errorFetchData">Unable to fetch  data, please try again.</string>
+    <string name="genTermPleaseWaitNew">Please Wait ...</string>
+    <string name="genTermLoadData">Loading Data...</string>
+    <!--Splash screen ends here-->
+
+
+    <!--DSR_Registrion starts here-->
+
+    <string name="txtWelcome">Welcome</string>
+
+    <string name="Coverage_Area">Coverage Area</string>
+    <string name="Contact_No">Contact No</string>
+    <string name="DOB">DOB</string>
+    <string name="txtDayStart">Day Start</string>
+    <string name="radioYes">Yes</string>
+    <string name="radioNo">No</string>
+    <string name="txtUpdate">Update Now</string>
+    <string name="txtNotYou">Not You</string>
+    <string name="hintMobileNo">Mobile No.</string>
+    <string name="txtValidate">Validate</string>
+    <string name="txtFName">First Name</string>
+    <string name="txtStoreNotVisible">If store is not showing in list? Please click on Find Nearby Stores button. </string>
+    <string name="txtLName">Last Name</string>
+    <string name="txtContactNo">Contact No.</string>
+    <string name="txtDOB">DOB</string>
+    <string name="txtSelectDate">Select Date</string>
+    <string name="txtSex">Sex</string>
+    <string name="txtMale">Male</string>
+    <string name="txtFemale">Female</string>
+    <string name="txtMaritalStatus">Marital Status</string>
+    <string name="txtMarried">Married</string>
+    <string name="txtUnmarried">Unmarried</string>
+    <string name="txtMarriedDate">Married Date</string>
+    <string name="txtQualification">Qualification</string>
+    <string name="txtSelect">Select</string>
+    <string name="txtUpdatedphoto">Updated photo</string>
+    <string name="txtSelfie">Selfie</string>
+    <string name="txtBrowse">Browse</string>
+    <string name="txtEmailID">EmailID</string>
+    <string name="txtBloodGroup">Blood Group</string>
+    <string name="txtSIGNHERE">SIGN HERE</string>
+    <string name="txtCancel">Cancel</string>
+    <string name="txtclearSign">clear Sign</string>
+    <string name="txtsave">save</string>
+    <string name="txtProceed">Proceed</string>
+    <string name="txtSubmit">Submit</string>
+    <string name="txtNoCamera">Sorry, your phone does not have a camera!</string>
+    <string name="txtNoFrontCamera">No front facing camera found.</string>
+    <string name="txtSuccessfullySaved">Successfully Saved</string>
+    <string name="txtSELECTDOB">SELECT DOB</string>
+    <string name="txtSelectMarriedDate">Select Married Date</string>
+    <string name="txtBloodGroupTitle">Blood-Group</string>
+    <string name="txtSubmitData">Do you want to submit data</string>
+    <string name="txtErrorNoDataConnection">No Data Connection!</string>
+    <string name="txtErrorInternetConnection">Your device has no Data Connection! Please ensure Internet is accessible to Continue.</string>
+    <string name="txtErrorMobileNo">Mobile no. is not valid</string>
+    <string name="txtSelectDOB">Please select DOB</string>
+    <string name="txtValidateFirstName">First Name is empty</string>
+    <string name="txtValidateLastName">Last Name is empty</string>
+    <string name="txtValidateContactNo">Contact no. is not valid</string>
+    <string name="txtValidateSelectSex">Please select Sex</string>
+    <string name="txtValidateMaritalStatus">Please select Marital Status</string>
+    <string name="txtValidateMarriedDate">Please select Married Date</string>
+    <string name="txtValidateQualification">Please select Qualification</string>
+    <string name="txtValidateUpdatePhoto">Please Update Photo</string>
+    <string name="txtValidateEmailID">EmailID is not valid</string>
+    <string name="txtValidateBloodGroup">Please select Blood-Group</string>
+    <string name="txtValidateSignature">Please do Signature</string>
+    <string name="txtDSRMsg">Please remember to update your personal details today before doing day end activity</string>
+
+
+    <!--activity_list.xml inflated in DSR_Registration start here-->
+    <string name="hintSearchproducts">Search here..</string>
+    <!--activity_list.xml inflated in DSR_Registration ends here-->
+
+    <!--activity_main.xml inflated in DSR_Registration start here-->
+    <string name="txtSwitchCamera">Switch Camera</string>
+    <string name="txtCapture">Capture</string>
+    <!--activity_main.xml inflated in DSR_Registration ends here-->
+
+    <!--DSR_Registration ends here-->
+
+    <!--Launcher Activity starts here-->
+    <string name="txtSalesPerformanceMaximizer">Sales Performance Maximizer</string>
+    <string name="radioTodayRoute">Today Route : </string>
+    <string name="radioChooseDifferentRoute">Choose Different Route</string>
+    <string name="txtSelectedRoute">Selected Route</string>
+    <string name="txtNoRouteAvailable">No Route Available</string>
+    <string name="txtGetStores">Get Stores</string>
+    <string name="txtNoStoreVisittoday">No Store Visit today</string>
+    <string name="txtDistributorStock">Distributor Stock</string>
+    <string name="txtUpdateExecution">Update Execution</string>
+    <string name="txtErrorPhnDate">Your Phone  Date is not Up to date.Please Correct the Date.</string>
+    <string name="AvailableRoutesMsg">Available Routes</string>
+    <string name="txtError">Error.....</string>
+    <string name="txtErrorRetrievingData">Error while Retrieving Data!\nPlease Retry</string>
+    <string name="txtErr">Error</string>
+    <string name="txtSelectReason">Please select the reason first.</string>
+    <string name="txtEnterReason">Please enter the reason.</string>
+    <string name="txtInvoicePending">There is no Invoice Pending</string>
+    <string name="txtRetry">Retry</string>
+    <string name="txtReason">Reason :</string>
+    <string name="NoDataConnectionFullMsg">Your device has no Data Connection. \n Please ensure Internet is accessible to Continue.</string>
+    <string name="RetrivingDataMsg">Retrieving Data…</string>
+    <string name="SubmittingDataMsg">Submitting Data…</string>
+
+    <string name="ValidatingMsg">Validating User</string>
+
+    <!--Launcher Activity ends here-->
+
+
+    <!--Incentive Activity starts here-->
+    <string name="txtIncentive">Incentive</string>
+    <string name="txtFetchingReports">Fetching reports</string>
+    <string name="txtEarnedpoints">earned points\nRs:100</string>
+    <string name="txtIncentiveName">Incentive Name</string>
+
+    <!--Incentive Activity ends here-->
+
+    <!--Sales Value Target Activity starts here-->
+    <string name="txtSalesTargetValue">Sales Target Value</string>
+    <!--Sales Value Target Activity ends here-->
+
+    <!--StoreSelection Activity starts here-->
+    <string name="txtSelectStore">Select Store</string>
+    <string name="txtManagerName">Manager Name</string>
+    <string name="hash">#</string>
+    <string name="txtFindNearby">find near by stores</string>
+    <string name="txtNextDay">NextDay</string>
+    <string name="txtClose">Close</string>
+    <string name="txtAddStore">Add Store</string>
+    <string name="txtStart">Start</string>
+    <string name="txtStoreName">Store Name</string>
+    <string name="hintManagerName">Manager Name</string>
+    <string name="searchingnearbystores">Searching Nearby Stores</string>
+    <string name="genTermProcessingRequest">Processing Request..</string>
+    <string name="genTermGPSDisablePleaseEnable">GPS is not enabled. \n Please select all settings on the next page!</string>
+    <string name="PleaseConformMsg">Please Confirm</string>
+    <string name="genTermDayEndAlert">Are you sure to end your day visit?</string>
+    <string name="genTermDayEndAlertWithoutStoreSubmit">Do you really want to End your Day visit? \n All Previous non-submitted orders will be lost!</string>
+    <string name="genTermchangeRouteAlert">Do you really want to Change Route? \n All Previous non-submitted orders will be lost!</string>
+    <string name="genTermchangeRouteAlertWhenNoStoreisLeftToSubmit">Do you really want to Change Route? \n</string>
+    <string name="genTermSelectStoresPendingToCompleteDayEnd">Following Orders are Not Submitted as Yet. Orders Not Selected for Submission now will be permanently lost.</string>
+    <string name="genTermSelectStoresPendingToCompleteChangeRoute">Following Non-Submitted Orders will be lost if you change Route without submitting.</string>
+    <string name="genTermSubmitSelected">Submit Orders</string>
+    <string name="genTermNoStroeSelectedOnSubmit">No Stores Selected. \nPlease select any Store(s) or Cancel!</string>
+    <string name="genTermDirectlyChangeRoute">Discard Orders</string>
+    <string name="txtOnChangeRouteDayEndCancel">Cancel &amp; Go Back</string>
+    <string name="genTermRetrivingData">Retrieving Data…</string>
+    <string name="txtErrRetrieving">Error while Retrieving Data!\n Please Retry</string>
+    <string name="txtEnterManagerName">Please Enter Manager Name</string>
+    <string name="genTermPleaseSelectDiffrentStore">Please select a Different Store,this Store is mark to close by You.</string>
+    <string name="genTermPleaseSelectStore">Please Select Store</string>
+    <string name="txtRefreshingData">Refreshing Data...</string>
+    <string name="genTermAvailableRoute">Available Route</string>
+    <string name="txtProductName">Product Name</string>
+    <string name="txtQuantity">Quantity</string>
+    <string name="txtConfirmCancel">Confirm Cancel..</string>
+    <string name="txtYouWant">Are you sure you want </string>
+    <string name="txtOrderCancel">orders are to be cancelled ?</string>
+    <string name="txtOrderCancelQues">order to be cancelled ?</string>
+
+
+    <!--StoreSelection Activity ends here-->
+
+
+    <!--DetailReportSummaryActivity Activity starts here-->
+    <string name="txtSummaryAsOn">Summary as on:</string>
+    <string name="txtMeasures">Measures</string>
+    <string name="txtTodaySummary">Today\'s Summary</string>
+    <string name="txtMTDSummary">MTD\nSummary</string>
+    <string name="txtDetailsReport">Details Report:</string>
+    <string name="txtTargetvsAchieved">Target vs Achieved</string>
+    <string name="txtSKUWise">SKU\nWise</string>
+    <string name="txtStoreWise">Store\nWise</string>
+    <string name="txtStoreSKUWise">Store-SKU\nWise</string>
+    <string name="txtTargetCalls">Target Calls</string>
+    <string name="txtNotification">Notification</string>
+
+    <!--DetailReportSummaryActivity Activity ends here-->
+
+
+    <!--TargetVsAcievedActivity Activity starts here-->
+    <string name="txtTargetvsAchievedReport">Target vs Achieved Report</string>
+    <string name="txtToday">Today</string>
+    <string name="txtMTD">MTD</string>
+    <string name="txtTgt">Tgt</string>
+    <string name="txtAch">Ach</string>
+    <string name="txtBal">Bal</string>
+    <string name="txtVolTarget">Vol Target</string>
+    <string name="txtInPcs">In Pcs</string>
+    <string name="txtInCases">In Cases</string>
+    <string name="txtAcievementPer">Achievement % :</string>
+    <string name="genTermRetrivingSummary">Generating Summary Report…</string>
+    <string name="genTermRetrivingTargetVsAchievedSummary">Generating Target Vs Achieved Report…</string>
+
+    <string name="txtLessThanNinety" translatable="false">&lt;90%</string>
+    <string name="txtGreaterThanNinety" translatable="false">&gt;=90 &lt;100</string>
+    <string name="txtGreaterThanHundred" translatable="false">&gt;=100 &lt;=105</string>
+    <string name="txtHighest" translatable="false">&gt;105</string>
+
+    <!--TargetVsAcievedActivity Activity ends here-->
+
+
+    <!--SKUWiseSummaryReportByTab Activity starts here-->
+    <!--1st part-->
+    <string name="prodlstProduct">Product</string>
+    <string name="txtStores">Stores</string>
+    <string name="txtOrderQty">Order Qty</string>
+    <string name="txtFreeQty">Free Qty</string>
+    <string name="txtDiscountValue">Discount Value</string>
+    <string name="txtValBeforeTax">ValBefore Tax</string>
+    <string name="txtTaxValue">Tax Value</string>
+    <string name="txtValAfterTax">ValAfter Tax</string>
+    <string name="txtGrandTotal">Grand Total :</string>
+    <string name="submit_sent_server">Submit And Sent\nto Server</string>
+    <string name="saved_not_submit">Saved but\nnot Submit</string>
+    <string name="submit_not_sent_server">Submit but Not\nSent to Server</string>
+    <string name="txtSKUWiseSummary">SKU WIse Summary</string>
+
+
+    <!--2nd part-->
+
+    <string name="txtLinesperBill">Lines\nper Bill</string>
+    <string name="txtStockValue">Stock\nValue</string>
+    <string name="txtTotal">Total :</string>
+    <string name="txtNoStoreToDisplay">No Store wise order available to display</string>
+
+    <!--3rd part-->
+    <string name="txtSKUWISE">SKU WISE</string>
+
+    <string name="txtStoreWiseSummary">Store Wise Summary</string>
+    <string name="txtNoRecord">There is no record found</string>
+    <string name="txtStoreSKUSummary">Store &amp; SKU Summary</string>
+
+
+    <string name="txtSTOREWISE">STORE WISE</string>
+    <string name="txtSTORESKUWISE">STORE SKU WISE</string>
+
+
+    <!--SKUWiseSummaryReportByTab Activity ends here-->
+
+
+    <!-- Day end menu header starts -->
+    <string name="DayEndMsg">Do you realy want to end your visit ?.All Previous non-submitted orders will be Lost!</string>
+    <string name="txtEndingDay">Ending your day visit ...</string>
+    <string name="txtChangeRoute">Changing the route....</string>
+    <string name="txtSubmitQuoteDetail">Submitting Quotation Details...</string>
+    <string name="txtGetStockData">Getting Stock Data</string>
+
+    <!-- Day end menu header ends -->
+
+    <!-- Check DatabaseData Activity starts -->
+    <string name="txtTodaySubmitData">Today Submit Data</string>
+    <!-- Check DatabaseData Activity ends -->
+
+    <!-- Notification Activity starts -->
+    <string name="txtLatestNotification">Latest 10 Notification</string>
+    <string name="txtDate">Date</string>
+    <string name="txtMessage">Message</string>
+    <string name="txtReport">Report</string>
+    <string name="txtAttndnc">DSR Attendance</string>
+    <string name="txtScndryUpdate">Enter Day Results</string>
+    <string name="txtBack">Back</string>
+
+    <!-- Notification Activity ends -->
+
+
+    <!--surbhi-->
+    <!-- Order view Activity -->
+
+    <string name="OrderReview">Order Review</string>
+    <string name="Stock">Stock</string>
+    <string name="SmplQty">Smpl.Qty</string>
+    <string name="OQty">O.Qty.</string>
+    <string name="MinDQ">Min.DQ</string>
+    <string name="MRP">MRP</string>
+    <string name="Rate">Rate</string>
+    <string name="FQty">F.Qty</string>
+    <string name="DVal">D.Val</string>
+    <string name="LODQty">LOD/Qty</string>
+    <string name="OVal">O.Val</string>
+    <string name="Remove">Remove</string>
+    <string name="OrderTotal">Order Total</string>
+    <string name="CrAmt">Cr.Amt.</string>
+    <string name="CrAdj">Cr.Adj.</string>
+    <string name="UpdateTotal">Update Total</string>
+    <string name="OrderDeliveryDetails">Order Delivery Details</string>
+    <string name="CollectAmount">Collect Amount</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Save">Save</string>
+    <string name="SaveExit">Save &amp; Exit</string>
+    <string name="Submit">Submit</string>
+    <string name="CrBal">Cr.Bal.</string>
+    <string name="prodlstSchmeApplicable">Scheme Applicable </string>
+    <string name="ProductName">Product Name</string>
+    <string name="Scheme">Scheme</string>
+    <string name="prodlstCreditAmount">Credit Amount:</string>
+    <string name="prodlstProductLevelDiscount">Product Level Discount:</string>
+    <string name="prodlstOValBeforeTax">O. Val Before Tax:</string>
+    <string name="productlist_nadditionaldiscount">Additional Discount:</string>
+    <string name="prodlstOValAfterDis">O.Val After Add. Discount:</string>
+    <string name="GStAmount">GST Amount:</string>
+    <string name="prodOValAfterGst">O. Val After GST:</string>
+    <string name="Coupons">No. of Coupons:</string>
+    <string name="TotalCouponsAmt">Total Coupons Amount:</string>
+    <string name="AmtPrevDue">Amount Previous Due:</string>
+    <string name="AmtCollctd">Amount Collected: </string>
+    <string name="AmtOutStnding">Amount Outstanding: </string>
+    <string name="StockQty">Stock.Qty</string>
+    <string name="O.Qty">O.Qty</string>
+    <string name="PleasefillRatefirst">Please fill Rate first</string>
+    <string name="PleasefillproperRatefirst">Please fill proper Rate first</string>
+    <string name="RemoveProdct">Are you sure you want remove this product?</string>
+    <string name="ConfirmDel">Confirm Delete...</string>
+    <string name="YouclickedonNO">You clicked on NO</string>
+
+
+    <string name="submitConfirmAlert"><small>Store Order details will be Synced! \nDo you want to Submit Order Details?</small></string>
+    <string name="genTermRetrivingLocation">Calculating GPS coordinates to Identify Store Location</string>
+    <string name="prodlstFreeQtyTotal">Free Qty Total:</string>
+    <string name="WhileWeSave"> While we save your data then go back</string>
+    <string name="WhileWeSaveExit">While we save your data then exit</string>
+    <string name="WhileSave">While we save your data.</string>
+    <string name="WhileReview">While we save your data then review Order.</string>
+    <string name="SelectActualFreeQty">Please Select the Actual Free Qty to be applied :</string>
+    <string name="SelectActualValue">Please Select the Actual Value to be applied :</string>
+    <string name="DefaultDiscValue">Default Discount Value for Slab : </string>
+    <string name="SelectActualDisc">Please Select the Actual Discount Percentage to be applied :</string>
+    <string name="DefaultFreeVal">Default Free Value for Slab : </string>
+    <string name="DefaultVal">Default Value for Slab : </string>
+    <string name="DefaultDisc">Default Discount  Percentage for Slab : </string>
+    <string name="DefaultFreeQty">Default Free Qty for Slab :</string>
+
+    <string name="syncAlertOKMsg"><small>Order submission was successful</small></string>
+
+    <string name="syncAlertsubmit"><small>Data submitted successfully.</small></string>
+
+    <!-- Order view Activity ends -->
+
+
+    <!-- Product order filter search Activity starts -->
+
+    <string name="OrderDetail">Order Detail</string>
+    <string name="CategoryName">Category Name</string>
+    <string name="StoreStock">Store Stock</string>
+    <string name="Smpl.Qty">Smpl.Qty</string>
+    <string name="AlertExecNoSum">There is no Data Available For Execution Summary</string>
+    <string name="AlertCancelOrder">Are you sure to cancel the order of the store?</string>
+    <string name="FreeOffer">FREE OFFER</string>
+    <string name="AlertTryAgain">Please try again, No Fused,GPS or Network found.</string>
+    <string name="AlertSameLoc">Your current location is same as previous, so please turn off your location services then turn on, it back again.</string>
+    <string name="AlertFilter">No data found please filter with appropriate word</string>
+    <string name="StockOverbooked">Stock Overbooked</string>
+    <string name="Continue">Continue</string>
+    <string name="ChangeQty">Change Qty</string>
+    <string name="SubmittingOrderDetails">Submitting Order Details...</string>
+    <string name="Loading">Loading...</string>
+    <string name="MyNameAbhinav">My Name Abhinav</string>
+    <string name="AvailableQty">Available Qty :</string>
+    <string name="OrderQty">Order Qty : </string>
+
+    <string name="LastExecutionSummary">Last Execution Summary</string>
+    <string name="SKU">SKU</string>
+    <string name="credit_retailer_balance"><small>Outstanding credit balance of the retailer balance?</small></string>
+    <string name="Searching">Searching</string>
+
+    <string name="order_exceeds_stock"><small>may not be available on delivery. Please Confirm.</small></string>
+
+    <!-- Product order filter search Activity ends -->
+
+
+    <!-- LastVisitDetails Activity start -->
+
+    <string name="LastVisitDate">Last Visit Date :</string>
+    <string name="Details">Details</string>
+    <string name="LastOrderDate">Last Order Date : </string>
+    <string name="ExecutionSummary">Execution Summary : </string>
+    <string name="GSTDetails">GST Details:-</string>
+    <string name="GSTCompliance">GST Compliance</string>
+    <string name="NotRequired">Not Required</string>
+    <string name="Pending">Pending</string>
+    <string name="GSTNo">GST No. :</string>
+    <string name="Edit">Edit</string>
+    <string name="GeneralScheme">General Scheme :</string>
+    <string name="None">None</string>
+    <string name="SpecialScheme">Special Scheme : </string>
+    <string name="SpecialSchemeDescription">Special Scheme Description</string>
+    <string name="QuotationInfo">Quotation Info : </string>
+    <string name="QuotationCode">Quotation Code</string>
+    <string name="QuotStatus">Quot. Status</string>
+    <string name="QuotDate">Quot. Date</string>
+    <string name="NewQuotation">New Quotation</string>
+    <string name="PaymentInfo">Payment Info :</string>
+    <string name="PaymentStage">Payment Stage</string>
+    <string name="Percage"> % age</string>
+    <string name="PaymentMode">Payment Mode</string>
+    <string name="CreditDays">Credit Days</string>
+    <string name="CreditLimit">Credit Limit</string>
+    <string name="AdvanceBeforeDelivery">Advance Before Delivery</string>
+    <string name="OnDelivery">On Delivery</string>
+    <string name="Credit">Credit</string>
+    <string name="CancelVisitDealer">Are you sure to cancel the visit of the dealer?</string>
+    <string name="NoDataAvlblForOrder">There is no Data Available For Visit/Order</string>
+
+    <string name="Ord">Ord</string>
+    <string name="Inv">Inv</string>
+    <string name="SelectGst">Please Select Gst Compliance.</string>
+    <string name="FillGst">Please Fill Gst Compliance Value.</string>
+    <string name="EnterGst">Enter GST Number</string>
+    <string name="PleaseEnterGstToProc">Please enter GST Number to proceed</string>
+    <string name="Confirm">Confirm</string>
+
+    <string name="lastvisitdetails_back">Back</string>
+    <string name="lastvisitdetails_next">Next</string>
+
+    <string name="lastvisitdetails_last">Last </string>
+    <string name="ExecSummary"> Execution Summary</string>
+    <string name="lastvisitdetails_schemedescription">Scheme Description</string>
+
+
+    <!-- LastVisitDetails Activity ends -->
+
+    <!-- LastVisitDetails SecondPart Activity start -->
+    <string name="LastVisitDetails">Last Visit Details </string>
+    <string name="lastvisitdetails_skuname">SKU Name</string>
+    <string name="LastVisitOrderDetails">Last Visit/Order Details</string>
+    <string name="lastvisitdetails_oqty">O.Qty</string>
+    <string name="prodlstFQty">F.Qty</string>
+    <string name="OrderVal">Order Val :</string>
+    <string name="ExecutionVal">Execution Val:</string>
+
+    <string name="Executed">Executed</string>
+
+    <!-- LastVisitDetails SecondPart Activity ends -->
+
+    <!-- Return Activity start -->
+    <string name="SelectReasonToReturn">Please Select reason to return </string>
+    <string name="ReturnDetail">Return Detail</string>
+    <string name="SaveAndClose">Save &amp; Close</string>
+    <string name="productlist_schemeapplicable">Scheme  Applicable</string>
+    <string name="RetQty">Ret. Qty</string>
+    <string name="Photo">Photo</string>
+    <string name="ReturnsType">Returns Type</string>
+    <string name="ReturnFQty">F/Qty</string>
+    <string name="RetQTyExcStock">Return Quantity exceeds Stock</string>
+    <!-- Return Activity ends -->
+
+    <!-- Distributor Entry Activity start -->
+    <string name="SubmitDistrbtrStck">Are you sure to submit Distributor Stock Entry. </string>
+    <string name="SubmitDistrbtrDetail">Submitting Distributor Entry Details...</string>
+    <string name="DistrbtrENtryHeader">Distributor Stock Entry</string>
+    <string name="StockDate">Stock Date: </string>
+    <string name="StckInPcs">Stock Entry(In Pieces)</string>
+    <string name="Pieces">In Pieces</string>
+    <string name="Cases">In Cases</string>
+    <string name="PKDMonth">PKD Month</string>
+    <string name="OldStck">Old STK</string>
+    <string name="FreeStock">Free Stock</string>
+    <string name="SMPSTK">SMP STK</string>
+    <string name="NoRsltFound">Sorry!! \n No Results Found</string>
+    <string name="StockValue">Stock Value</string>
+
+    <string name="StockAsOn">Stock as on-</string>
+    <string name="StckInCases">Stock Entry(In Cases)</string>
+    <string name="SubmitDistrbtr">Distributor Data is Submitted Successfully</string>
+    <string name="SubmitSurvey"> Data is Submitted Successfully</string>
+
+
+    <!-- Distributor Entry Activity ends -->
+
+    <!-- Invoice store selection Activity starts -->
+
+    <string name="NoStoreSubmision">There is no Store for Submission</string>
+    <string name="StoreOrderSelForCon">No Store Order is selected for confirmation.</string>
+    <string name="NoSTrOrdCancel">No Store order is selected for cancellation.</string>
+    <string name="MarkdOrder">You have marked orders for execution / deletion ,but not submited, do you wish to continue?</string>
+    <string name="WhileWeSubmt">While we submit your Data...</string>
+    <string name="InvoiceHeader">Invoice Store Selection</string>
+    <string name="SelDistrbtr">Select Distributor</string>
+    <string name="launcActiSelectRut">Select Route</string>
+    <string name="ExecuteOrders">Execute Orders</string>
+    <string name="CancelOrders">Cancel Orders</string>
+    <string name="SearchStore">Search Store</string>
+
+    <!-- Invoice store selection Activity ends -->
+
+    <string name="PleaseWaitMsg">Please Wait ...</string>
+
+
+    <!--Add new store starts-->
+    <string name="AddNewStoreHeader">Add New Outlet</string>
+    <string name="txtExit">Exit</string>
+    <string name="IsLocCorrect">Location on map is correct according to you?</string>
+    <string name="RefreshLoc">If you are inside store then please go out of the store and then click refresh button to update your location</string>
+    <string name="txtRefresh">Refresh</string>
+    <string name="SubmitStrInfo">Do you want to Submit Store\'s Information? \n\n</string>
+    <string name="DataSent">Data Sent</string>
+    <string name="DataSucc">Data has been successfully submitted</string>
+    <string name="SameLocRestart">Location is same,Please Restart your phone after clicking Ok button.</string>
+    <string name="txtDone">Done</string>
+    <string name="txtNext">Next</string>
+    <string name="txtClickPhoto">Please click another photo,this photo is too heavy to load</string>
+    <string name="txtExitwithoutSave">Exit without Save</string>
+    <string name="SaveandExit">Save and Exit</string>
+    <string name="Pleaseselectvalue">Please select value</string>
+    <string name="PleaseFillNameToSave">Please Fill Name To Save</string>
+    <string name="SveDataBeforeExit">Please ensure that you have saved data before exiting?</string>
+    <string name="rtrvng_loc">Retrieving your current location</string>
+    <string name="SaveData">Save Data</string>
+    <string name="Datawillbesaved">Data will be saved</string>
+
+    <string name="DistributorLocation">Distributor Location</string>
+    <string name="home">Home</string>
+    <string name="DistributorCheckInMsg">Please first confirm the Distributor Check In.</string>
+    <string name="NoPendingDataMsg">There is no Pending data for upload</string>
+
+    <!--NewStoreForm starts here-->
+    <string name="PleaseFill">Please Fill </string>
+    <string name="PleaseProvideProper">Please Provide Proper </string>
+    <string name="PleaseSelect">Please Select \u0020</string>
+    <string name="PleaseClick">Please click atleast one photo of </string>
+    <string name="STDAndLandline">Please Fill STD code And Landline No.</string>
+    <string name="ProvideSTDAndLandline">Please Provide Proper STD code And Landline No.</string>
+    <string name="OutletNametoSaveandExit">Please Fill Name of Outlet to Save and Exit</string>
+
+    <string name="ClickPhoto">Click Photo</string>
+
+
+    <!--NewStoreForm ends here-->
+
+
+    <!--Add new store ends-->
+
+    <!--invoice sync master starts-->
+    <string name="genTermSyncErrornew">Sync Error!</string>
+    <string name="genTermSyncErrorFullMsg">Sync Error! \n\n Please check your Internet Connectivity &amp; Try Again!</string>
+    <string name="SubmittingDelDetails">Submitting Delivery Details...</string>
+
+
+    <!--invoice sync master ends-->
+
+
+    <!--invoice product list starts-->
+    <string name="CancelOrder">Are you sure you want to cancel Order for Following Store: </string>
+    <string name="DelDetails">Delivery Details</string>
+    <string name="prodlstCategoryName">Category Name:</string>
+    <string name="DistbtrName">Distributor Name : </string>
+    <string name="other_loc">Please Specify : </string>
+    <string name="StoreName">Store Name :</string>
+    <string name="productlist_tblproduct">Product</string>
+    <string name="prodlstRate">Rate</string>
+    <string name="prodlstOQty">O.Qty</string>
+    <string name="DelQty">Del.Qty</string>
+    <string name="productlist_tblfqty">F.Qty</string>
+    <string name="prodlstDvalue">D.Val</string>
+    <string name="prodlstAdditionalDiscount">Additional Discount</string>
+    <string name="AmountPrevDue">Amount Prev. Due: </string>
+    <string name="ExecuteOrder">Execute Order</string>
+    <string name="txtCancelOrder">Cancel Order</string>
+    <string name="genTernStoreOrderInvoicesubmitConfirmAlert"><small>Do you want to Submit Execution Details?</small></string>
+    <!--invoice product list ends-->
+
+    <!--surbhi ends-->
+
+
+    <!--  Selection header starts -->
+    <string name="ChangeLanguage">Change Language</string>
+    <string name="Survey">Survey</string>
+    <string name="Language">Language</string>
+    <string name="LanguageSelection">Please Select Language</string>
+    <string name="Hindi">Hindi</string>
+    <string name="English">English</string>
+    <string name="DayEnd">Day End</string>
+    <string name="Dsrmessage">Please update your personal details before doing day end activity</string>
+    <string name="RefreshData">Refresh Data</string>
+    <string name="RefreshDataMsg">Are you sure to refresh Data?</string>
+    <string name="ChangeRoute">Change Route</string>
+    <string name="Summary">Summary</string>
+    <string name="TargetVsAchieved">Target Vs Achieved</string>
+    <string name="VersionNo">Version No-V</string>
+    <string name="CheckTodayOrder">Check Today Order</string>
+    <string name="PurchaseOrder">Purchase Order</string>
+
+
+    <!-- Selection header ends -->
+
+
+    <string name="genlocaldataMsg">Data saved locally,will send to server once Internet is accessible.</string>
+    <string name="LogoutMsg">Are you sure you want to logout</string>
+    <string name="reason_prompt">Please Select Reason</string>
+    <string name="category_prompt">Please Select Category</string>
+    <!-- start of Internet Message -->
+    <string name="phone_nos">Phone Num:</string>
+    <!-- End of Internet Message -->
+    <string name="spinner_route">Routes </string>
+    <string name="remarks">.,/- abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</string>
+    <string name="spinner_store_type">Store Type </string>
+    <string name="spinner_trade_channel">Trade Channel </string>
+    <string name="spinner_store_Category">Store Category </string>
+    <string name="spinner_retailer_sales_type">Retailer Sales Type </string>
+    <string name="spinner_store_potential_type">Store Potential Type </string>
+    <string name="only_alpha_numeric_new">.- ,abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="only_character_Space_no_slash">.- abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</string>
+    <string name="spinnerloc">Distributor Names </string>
+    <string name="spinnerarea">Route Names </string>
+    <string name="spinnerstore">Store Type </string>
+    <string name="only_alpha_numeric">.- abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="nameValidation">. abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="syncAlertStoreQuotationOKMsg"><small>Store Quotation submission was successful.</small></string>
+    <string name="syncAlertInvoiceOKMsg"><small>Delivery details submitted!</small></string>
+    <string name="syncAlertErrMsg"><small>Sync was not successful. \nPlease try again.</small></string>
+    <string name="syncAlertErrMsgDayEndOrChangeRoute"><small>Due to Internet connectivity breakdown, not able to submit orders. \nPlease try again.</small></string>
+    <string name="title_activity_store_selection">StoreSelection</string>
+    <string name="title_activity_last_visit_details">LastVisitDetails</string>
+    <string name="title_activity_stores_summary">Stores Summary</string>
+    <string name="title_activity_return">Stock Returns</string>
+    <string name="productlist_orderbooking">Order Booking Form</string>
+    <string name="productlist_returnbutton">عودة المنتج</string>
+    <string name="productlist_storebutton">Store Photo</string>
+    <string name="productlist_currentproduct">Current Product</string>
+    <string name="productlist_sampleqty">Sample Qty.</string>
+    <string name="productlist_samplehint">Enter Sample Qty. here</string>
+    <string name="productlist_sampletotalhint">of Total Sample Issued</string>
+    <string name="productlist_cramt">Cr. Amt</string>
+    <string name="productlist_cradj">Cr. Adj</string>
+    <string name="productlist_crbal">Cr. Bal</string>
+    <string name="productlist_creditamount">Credit Amount :</string>
+    <string name="productlist_productleveldiscount">Product Level Discount :</string>
+    <string name="productlist_freeqtytotal">Free Qty Total </string>
+    <string name="productlist_netinvoicevalue">Net Invoice Value:</string>
+    <string name="productlist_invoiceaftdiscount">Order After Discount :</string>
+    <string name="productlist_taxamount">Tax Amount :</string>
+    <string name="productlist_grossinvoicevalue">Gross Order Value :</string>
+    <string name="productlist_noofcoupons">No. of Coupons :</string>
+    <string name="productlist_totalcouponamount">Total Coupon Amount :</string>
+    <string name="productlist_amountprevdue">Amount Previous Due:</string>
+    <string name="productlist_amountoutstanding">Amount Outstanding:</string>
+    <string name="prodlstAmtCollected">Amount Collected:</string>
+    <string name="genTermSelectStoresPendingToComplete">Are you sure to confirm the selected store orders?</string>
+    <string name="genTermSelectStoresPendingToCancel">Are you sure to cancel the selected store orders?</string>
+    <string name="genTermSubmitSelectedInvoice">Confirm Selected</string>
+    <string name="genTermSubmitCancelInvoiceList">OK</string>
+    <string name="txtYes">Yes</string>
+    <string name="txtNo">No</string>
+    <string name="txtCancle">Cancel</string>
+    <string name="mysummary_back">Back</string>
+    <string name="loc_not_found">Location cannot be found accurately by the system , store will be saved without Location.This can be done later.</string>
+    <string name="second_msg_for_map">Please try to get your location once again, If location found to be reasonably accurate as per system it wil be saved.</string>
+    <string name="third_msg_for_map">Data will be saved with the current location which appear to be accurate..</string>
+    <string name="title_activity_view_added_store">ViewAddedStore</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_quotation">QuotationActivity</string>
+    <string name="LastOrderDetails">Last Order Details</string>
+
+
+    <!--new-->
+    <!--store selection-->
+    <string name="Route_prompt">Change Route</string>
+
+    <string name="overdueBal">OverDue Balance</string>
+
+
+    <string name="outstandingBal">Outstanding Balance</string>
+    <string name="TtlAmtOutStnding">Total Outstanding: </string>
+    <string name="PrvAmtOutStnding">Previous Amount Outstanding: </string>
+    <string name="crntInvoice">Current Invoice: </string>
+    <string name="minAmountDue">Minimum Amount Due: </string>
+
+
+    <!--All button Activity-->
+    <string name="Dashboard">Dashboard</string>
+    <string name="MarketVisit">Market Visit</string>
+    <string name="Execution">Execution</string>
+    <string name="StoreMapping">Store Mapping &amp; Validation</string>
+    <string name="DistributorStock">Distributor Stock</string>
+    <string name="DistributorCheckIn">Distributor Check In</string>
+    <string name="DSMTracker">DSR Tracker</string>
+    <string name="MapDistributor">Map Distributor</string>
+    <string name="NoVisit">No Visit</string>
+
+
+    <string name="NoStocks">There are no Stocks to Return Product</string>
+    <string name="lastvisitdetails_stock">Stock</string>
+    <string name="internetslowMsggg">Your device Data Connection is slow.</string>
+    <string name="selectOptionProceeds">Please select atleast one option to Proceeds.</string>
+    <string name="selectDSRProceeds">Please select DSR to Proceeds.</string>
+    <string name="title_activity_dialog__report">DialogActivity_Report</string>
+    <string name="selectDistributorProceeds">Please select Distributor to Proceed.</string>
+    <string name="selectReasonForLate">To proceed, please select a reason why you were late.</string>
+    <string name="selectOtherReasonForLate">To proceed, please specify other reason why you were late.</string>
+
+    <string name="searchingcurrentposition">Searching Your Current Position</string>
+    <string name="saveAlertOKMsg"><small>Details submitted successfully!</small></string>
+    <string name="uploading_errorXMLFiles">Error while uploading pending store details</string>
+    <string name="txtOk">OK</string>
+    <string name="uploading_error">Error while uploading image</string>
+    <string name="so_summary_point_note_text">Stores Added in the last approximately 15 minutes may not be counted in the values above......</string>
+    <string name="genTermNoDataConnectionForViewingImgaesOnline">Your device has no Data Connection. \n Please ensure Internet is accessible to see Store images..</string>
+
+    <!--newly added for store close activity-->
+    <string name="StrClosed">Store Closed</string>
+    <string name="StrClosedHeader">Store Closed Information</string>
+    <string name="StrClosedReason">Store Closed Reason</string>
+    <string name="alertSaveMsg">Please save data before leaving or changes done will not be saved.</string>
+    <string name="alertAskSaveMsg">Do you want to save data?</string>
+
+    <string name="clkStrClosePic">Click Store Close Pic</string>
+    <string name="reason">Select Reason</string>
+
+    <string name="alertClickPic">Please click atleast one pic of the Store.</string>
+    <string name="alertOtherReason">Please enter other reason.</string>
+
+    <!--newly added for store close activity ends-->
+
+
+    <string name="DistributorCheckInAlrady">You have already done Distributor Check In For Today.</string>
+
+    <string name="refreshCompleteData">Refresh Complete Data</string>
+    <string name="AddedStoresSummary">Added Stores Summary</string>
+    <string name="editStoreAlert"><small>Do you  want to edit store.</small></string>
+
+    <string name="PurchaseOrderDetails">Purchase Order Details</string>
+
+    <string name="DataReport">Data Report</string>
+    <string name="ChangeDSR">Change DSR</string>
+
+
+    <!--new added-->
+    <string name="SalesTarget">Sales Target</string>
+    <string name="SubmittingTargetDetails">Submitting Target Details...</string>
+    <string name="TargetMnth">Target Month</string>
+    <string name="SelectTargetMnth">Please select target month.</string>
+    <string name="SelectAlertTargetMnth">Select Target Month</string>
+    <string name="SubmittingTarget">Submitting Details...</string>
+    <string name="TargetNote">Note: Target Value will be in (\'000).\</string>
+
+    <string name="AreYouSureExit">Are you sure you want to exit application.Click submit to send your data or it will be lost.</string>
+    <string name="EnsureInternet">Data has been saved.Please ensure internet connectivity to submit data to server.</string>
+    <string name="SelectAlertTargetMeasure">Select Measure</string>
+
+
+    <!--Collection Activity-->
+    <string name="PaymentCollection">Payment Collection</string>
+    <string name="Amount">Amount</string>
+    <string name="RefNochequeNoTrnNo">RefNo/chequeNo/TrnNo</string>
+    <string name="Bank">Bank</string>
+    <string name="TotalAmount">Total Amount:-</string>
+    <string name="DoneAndExit">Done &amp; Exit</string>
+
+    <string name="PleaseEntertheAmount">Please Enter the Amount</string>
+    <string name="PleaseEnterChequeNoRefNo">Please Enter ChequeNo/RefNo</string>
+    <string name="PleaseSelectDate">Please Select the Date</string>
+    <string name="PleaseEnterAllValidation">Please Enter the Amount or ChequeNo/RefNo. or Select Date</string>
+    <string name="PleaseEnterAmountCheckNo">Please Enter the Amount or ChequeNo/RefNo</string>
+    <string name="DateEmpty">Date is Empty</string>
+    <string name="PleaseSelectBank">Please Select Bank</string>
+
+    <string name="AmountEmpty">Amount is Empty</string>
+    <string name="RefNochequeNoTrnNoEmpty">RefNo/chequeNo/TrnNo is Empty</string>
+
+    <string name="DbrMapped">Distributor is Already Mapped</string>
+    <string name="PleaseSelectCity">Please Select City Name</string>
+    <string name="PleaseState">Please Select State Name</string>
+    <string name="PleaseCity">Please Fill Other City Name</string>
+    <string name="SubmittingDetails">Submitting  Details...</string>
+    <string name="SubmittingDbrInfo">Do you want to submit distributor information?</string>
+    <string name="SelectDbr">Select Distributor.</string>
+
+    <string name="PaymntMode">Select Payment Mode</string>
+    <string name="CreditDayEmpty">Credit days is empty</string>
+    <string name="CreditDayZero">Credit days can not be zero.</string>
+    <string name="DelvryLoc">Please Select Delivery Location</string>
+    <string name="selectDSMProceeds">Please select DSM to Proceed.</string>
+    <string name="NoCityMapped">There is no city mapped to this phone</string>
+    <string name="NoStateMapped">There is no state mapped to this phone</string>
+    <string name="SelectUOM">Please select UOM</string>
+    <string name="SelectMinDiv">Please select Minimum Dlv. Quantity</string>
+    <string name="SelectRateOffer">Please select Rate Offer</string>
+    <string name="FillCstrmrInfo">First fill the customer info. and click on Save &amp; Next before taking Quotation</string>
+    <string name="TextToFilter">Please enter some text to filter</string>
+    <string name="PutExtraFilter">Please put some extra filter on Search-Box to fetch related product</string>
+    <string name="NoDataFound">No Data Found.</string>
+    <string name="CstmrEmpty">Customer Name is empty</string>
+    <string name="CntctPerson">Contact Person is empty</string>
+    <string name="ContctNo">Contact no. is not valid</string>
+    <string name="EmailNotValid">EmailID is not valid</string>
+    <string name="SelectValSalesQuote">Select Value from Sales Quote Type</string>
+    <string name="SelFromDate">Select From_Date from Calendar</string>
+    <string name="SelValidUpto">Select Valid_UpTO_Date from Calendar</string>
+    <string name="AllPrdctsRemoved">All the products of other manufacturer will be removed!</string>
+    <string name="noQuotTaken">No Quotation Taken, Now you can click on the back icon above to go back to Visit Summary</string>
+    <string name="IntrntNotButDataSaved">Internet not available therefore could not send data but data has been succesfully saved!</string>
+    <string name="NoQuotTaken">No Quotation Taken, Now you can click on the back icon above to go back to Visit Summary</string>
+    <string name="SureToRemove">Are you sure you want to remove this</string>
+    <string name="SelectSponsor">Please select Sponsor!</string>
+    <string name="SelectPercent">Please fill percentage</string>
+    <string name="TotalPerc">Total percentage is not correct</string>
+    <string name="PlsSelManfctr">Please select Manufacturer</string>
+    <string name="IncntiveEarned">Incentive Earned </string>
+    <string name="TotalIncntiveEarned">Total Incentive Earned :</string>
+    <string name="SaveDataBeforeExit">Please ensure that you have saved data before exiting?</string>
+    <string name="SelectCity">Select City</string>
+    <string name="SelectState">Select State</string>
+    <string name="ViewStrImages">Click to view Store Images</string>
+    <string name="CreditLimitZero">Credit limit can not be zero.</string>
+    <string name="ConnectingServer">Connecting Server for generating reports.....</string>
+    <string name="PlsPaymentStage">Please select Payment Stage</string>
+
+    <string name="DSR_Profile">So Profile</string>
+    <string name="prod_name">Prod Name</string>
+    <string name="ret_qty">Ret Qty</string>
+    <string name="ret_value">Ret Value</string>
+    <string name="adj_qty">Adj. Qty</string>
+    <string name="adj_amt">Adj. Amt</string>
+    <string name="comments">Comments</string>
+    <string name="due_credit_amount">Due Credit Amount</string>
+    <string name="total_credit_amount">Total Credit Amount</string>
+    <string name="save_amp_cont">Save &amp; Cont.</string>
+    <string name="outlet_details">Outlet Details</string>
+    <string name="reject">Reject</string>
+    <string name="revisit">Revisit</string>
+    <string name="pos_detail">POS Detail</string>
+    <string name="pos_material">POS Material</string>
+    <string name="existing_stand">Existing Stand</string>
+    <string name="fresh_order">Fresh Order</string>
+    <string name="return_to_distributor">Return to Distributor</string>
+    <string name="discard_damage">Discard/Damage</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="pos_material_last_visit_details">POS Material Last Visit Details</string>
+    <string name="gross">Gross</string>
+    <string name="tax">Tax</string>
+    <string name="net">Net</string>
+    <string name="discount">Discount</string>
+    <string name="retailer">Retailer</string>
+    <string name="retailer_name">Retailer Name</string>
+    <string name="owner">Owner</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="address">Address</string>
+    <string name="pincode">Pincode</string>
+    <string name="city">City</string>
+    <string name="area">Area</string>
+    <string name="store_type">Store Type</string>
+    <string name="save">Save</string>
+    <string name="new_store_details">New Store Details</string>
+    <string name="route_name">Route Name</string>
+    <string name="email_id">Email Id</string>
+    <string name="tin_no">TIN No.</string>
+    <string name="store_contact_no">Store Contact No.</string>
+    <string name="store_address">Store Address</string>
+    <string name="store_pincode">Store Pincode</string>
+    <string name="key_account">Key Account</string>
+    <string name="store_category">Store Category</string>
+    <string name="retail_sales_type">Retail Sales Type</string>
+    <string name="store_potential">Store Potential</string>
+    <string name="product_class_distribution">Product Class – Distribution</string>
+    <string name="accuracy_in_meter">Accuracy in Meter</string>
+    <string name="outlet_information">Outlet Information</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="preffered_delivery_time">Preferred Delivery Time</string>
+    <string name="till">Till</string>
+    <string name="do_not_deliver_between">Do Not Deliver Between</string>
+    <string name="required_delivery_date">Required Delivery Date</string>
+    <string name="invoice_details">Invoice Details</string>
+    <string name="select_bill_to_customer_name">Select Bill To Customer Name</string>
+    <string name="billing_address">Billing Address</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="rate_difference_cost_to_be_borne_by">Rate difference cost to be borne by</string>
+    <string name="select_track_type">Select Track Type</string>
+    <string name="data_report">Data Report</string>
+    <string name="on_map">On Map</string>
+    <string name="go">GO</string>
+    <string name="rt_offer">RT.OFFER</string>
+    <string name="quotation">QUOTATION</string>
+    <string name="remarks_cap">REMARKS</string>
+    <string name="st_rate">St.Rate</string>
+    <string name="last_trans_rt">Last Trans Rt.</string>
+    <string name="rt_offer_small">Rt.Offer</string>
+    <string name="min_dlv_qty">Min Dlv Qty</string>
+    <string name="taxperc">Tax %</string>
+    <string name="uom">UOM</string>
+    <string name="change_validity">Change Validity</string>
+    <string name="remark_small">Remark</string>
+    <string name="previous">Previous</string>
+    <string name="sales_quotation_status">Sales Quotation Status;</string>
+    <string name="quotation_date">Quotation Date :</string>
+    <string name="quot_name">Quot Name</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="contact_person">Contact Person</string>
+    <string name="contact_person_mobile">Contact Person Mobile</string>
+    <string name="contact_pe_rson_email">Contact Pe rson Email</string>
+    <string name="sales_quote_type">Sales Quote Type</string>
+    <string name="valid_from">Valid From</string>
+    <string name="valid_up_to">Valid Up To</string>
+    <string name="expected_business_value">Expected Business Value</string>
+    <string name="payment_stage">Payment Stage</string>
+    <string name="percentage">Percentage</string>
+    <string name="creditlimit">CreditLimit</string>
+    <string name="creditdays">CreditDays</string>
+    <string name="save_amp_next">Save &amp; Next</string>
+    <string name="rate_different_to_be_claimed">Rate different to be claimed</string>
+    <string name="rate">RATE</string>
+    <string name="qty">QTY</string>
+    <string name="submit_quotation">Submit Quotation</string>
+    <string name="save_amp_take_order">Save &amp; Take Order</string>
+    <string name="last_pos_summary">Last POS Summary</string>
+    <string name="stores">Stores</string>
+    <string name="order">Order</string>
+    <string name="free">Free</string>
+    <string name="disc">Disc</string>
+    <string name="store">Store</string>
+    <string name="local_area">Local Area</string>
+    <string name="pin_code">Pin Code</string>
+    <string name="state">State</string>
+    <string name="select_visit_type">Select Visit Type</string>
+    <string name="my_own_visit">My own visit</string>
+    <string name="visit_on_behalf_of_dsr">Visit on behalf of DSR</string>
+    <string name="joint_working">Joint Working</string>
+    <string name="upload_data">Upload Data</string>
+    <string name="version_no">Version No.</string>
+    <string name="faqs">FAQs</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="manage_dsr_amp_imei">Manage DSR &amp; IMEI</string>
+    <string name="today_apos_s_summary">Today\'s Summary</string>
+    <string name="actual_calls">Actual Calls :</string>
+    <string name="productive_calls">Productive Calls :</string>
+    <string name="s_qty">S.Qty</string>
+    <string name="ratedotr">Rate.</string>
+    <string name="line">Line</string>
+    <string name="total_lines_value">Total Lines Value :</string>
+    <string name="total_order_value">Total Order Value :</string>
+    <string name="total_discount_value">Total Discount Value :</string>
+    <string name="total_order_kg">Total Order Kg :</string>
+    <string name="total_free_kg">Total Free Kg :</string>
+    <string name="total_sample_kg">Total Sample Kg:</string>
+    <string name="total_order_lit">Total Order Lit. :</string>
+    <string name="total_free_lit">Total Free Lit. :</string>
+    <string name="total_sample_lit">Total Sample Lit. :</string>
+    <string name="submitted_and_sent_to_server">Submitted and Sent to Server</string>
+    <string name="submitted_but_not_sent_to_server">Submitted but not sent to Server</string>
+    <string name="saved_but_not_submitted">Saved but not Submitted</string>
+    <string name="select_report_scope">Summary Reports</string>
+    <string name="individual_dsr">Individual DSR</string>
+    <string name="full_territory">Full Territory</string>
+    <string name="distributor_scope">Distributor Scope</string>
+    <string name="view_new_added_store">View New Added Store</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="store_sku_wise">STORE SKU WISE</string>
+    <string name="store_list">Store List</string>
+    <string name="select_mode_of_visit">Select mode of visit?</string>
+    <string name="offline">Offline</string>
+    <string name="online">Online</string>
+    <string name="validate_type">Validate Type :</string>
+    <string name="away_from_store">AWAY FROM STORE</string>
+    <string name="in_store">In Store</string>
+    <string name="list_of_stores_pending_for_validation">List of Stores Pending for Validation</string>
+    <string name="so_name">SO Name</string>
+    <string name="last_refresh_time">Last Refresh Time :</string>
+    <string name="total_status">Total Status</string>
+    <string name="total_stores">Total Stores</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
+    <string name="remap">ReMap</string>
+    <string name="pending">Pending</string>
+    <string name="total_stores_added_by_me">Total Stores Added By Me</string>
+    <string name="todaysummary">Today\'s Summary</string>
+    <string name="summary_as_on">Summary as on</string>
+    <string name="measures">Measures</string>
+    <string name="mtd_nsummary">MTD Summary</string>
+    <string name="tgt_value_achieved">Tgt Value [%] Achieved</string>
+    <string name="target_calls">Target Calls:</string>
+    <string name="actual_calls_on_route">Actual Calls On-Route:</string>
+    <string name="actual_calls_off_route">Actual Calls Off-Route:</string>
+    <string name="productive_calls_on_route">Productive Calls On-Route:</string>
+    <string name="productive_calls_off_route">Productive Calls Off-Route:</string>
+    <string name="calls_remaining">Calls Remaining:</string>
+    <string name="average_lines_per_bill">Average Lines per Bill:</string>
+    <string name="total_sales_value">Total Sales Value:</string>
+    <string name="placement_outlets">Placement Outlets:</string>
+    <string name="no_of_stores_added">No of Stores added:</string>
+    <string name="details_report">Details Report:</string>
+
+    <string name="capture">Capture</string>
+    <string name="dsr_name">DSR Name</string>
+
+    <string name="OrderTypeActualVisitHeader">Store Check</string>
+    <string name="TodayStock">Stock Today</string>
+    <string name="stockAsOn">Stock On </string>
+    <string name="store_call">Store Call</string>
+    <string name="OrderTypeActualVisitNew">Actual Visit</string>
+
+    <string name="ConfirmOrderType">Confirm Telephonic Order</string>
+    <string name="AlertTelephonic">This is the telephonic order and the store visit will not count, kindly confirm to proceed</string>
+
+    <string name="OrderType">Order Type</string>
+    <string name="OrderTypeTelephonic">Telephonic</string>
+    <string name="OrderTypeActualVisit">Actual Visit</string>
+
+    <string name="SubmitDistrbtrMapDetail">Submitting Distributor Map Details...</string>
+
+    <string name="validateTargetMin">Total of brand wise target for </string>
+    <string name="validateTargetMinVal"> cannot be less than </string>
+
+
+</resources>
