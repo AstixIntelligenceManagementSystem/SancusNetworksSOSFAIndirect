@@ -50,7 +50,7 @@ public class CommonInfo
 
 	public static String ImageSyncPath="http://103.20.212.194/ReadXML_SancusNetworksImagesTest/Default.aspx";
 
-	public static String OrderTextSyncPath="http://103.20.212.194/ReadTxtFileForRSPLSFATest/default.aspx";
+	public static String OrderTextSyncPath="http://103.20.212.194/ReadTxtFileForSancusNetworksSFATest/default.aspx";
 
 	public static String OrderSyncPathDistributorMap="http://103.20.212.194/ReadXML_SancusNetworksSFATest/DefaultSODistributorMapping.aspx";
 
@@ -60,7 +60,7 @@ public class CommonInfo
 
 	public static String InvoiceSyncPath="http://103.20.212.194/ReadXML_SancusNetworksInvoiceTest/Default.aspx";
 
-	public static String DistributorSyncPath="http://103.20.212.194/ReadXML_RSPLSFADistributionTest/Default.aspx";
+	public static String DistributorSyncPath="http://103.20.212.194/ReadXML_SancusNetworksSFADistributionTest/Default.aspx";
 
 	public static String WebPurchaseOrderUrl="http://103.20.212.194/SancusNetworks_Test/frmPO.aspx";
 
@@ -126,7 +126,7 @@ public static String WebScndryUpdate="http://103.20.212.194/SancusNetworks_test/
 	public static String WebPageUrl="http://103.20.212.194/SancusNetworks_dev/Mobile/frmRouteTracking.aspx";
 
 	public static String WebServicePath="http://103.20.212.194/WebServiceAndroidSancusNetworksSFADevelopment/Service.asmx";
-	// public static String WebServicePath="http://103.20.212.194/WebServiceAndroidRSPLDevelopment/Service.asmx";
+	// public static String WebServicePath="http://103.20.212.194/WebServiceAndroidSancusNetworksDevelopment/Service.asmx";
 
 	public static String VersionDownloadPath="http://103.20.212.194/downloads/";
 	public static String VersionDownloadAPKName="SancusNetworksSOSFADev.apk";
@@ -135,7 +135,7 @@ public static String WebScndryUpdate="http://103.20.212.194/SancusNetworks_test/
 
 	public static int AnyVisit = 0;
 
-	public static int DATABASE_VERSIONID = 4;      // put this field value based on value in table on the server
+	public static int DATABASE_VERSIONID = 13;      // put this field value based on value in table on the server
 	public static String AppVersionID = "1.0";   // put this field value based on value in table on the server
 	public static int Application_TypeID = 4; //1=Parag Store Mapping,2=Parag SFA Indirect,3=Parag SFA Direct
 
@@ -143,7 +143,7 @@ public static String WebScndryUpdate="http://103.20.212.194/SancusNetworks_test/
 
 	public static String ImageSyncPath="http://103.20.212.194/ReadXML_SancusNetworksImagesDevelopment/Default.aspx";
 
-	public static String OrderTextSyncPath="http://103.20.212.194/ReadTxtFileForRSPLSFADevelopment/default.aspx";
+	public static String OrderTextSyncPath="http://103.20.212.194/ReadTxtFileForSancusNetworksSFADevelopment/default.aspx";
 
 	public static String OrderSyncPathDistributorMap="http://103.20.212.194/ReadXML_SancusNetworksSFADevelopment/DefaultSODistributorMapping.aspx";
 
@@ -153,7 +153,7 @@ public static String WebScndryUpdate="http://103.20.212.194/SancusNetworks_test/
 
 	public static String InvoiceSyncPath="http://103.20.212.194/ReadXML_SancusNetworksInvoiceDevelopment/Default.aspx";
 
-	public static String DistributorSyncPath="http://103.20.212.194/ReadXML_RSPLSFADistributionDevelopment/Default.aspx";
+	public static String DistributorSyncPath="http://103.20.212.194/ReadXML_SancusNetworksSFADistributionDevelopment/Default.aspx";
 
 	public static String WebPurchaseOrderUrl="http://103.20.212.194/SancusNetworks_Development/frmPO.aspx";
 	public static String WebAttendanceReport="http://103.20.212.194/SancusNetworks_dev/Mobile/frmTodayAttendence.aspx";
