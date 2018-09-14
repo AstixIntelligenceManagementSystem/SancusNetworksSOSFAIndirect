@@ -135,8 +135,8 @@ public static String WebScndryUpdate="http://103.20.212.194/SancusNetworks_test/
 
 	public static int AnyVisit = 0;
 
-	public static int DATABASE_VERSIONID = 17;      // put this field value based on value in table on the server
-	public static String AppVersionID = "1.4";   // put this field value based on value in table on the server
+	public static int DATABASE_VERSIONID = 18;      // put this field value based on value in table on the server
+	public static String AppVersionID = "1.5";   // put this field value based on value in table on the server
 	public static int Application_TypeID = 4; //1=Parag Store Mapping,2=Parag SFA Indirect,3=Parag SFA Direct
 
 	public static String OrderSyncPath="http://103.20.212.194/ReadXML_SancusNetworksSFADevelopment/DefaultSOSFA.aspx";

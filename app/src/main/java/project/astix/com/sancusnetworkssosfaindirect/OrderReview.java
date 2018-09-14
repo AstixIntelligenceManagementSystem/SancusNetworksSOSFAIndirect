@@ -3077,8 +3077,8 @@ public void loadPurchaseProductDefault()
 			et_LstStock.setText("");
 		}
 		et_Stock.setTag("etStock"+"_"+productIdDynamic);
-		et_Stock.setEnabled(true);
-	/*	if(flgOrderType==1)
+		//et_Stock.setEnabled(true);
+		if(flgOrderType==1)
 		{
 			et_Stock.setBackgroundResource(R.drawable.edit_text_diable_bg_transprent);
 			if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.containsKey(productIdDynamic))
@@ -3099,7 +3099,10 @@ public void loadPurchaseProductDefault()
 		else
 		{
 			et_Stock.setEnabled(true);
-		}*/
+			et_Stock.setBackgroundResource(R.drawable.edit_text_bg_stock);
+			et_Stock.setTextColor(getResources().getColor(R.color.black));
+			et_Stock.setHint(OrderReview.this.getResources().getString(R.string.StockQty));
+		}
 		et_Stock.setOnFocusChangeListener(this);
 
 
@@ -3465,11 +3468,11 @@ public void loadPurchaseProductDefault()
 		{
 
 
-			et_Stock.setText(ProductValuesToFill.split(Pattern.quote("^"))[1]);
-		/*	if(flgOrderType!=1)
+		//	et_Stock.setText(ProductValuesToFill.split(Pattern.quote("^"))[1]);
+			if(flgOrderType!=1)
 			{
 				et_Stock.setText(ProductValuesToFill.split(Pattern.quote("^"))[1]);
-			}*/
+			}
 
 			et_OrderQty.setText(ProductValuesToFill.split(Pattern.quote("^"))[2]);
 
@@ -3521,24 +3524,24 @@ public void loadPurchaseProductDefault()
 
 			{
 
-				et_Stock.setText("");
+				//et_Stock.setText("");
 
-				et_Stock.setHint(OrderReview.this.getResources().getString(R.string.StockQty));
-				/*if(flgOrderType!=1)
+				//et_Stock.setHint(OrderReview.this.getResources().getString(R.string.StockQty));
+				if(flgOrderType!=1)
 				{
 					et_Stock.setText("");
 
 					et_Stock.setHint(OrderReview.this.getResources().getString(R.string.StockQty));
-				}*/
+				}
 
 			}
 
 
-			hmapProductIdStock.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[1]);
-			/*if(flgOrderType!=1)
+			//hmapProductIdStock.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[1]);
+			if(flgOrderType!=1)
 			{
 				hmapProductIdStock.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[1]);
-			}*/
+			}
 
 			hmapPrdctOdrQty.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[2]);
 
@@ -9996,9 +9999,9 @@ public void loadPurchaseProductDefault()
 		   getProductData();
 		   
 		   getSchemeSlabDetails();
-			 /* dbengine.open();
+			  dbengine.open();
 			  hmapFetchPDASavedData=dbengine.fetchActualVisitData(storeID);
-			  dbengine.close();*/
+			  dbengine.close();
 			  hmapProductMinMax=dbengine.getProductMinMax();
 			  hmapSchmDscrptnAndBenfit=dbengine.getSchmDscrptnAndBenfit();
 			  outstandingvalue=dbengine.fnGetStoretblLastOutstanding(storeID);

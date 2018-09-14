@@ -445,6 +445,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="project.astix.com.sancusnetworkssosfaindirect.ActualVisitStock"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity android:name="project.astix.com.sancusnetworkssosfaindirect.WebViewAttndnc_ScndryUpdt"></activity>
     </application>

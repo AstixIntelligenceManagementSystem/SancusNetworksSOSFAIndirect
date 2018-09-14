@@ -1949,21 +1949,21 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			final EditText et_Stock=(EditText) viewProduct.findViewById(R.id.et_Stock);
 			final EditText et_LstStock=(EditText) viewProduct.findViewById(R.id.et_LstStock);
 
-			if(hmapProductIdLastStock.containsKey(productIdDynamic))
+			/*if(hmapProductIdLastStock.containsKey(productIdDynamic))
 			{
 				et_LstStock.setText(""+hmapProductIdLastStock.get(productIdDynamic));
 			}
 			else
 			{
 				et_LstStock.setText("");
-			}
+			}*/
 
 			et_Stock.setTag("etStock"+"_"+productIdDynamic);
 
 			et_Stock.setOnFocusChangeListener(this);
-			et_Stock.setEnabled(true);
+			//et_Stock.setEnabled(true);
 
-			/*if(flgOrderType==1)
+			if(flgOrderType==1)
 			{
 				et_Stock.setBackgroundResource(R.drawable.edit_text_diable_bg_transprent);
 				if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.containsKey(productIdDynamic))
@@ -1984,7 +1984,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			else
 			{
 				et_Stock.setEnabled(true);
-			}*/
+				et_Stock.setBackgroundResource(R.drawable.edit_text_bg_stock);
+				et_Stock.setTextColor(getResources().getColor(R.color.black));
+				et_Stock.setHint(ProductOrderFilterSearch.this.getResources().getString(R.string.StockQty));
+			}
 
 	           final EditText et_SampleQTY=(EditText) viewProduct.findViewById(R.id.et_SampleQTY);
 
@@ -2270,13 +2273,13 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 
 
-	               et_Stock.setText(ProductValuesToFill.split(Pattern.quote("^"))[1]);
+	              // et_Stock.setText(ProductValuesToFill.split(Pattern.quote("^"))[1]);
 
-				  /* if(flgOrderType!=1)
+				  if(flgOrderType!=1)
 				   {
 					   et_Stock.setText(ProductValuesToFill.split(Pattern.quote("^"))[1]);
 					   // hmapProductIdStock.put(productIdDynamic,ProductValuesToFill.split(Pattern.quote("^"))[1]);
-				   }*/
+				   }
 
 	                et_OrderQty.setText(ProductValuesToFill.split(Pattern.quote("^"))[2]);
 
@@ -2327,25 +2330,25 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 	                if(Integer.parseInt(ProductValuesToFill.split(Pattern.quote("^"))[1])==0)
 
 	                {
-						et_Stock.setText("");
+						//et_Stock.setText("");
 
-						et_Stock.setHint(ProductOrderFilterSearch.this.getResources().getString(R.string.StockQty));
-						/*if(flgOrderType!=1)
+						//et_Stock.setHint(ProductOrderFilterSearch.this.getResources().getString(R.string.StockQty));
+						if(flgOrderType!=1)
 						{
 							et_Stock.setText("");
-
-							et_Stock.setHint(ProductOrderFilterSearch.this.getResources().getString(R.string.StockQty));
-						}*/
+							et_Stock.setHint("0");
+							//et_Stock.setHint(ProductOrderFilterSearch.this.getResources().getString(R.string.StockQty));
+						}
 
 	                }
 
 
-	               /* if(flgOrderType!=1)
+	                if(flgOrderType!=1)
 				   {
 					   hmapProductIdStock.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[1]);
-				   }*/
+				   }
 
-				   hmapProductIdStock.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[1]);
+				  // hmapProductIdStock.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[1]);
 	                hmapPrdctOdrQty.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[2]);
 
 	                hmapProductIdOrdrVal.put(productIdDynamic, ProductValuesToFill.split(Pattern.quote("^"))[3]);
@@ -8541,9 +8544,9 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 		   getProductData();
 
 		   getSchemeSlabDetails();
-			/*  dbengine.open();
+			  dbengine.open();
 			  hmapFetchPDASavedData=dbengine.fetchActualVisitData(storeID);
-			  dbengine.close();*/
+			  dbengine.close();
 			  hmapProductMinMax=dbengine.getProductMinMax();
 			  hmapSchmDscrptnAndBenfit=dbengine.getSchmDscrptnAndBenfit();
 
