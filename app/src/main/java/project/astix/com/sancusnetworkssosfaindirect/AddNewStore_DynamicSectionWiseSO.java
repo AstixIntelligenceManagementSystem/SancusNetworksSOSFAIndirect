@@ -81,6 +81,17 @@ import android.widget.TextView;
 
 public class AddNewStore_DynamicSectionWiseSO extends FragmentActivity implements LocationListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,SearchListCommunicator,OnMapReadyCallback,CategoryCommunicatorCityState
 {
+
+    public int flgOldNewStore=0;
+    public int flgSelfStore=0;
+    public String strGlobalOrderID="0";
+    public String flgGSTCapture="1";
+    public String flgGSTCompliance="0";
+    public String GSTNumber="NA";
+    public int flgGSTRecordFromServer=0;
+
+    LinkedHashMap<String, String> hmapStoreQuestAnsNew = new LinkedHashMap<>();
+    public static String activityFrom="";
     public static  int flgUpdateSomeNewStoreFlags=1;
     public static int flgLocationServicesOnOff=0;
     public static int flgGPSOnOff=0;
@@ -484,16 +495,17 @@ private String newfullFileName;
         this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         Intent extras = getIntent();
         FLAG_NEW_UPDATE=  extras.getStringExtra("FLAG_NEW_UPDATE");
+        activityFrom=extras.getStringExtra("activityFrom");
         txt_Activityname=(TextView) findViewById(R.id.txt_Activityname);
         if(FLAG_NEW_UPDATE.equals("UPDATE"))
         {
 
             selStoreID=  extras.getStringExtra("StoreID");
             StoreName=    extras.getStringExtra("StoreName");
-            CoverageAreaID=Integer.parseInt(extras.getStringExtra("CoverageAreaID"));
+           /* CoverageAreaID=Integer.parseInt(extras.getStringExtra("CoverageAreaID"));
             RouteNodeID=Integer.parseInt(extras.getStringExtra("RouteNodeID"));
             StoreCategoryType=    extras.getStringExtra("StoreCategoryType");
-            StoreSectionCount=Integer.parseInt(extras.getStringExtra("StoreSectionCount"));
+            StoreSectionCount=Integer.parseInt(extras.getStringExtra("StoreSectionCount"));*/
 
 
 
@@ -505,10 +517,10 @@ private String newfullFileName;
             txt_Activityname.setText("Add New Outlet");
             selStoreID=genTempID();
 
-            CoverageAreaID=Integer.parseInt(extras.getStringExtra("CoverageAreaID"));
+          /*  CoverageAreaID=Integer.parseInt(extras.getStringExtra("CoverageAreaID"));
             RouteNodeID=Integer.parseInt(extras.getStringExtra("RouteNodeID"));
             StoreCategoryType=    extras.getStringExtra("StoreCategoryType");
-            StoreSectionCount=Integer.parseInt(extras.getStringExtra("StoreSectionCount"));
+            StoreSectionCount=Integer.parseInt(extras.getStringExtra("StoreSectionCount"));*/
 
         }
 
@@ -550,6 +562,7 @@ catch (SecurityException e)
         helperDb.close();
         if(helperDb.fnCheckIfStoreIDExistsIn_tblStoreDeatilsSO(selStoreID)==0)
         {
+            flgOldNewStore=1;
              SOLattitudeFromLauncher = allLoctionDetails.split(Pattern.quote("^"))[0];
              SOLongitudeFromLauncher = allLoctionDetails.split(Pattern.quote("^"))[1];
              AccuracyFromLauncher = allLoctionDetails.split(Pattern.quote("^"))[2];
@@ -597,7 +610,8 @@ catch (SecurityException e)
             SOStoreVisitStartTime=arrBasisDetailsAgainstStore.get(12);
             SOStoreVisitEndTime=arrBasisDetailsAgainstStore.get(13);
 
-
+            flgOldNewStore=Integer.parseInt(arrBasisDetailsAgainstStore.get(14));
+            flgSelfStore=Integer.parseInt(arrBasisDetailsAgainstStore.get(15));
             //  SOLattitudeFromLauncher = allLoctionDetails.split(Pattern.quote("^"))[0];
             //SOLongitudeFromLauncher = allLoctionDetails.split(Pattern.quote("^"))[1];
             if(SOLattitudeFromLauncher.equals("NA"))
@@ -955,7 +969,12 @@ catch (SecurityException e)
                        {
 
                            IsStoreDataCompleteSaved=2;
-                           flgApproveOrRejectOrNoActionOrReVisit=1;
+                           if(flgSelfStore==1) {
+                               flgApproveOrRejectOrNoActionOrReVisit=0;
+                           }
+                           else {
+                               flgApproveOrRejectOrNoActionOrReVisit = 1;
+                           }
                            showSubmitConfirm();
                        }
                    }
@@ -984,29 +1003,37 @@ catch (SecurityException e)
                         }
                         if(sectionToShowHide==hmapSctnId_GrpId.size()-1)
                         {
-                            sectionToShowHide++;
-                            img_next.setImageResource(R.drawable.done);
-                            txt_Next.setText(getResources().getString(R.string.txtDone));
-                                if(FLAG_NEW_UPDATE.equals("UPDATE"))
-                                {
-                                    if(ll_reject.getVisibility()==View.GONE)
-                                    {
+                            if(flgSelfStore==1) {
+
+                            }
+                            else if(flgSelfStore==0) {
+
+                                if(flgOldNewStore==0) {
+                                    if (ll_reject.getVisibility() == View.GONE) {
                                         ll_reject.setVisibility(View.VISIBLE);
                                     }
 
-                                    if(ll_revisit.getVisibility()==View.GONE)
-                                    {
+                                    if (ll_revisit.getVisibility() == View.GONE) {
                                         ll_revisit.setVisibility(View.VISIBLE);
                                     }
+                                    img_next.setImageResource(R.drawable.done);
                                     txt_Next.setText("Approve");
+                                    sectionToShowHide++;
                                 }
-
+                                else
+                                {
+                                    img_next.setImageResource(R.drawable.done);
+                                    txt_Next.setText("Done");
+                                    sectionToShowHide++;
+                                }
+                            }
 
                         }
                         NewStoreFormSO recFragment = (NewStoreFormSO)getFragmentManager().findFragmentByTag("NewStoreFragment");
                         StoreName=recFragment.currentStoreName;
                         if(ll_back.getVisibility()==View.INVISIBLE)
                         {
+
                             ll_back.setVisibility(View.VISIBLE);
                         }
 
@@ -1190,7 +1217,7 @@ catch (SecurityException e)
 
 
 
-                LinkedHashMap<String, String> hmapStoreQuestAnsNew = new LinkedHashMap<>();
+                 hmapStoreQuestAnsNew = new LinkedHashMap<>();
                 LinkedHashMap<String, String> hmapStoreAddress = new LinkedHashMap<>();
                 NewStoreFormSO recFragment = (NewStoreFormSO) getFragmentManager().findFragmentByTag("NewStoreFragment");
                 if (null != recFragment) {
@@ -1198,10 +1225,10 @@ catch (SecurityException e)
                     hmapStoreQuestAnsNew = recFragment.hmapAnsValues;
                     hmapStoreAddress=recFragment.hmapAddress;
                 }
-               // int ansValForBSgmntId = helperDb.fnGetAnsValID(hmapStoreQuestAnsNew.get(QuestIDForOutChannel));
-              //  int BusinessSegmentID = helperDb.fnGetBusinessSegmentIDAgainstStoreType(ansValForBSgmntId);
+               /* int ansValForBSgmntId = helperDb.fnGetAnsValID(hmapStoreQuestAnsNew.get(QuestIDForOutChannel));
+               int BusinessSegmentID = helperDb.fnGetBusinessSegmentIDAgainstStoreType(ansValForBSgmntId);*/
 
-
+                int BusinessSegmentID=1;
                 helperDb.fnsaveOutletQuestAnsMstrSectionWise(hmapStoreQuestAnsNew, 0, selStoreID,StoreCategoryType);
 
                 long syncTIMESTAMP = System.currentTimeMillis();
@@ -1239,13 +1266,17 @@ catch (SecurityException e)
                     //helperDb.saveTblPreAddedStores(selStoreID, StoreName, SOLattitudeFromLauncher, SOLongitudeFromLauncher, VisitDate, 1, 3);
                     helperDb.close();
                 }
+                fnGettingGSTOFflineVal();
                 helperDb.open();
 
-                   /* helperDb.deletetblstoreMstrOnStoreIDBasis(selStoreID);
-                    helperDb.savetblStoreMain("NA", selStoreID, StoreName, "NA", "NA", "NA", "NA", "NA", "NA", "NA", "0", StoreTypeTradeChannel,
+                    helperDb.deletetblstoreMstrOnStoreIDBasis(selStoreID);
+                   /* helperDb.savetblStoreMain("NA", selStoreID, StoreName, "NA", "NA", "NA", "NA", "NA", "NA", "NA", "0", StoreTypeTradeChannel,
                             BusinessSegmentID, 0, 0, 0, "NA", VisitStartTS, imei, "" + battLevel, 1, 1, String.valueOf(fnLati), String.valueOf(fnLongi), "" + fnAccuracy, "" + fnAccurateProvider, 0, fetchAddress, allValuesOfPaymentStageID, flgHasQuote, flgAllowQuotation, flgSubmitFromQuotation);
 */
 
+
+                helperDb.savetblStoreMain("NA",selStoreID,StoreName,"NA","NA","NA","NA","NA","NA","NA","0",StoreTypeTradeChannel,
+                        Integer.parseInt("1"),0,0, 0, "NA",VisitStartTS,imei,""+battLevel,1,String.valueOf(fnLati),String.valueOf(fnLongi),"" + fnAccuracy,"" + fnAccurateProvider,0,hmapStoreAddress.get("0"),allValuesOfPaymentStageID,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,flgGSTCapture,flgGSTCompliance,GSTNumber,flgGSTRecordFromServer,flgLocationServicesOnOff,flgGPSOnOff,flgNetworkOnOff,flgFusedOnOff,flgInternetOnOffWhileLocationTracking,flgRestart,flgStoreOrder, hmapStoreAddress.get("2"), hmapStoreAddress.get("1"), hmapStoreAddress.get("3"), hmapStoreAddress.get("4"), hmapStoreAddress.get("5"), hmapStoreAddress.get("6"), hmapStoreAddress.get("7"), hmapStoreAddress.get("8"), hmapStoreAddress.get("9"));
                 helperDb.close();
                 if (mIsServiceStarted) {
                     mIsServiceStarted = false;
@@ -2420,10 +2451,25 @@ catch (SecurityException e)
         alertDialog.setButton(getResources().getString(R.string.AlertDialogOkButton), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // Write your code here to execute after dialog closed
-                Intent intent = new Intent(AddNewStore_DynamicSectionWiseSO.this, AllButtonActivity.class);
-                intent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
-               startActivity(intent);
-               finish();
+                if(AddNewStore_DynamicSectionWiseSO.activityFrom.equals("StoreSelection"))
+                {
+                    Date date1 = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                    String fDate = sdf.format(date1).trim();
+                    Intent storeIntent = new Intent(AddNewStore_DynamicSectionWiseSO.this, StoreSelection.class);
+                    storeIntent.putExtra("imei", imei);
+                    storeIntent.putExtra("userDate", fDate);
+                    storeIntent.putExtra("pickerDate", fDate);
+                    startActivity(storeIntent);
+                    finish();
+                }
+                else {
+                    Intent intent = new Intent(AddNewStore_DynamicSectionWiseSO.this, AllButtonActivity.class);
+                    intent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 
@@ -2866,7 +2912,7 @@ catch (SecurityException e)
                 helperDb.savetbl_XMLfiles(newfullFileName, "3","4");
                 helperDb.open();
               //  dbengine.UpdateStoreFlag(selStoreID.trim(), 5);
-                helperDb.UpdateStoreFlag(selStoreID, 4);
+                helperDb.UpdateStoreFlagSO(selStoreID, 4);
                 helperDb.UpdateStoreImageTableFlag(selStoreID.trim(), 5);
 
                 helperDb.close();
@@ -2905,17 +2951,41 @@ catch (SecurityException e)
                     Intent syncIntent = new Intent(AddNewStore_DynamicSectionWiseSO.this, SyncMasterSO.class);
                     syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/" + CommonInfo.OrderXMLFolder + "/" + newfullFileName + ".xml");
                     syncIntent.putExtra("OrigZipFileName", newfullFileName);
+                    syncIntent.putExtra("activityFrom", activityFrom);
                     syncIntent.putExtra("whereTo", "Regular");
                     startActivity(syncIntent);
                     finish();
                 }
                 else {
 
+                    if(activityFrom.equals("StoreSelection"))
+                    {
+                        Date date1 = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                        String fDate = sdf.format(date1).trim();
+                        Intent storeIntent = new Intent(AddNewStore_DynamicSectionWiseSO.this, StoreSelection.class);
+                        storeIntent.putExtra("imei", imei);
+                        storeIntent.putExtra("userDate", fDate);
+                        storeIntent.putExtra("pickerDate", fDate);
+                        startActivity(storeIntent);
+                        finish();
+                    }
+                    else
+                    {
+                        if(CommonInfo.flgNewStoreORStoreValidation==1)
+                        {
+                            Intent submitStoreIntent = new Intent(AddNewStore_DynamicSectionWiseSO.this, StorelistActivity.class);
+                            startActivity(submitStoreIntent);
+                            finish();
+                        }
+                        else {
+                            Intent intent = new Intent(AddNewStore_DynamicSectionWiseSO.this, StorelistActivity.class);
+                            intent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
 
-                    Intent intent = new Intent(AddNewStore_DynamicSectionWiseSO.this, StorelistActivity.class);
-                    intent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
-                    startActivity(intent);
-                    finish();
                 }
 
 
@@ -3009,6 +3079,66 @@ catch (SecurityException e)
         }
 
     }
+
+
+    public  void fnGettingGSTOFflineVal()
+    {
+        // Start for getting GST Offline
+
+        String OutletID="0",QuestID = "0",AnswerType,AnswerValue = "";
+        int sectionID = 0;
+        int QuestionGroupID=0;
+
+
+        for(Map.Entry<String, String> entry:hmapStoreQuestAnsNew.entrySet())
+        {
+            String questId=entry.getKey().split(Pattern.quote("^"))[0].toString();
+            AnswerType=entry.getKey().split(Pattern.quote("^"))[1].toString();
+            QuestionGroupID=Integer.valueOf(entry.getKey().split(Pattern.quote("^"))[2].toString());
+            AnswerValue=entry.getValue();
+
+            String optionValue="0";
+
+            if(questId.equals("10"))
+            {
+                try
+                {
+                    //flgGSTCompliance=helperDb.fnGetGstOptionIDComplianceWhileAddingNewStore(""+AnswerValue);
+                    String OptionDescr=helperDb.fnGetOptionDescrFromtblOptionMstr(questId,""+AnswerValue);
+                    if(OptionDescr.equals("Yes"))
+                    {
+                        flgGSTCompliance="1";
+                    }
+                    else if(OptionDescr.equals("Not Required"))
+                    {
+                        flgGSTCompliance="0";
+                    }
+                    else if(OptionDescr.equals("Pending"))
+                    {
+                        flgGSTCompliance="2";
+                    }
+
+                }
+                catch(Exception e)
+                {
+
+                }
+            }
+            if(questId.equals("11"))
+            {
+                if(!AnswerValue.equals(""))
+                {
+                    GSTNumber=AnswerValue;
+                }
+            }
+
+
+
+        }
+
+        // End for gst getting
+    }
+
 
 
 }

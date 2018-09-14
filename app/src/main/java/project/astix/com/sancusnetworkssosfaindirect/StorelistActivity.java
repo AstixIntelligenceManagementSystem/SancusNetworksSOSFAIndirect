@@ -725,6 +725,7 @@ public class StorelistActivity extends BaseActivity implements LocationListener,
                     intent.putExtra("RouteNodeID", RouteNodeID);
                     intent.putExtra("StoreCategoryType", StoreCategoryType);
                     intent.putExtra("StoreSectionCount", StoreSectionCount);
+                    intent.putExtra("activityFrom", "StoreActivity");
                     StorelistActivity.this.startActivity(intent);
                     finish();
                 }
@@ -1031,6 +1032,7 @@ public class StorelistActivity extends BaseActivity implements LocationListener,
             int flgApproveOrRejectOrNoActionOrReVisit=Integer.parseInt(StoreDetails.split(Pattern.quote("^"))[6]);
             int sStat=Integer.parseInt(StoreDetails.split(Pattern.quote("^"))[7]);
             int flgOldNewStore=Integer.parseInt(StoreDetails.split(Pattern.quote("^"))[8]);
+            int flgReMap=Integer.parseInt(StoreDetails.split(Pattern.quote("^"))[9]);
             /*String LatCode = StoreDetails.split(Pattern.quote("^"))[1];
             String LongCode = StoreDetails.split(Pattern.quote("^"))[2];
             */
@@ -1039,7 +1041,7 @@ public class StorelistActivity extends BaseActivity implements LocationListener,
             TextView storeTextview= (TextView) dynamic_container.findViewById(R.id.storeTextview);
 
 
-            storeTextview.setTag(storeID+"^"+StoreName+"^"+CoverageAreaID+"^"+RouteNodeID+"^"+StoreCategoryType+"^"+StoreSectionCount);
+            storeTextview.setTag(storeID+"^"+StoreName+"^"+CoverageAreaID+"^"+RouteNodeID+"^"+StoreCategoryType+"^"+StoreSectionCount+"^"+flgOldNewStore);
             storeTextview.setText(StoreName);
             dynamic_container.setTag(storeID+"^"+CoverageAreaID+"^"+RouteNodeID+"^"+StoreCategoryType);
             dynamic_container.setVisibility(View.VISIBLE);
@@ -1058,6 +1060,10 @@ public class StorelistActivity extends BaseActivity implements LocationListener,
             {
                 storeTextview.setTextColor(getResources().getColor(R.color.blue));
             }
+            if(flgReMap==3)
+            {
+                storeTextview.setTextColor(Color.parseColor("#EF6C00"));
+            }
             if(sStat==1)
             {
                 if(flgOldNewStore==1)
@@ -1069,87 +1075,193 @@ public class StorelistActivity extends BaseActivity implements LocationListener,
             }
 
 
+            if(flgReMap==3)
+            {
+                storeTextview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View view)
+                    {
+                        final TextView tvStores= (TextView) view;
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(StorelistActivity.this);
+                        alertDialog.setTitle(getText(R.string.genTermInformation));
 
-            storeTextview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View view)
-                {
-                    final TextView tvStores= (TextView) view;
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(StorelistActivity.this);
-                    alertDialog.setTitle(getText(R.string.genTermInformation));
-
-                    alertDialog.setCancelable(false);
-                    alertDialog.setMessage(getText(R.string.editStoreAlert));
-                    alertDialog.setPositiveButton(getText(R.string.AlertDialogYesButton), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            CommonInfo.flgNewStoreORStoreValidation=2;
-
-                            int chkFlgValue=dbEngine.fnCheckTableFlagValue("tblAllServicesCalledSuccessfull","flgAllServicesCalledOrNot");
-                            if(chkFlgValue==1)
-                            {
+                        alertDialog.setCancelable(false);
+                        alertDialog.setMessage(getText(R.string.editStoreAlert));
+                        alertDialog.setPositiveButton(getText(R.string.AlertDialogYesButton), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                fnshowalertHalfDataRefreshed();
-                            }
-                            else
-                            {
-                                String tagFromStore=   tvStores.getTag().toString().trim();
-                                Intent intent=new Intent(StorelistActivity.this,AddNewStore_DynamicSectionWiseSO.class);
+                                if(view.getTag().toString().split(Pattern.quote("^"))[6].equals("1"))
+                                {
+                                    CommonInfo.flgNewStoreORStoreValidation=1;
+                                }
+                                else
+                                {
+                                    CommonInfo.flgNewStoreORStoreValidation=2;
+                                }
 
-                                //  storeTextview.setTag(storeID+"^"+StoreName+"^"+CoverageAreaID+"^"+RouteNodeID+"^"+StoreCategoryType+"^"+StoreSectionCount);
-                                String storeID = tagFromStore.split(Pattern.quote("^"))[0];
-                                String   storeName = tagFromStore.split(Pattern.quote("^"))[1];
+                                int chkFlgValue=dbEngine.fnCheckTableFlagValue("tblAllServicesCalledSuccessfull","flgAllServicesCalledOrNot");
+                                if(chkFlgValue==1)
+                                {
+                                    dialog.dismiss();
+                                    fnshowalertHalfDataRefreshed();
+                                }
+                                else
+                                {
+                                    String tagFromStore=   tvStores.getTag().toString().trim();
+                                    Intent intent=new Intent(StorelistActivity.this,AddNewStore_DynamicSectionWiseSO.class);
 
-                                int CoverageAreaID=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[2]);
-                                int RouteNodeID=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[3]);
-                                String StoreCategoryType=tagFromStore.split(Pattern.quote("^"))[4];
-                                int StoreSectionCount=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[5]);
+                                    //  storeTextview.setTag(storeID+"^"+StoreName+"^"+CoverageAreaID+"^"+RouteNodeID+"^"+StoreCategoryType+"^"+StoreSectionCount);
+                                    String storeID = tagFromStore.split(Pattern.quote("^"))[0];
+                                    String   storeName = tagFromStore.split(Pattern.quote("^"))[1];
 
-                                intent.putExtra("FLAG_NEW_UPDATE","UPDATE");
+                                    int CoverageAreaID=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[2]);
+                                    int RouteNodeID=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[3]);
+                                    String StoreCategoryType=tagFromStore.split(Pattern.quote("^"))[4];
+                                    int StoreSectionCount=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[5]);
+
+                                    intent.putExtra("FLAG_NEW_UPDATE","UPDATE");
 
 
-                                intent.putExtra("StoreID",storeID);
-                                intent.putExtra("StoreName", storeName);
-                                intent.putExtra("CoverageAreaID", ""+CoverageAreaID);
-                                intent.putExtra("RouteNodeID", ""+RouteNodeID);
-                                intent.putExtra("StoreCategoryType", StoreCategoryType);
-                                intent.putExtra("StoreSectionCount", ""+StoreSectionCount);
-                                dialog.dismiss();
-                                StorelistActivity.this.startActivity(intent);
+                                    intent.putExtra("StoreID",storeID);
+                                    intent.putExtra("StoreName", storeName);
+                                    intent.putExtra("CoverageAreaID", ""+CoverageAreaID);
+                                    intent.putExtra("RouteNodeID", ""+RouteNodeID);
+                                    intent.putExtra("StoreCategoryType", StoreCategoryType);
+                                    intent.putExtra("StoreSectionCount", ""+StoreSectionCount);
+                                    intent.putExtra("activityFrom", "StoreActivity");
 
-                                finish();
+                                    dialog.dismiss();
+                                    StorelistActivity.this.startActivity(intent);
 
-                            }
+                                    finish();
+
+                                }
 
 
 //--------------------------------------------------------------------------------------------------------------
-                            //finishAffinity();
+                                //finishAffinity();
 
+                            }
+                        });
+                        alertDialog.setNegativeButton(getText(R.string.AlertDialogNoButton), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        });
+
+                        // Showing Alert Message
+                        alertDialog.show();
+                    }
+                });
+
+                RadioButton radioButton= (RadioButton) dynamic_container.findViewById(R.id.radiobtn);
+                radioButton.setTag(storeID+"^"+StoreName);
+                radioButton.setText(StoreName);
+                radioButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        unCheckRadioButton();
+                        RadioButton rb= (RadioButton) view;
+                        rb.setChecked(true);
+                    }
+                });
+            }
+            else
+            {
+                if(flgReMap==0 && sStat==0)
+                {
+                    storeTextview.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(final View view)
+                        {
+                            final TextView tvStores= (TextView) view;
+                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(StorelistActivity.this);
+                            alertDialog.setTitle(getText(R.string.genTermInformation));
+
+                            alertDialog.setCancelable(false);
+                            alertDialog.setMessage(getText(R.string.editStoreAlert));
+                            alertDialog.setPositiveButton(getText(R.string.AlertDialogYesButton), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    if(view.getTag().toString().split(Pattern.quote("^"))[6].equals("1"))
+                                    {
+                                        CommonInfo.flgNewStoreORStoreValidation=1;
+                                    }
+                                    else
+                                    {
+                                        CommonInfo.flgNewStoreORStoreValidation=2;
+                                    }
+
+                                    int chkFlgValue=dbEngine.fnCheckTableFlagValue("tblAllServicesCalledSuccessfull","flgAllServicesCalledOrNot");
+                                    if(chkFlgValue==1)
+                                    {
+                                        dialog.dismiss();
+                                        fnshowalertHalfDataRefreshed();
+                                    }
+                                    else
+                                    {
+                                        String tagFromStore=   tvStores.getTag().toString().trim();
+                                        Intent intent=new Intent(StorelistActivity.this,AddNewStore_DynamicSectionWiseSO.class);
+
+                                        //  storeTextview.setTag(storeID+"^"+StoreName+"^"+CoverageAreaID+"^"+RouteNodeID+"^"+StoreCategoryType+"^"+StoreSectionCount);
+                                        String storeID = tagFromStore.split(Pattern.quote("^"))[0];
+                                        String   storeName = tagFromStore.split(Pattern.quote("^"))[1];
+
+                                        int CoverageAreaID=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[2]);
+                                        int RouteNodeID=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[3]);
+                                        String StoreCategoryType=tagFromStore.split(Pattern.quote("^"))[4];
+                                        int StoreSectionCount=Integer.parseInt(tagFromStore.split(Pattern.quote("^"))[5]);
+
+                                        intent.putExtra("FLAG_NEW_UPDATE","UPDATE");
+
+
+                                        intent.putExtra("StoreID",storeID);
+                                        intent.putExtra("StoreName", storeName);
+                                        intent.putExtra("CoverageAreaID", ""+CoverageAreaID);
+                                        intent.putExtra("RouteNodeID", ""+RouteNodeID);
+                                        intent.putExtra("StoreCategoryType", StoreCategoryType);
+                                        intent.putExtra("StoreSectionCount", ""+StoreSectionCount);
+                                        intent.putExtra("activityFrom", "StoreActivity");
+
+                                        dialog.dismiss();
+                                        StorelistActivity.this.startActivity(intent);
+
+                                        finish();
+
+                                    }
+
+
+//--------------------------------------------------------------------------------------------------------------
+                                    //finishAffinity();
+
+                                }
+                            });
+                            alertDialog.setNegativeButton(getText(R.string.AlertDialogNoButton), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+
+                                }
+                            });
+
+                            // Showing Alert Message
+                            alertDialog.show();
                         }
                     });
-                    alertDialog.setNegativeButton(getText(R.string.AlertDialogNoButton), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
 
+                    RadioButton radioButton= (RadioButton) dynamic_container.findViewById(R.id.radiobtn);
+                    radioButton.setTag(storeID+"^"+StoreName);
+                    radioButton.setText(StoreName);
+                    radioButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            unCheckRadioButton();
+                            RadioButton rb= (RadioButton) view;
+                            rb.setChecked(true);
                         }
                     });
-
-                    // Showing Alert Message
-                    alertDialog.show();
                 }
-            });
-
-            RadioButton radioButton= (RadioButton) dynamic_container.findViewById(R.id.radiobtn);
-            radioButton.setTag(storeID+"^"+StoreName);
-            radioButton.setText(StoreName);
-            radioButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    unCheckRadioButton();
-                    RadioButton rb= (RadioButton) view;
-                    rb.setChecked(true);
-                }
-            });
+            }
             parentOfAllDynamicData.addView(dynamic_container);
         }
     }
@@ -1757,6 +1869,7 @@ public class StorelistActivity extends BaseActivity implements LocationListener,
                         intent.putExtra("RouteNodeID", ""+0);
                         intent.putExtra("StoreCategoryType", StoreCategoryType);
                         intent.putExtra("StoreSectionCount", ""+StoreSectionCount);
+                        intent.putExtra("activityFrom", "StoreActivity");
                         if(pDialog2STANDBY.isShowing())
                         {
                             pDialog2STANDBY.dismiss();

@@ -83,6 +83,7 @@
         android:textColor="#FFFF4424"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="gone"
         android:layout_marginBottom="6dp"
         android:gravity="center"/>
 
@@ -91,6 +92,7 @@
         android:layout_height="wrap_content"
         android:text="@string/select_attendance_report"
         android:padding="4dp"
+        android:visibility="gone"
         android:id="@+id/rb_dsrAttendance" />
 
 

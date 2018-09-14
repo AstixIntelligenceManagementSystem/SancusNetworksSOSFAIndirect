@@ -8843,6 +8843,40 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 				 if(flgOrderType==1)
 				 {
 
+					 /*Intent fireBackDetPg=new Intent(ProductOrderFilterSearch.this,LastVisitDetails.class);
+					 fireBackDetPg.putExtra("storeID", storeID);
+					 fireBackDetPg.putExtra("SN", SN);
+					 fireBackDetPg.putExtra("bck", 1);
+					 fireBackDetPg.putExtra("imei", imei);
+					 fireBackDetPg.putExtra("userdate", date);
+					 fireBackDetPg.putExtra("pickerDate", pickerDate);
+					 //fireBackDetPg.putExtra("rID", routeID);
+					 startActivity(fireBackDetPg);
+					 finish();*/
+					 Intent nxtP4 = new Intent(ProductOrderFilterSearch.this,ActualVisitStock.class);
+					 //Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch_RecycleView.class);
+					 nxtP4.putExtra("storeID", storeID);
+					 nxtP4.putExtra("SN", SN);
+					 nxtP4.putExtra("imei", imei);
+					 nxtP4.putExtra("userdate", date);
+					 nxtP4.putExtra("pickerDate", pickerDate);
+					 nxtP4.putExtra("flgOrderType", flgOrderType);
+
+					 startActivity(nxtP4);
+					 finish();
+
+				 }
+				 else
+				 {
+					/* Intent prevP2 = new Intent(ProductOrderFilterSearch.this, StoreSelection.class);
+					 String routeID=dbengine.GetActiveRouteIDSunil();
+					 //Location_Getting_Service.closeFlag = 0;
+					 prevP2.putExtra("imei", imei);
+					 prevP2.putExtra("userDate", date);
+					 prevP2.putExtra("pickerDate", pickerDate);
+					 prevP2.putExtra("rID", routeID);
+					 startActivity(prevP2);
+					 finish();*/
 					 Intent fireBackDetPg=new Intent(ProductOrderFilterSearch.this,LastVisitDetails.class);
 					 fireBackDetPg.putExtra("storeID", storeID);
 					 fireBackDetPg.putExtra("SN", SN);
@@ -8853,40 +8887,6 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 					 //fireBackDetPg.putExtra("rID", routeID);
 					 startActivity(fireBackDetPg);
 					 finish();
-					/* Intent nxtP4 = new Intent(ProductOrderFilterSearch.this,ActualVisitStock.class);
-					 //Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch_RecycleView.class);
-					 nxtP4.putExtra("storeID", storeID);
-					 nxtP4.putExtra("SN", SN);
-					 nxtP4.putExtra("imei", imei);
-					 nxtP4.putExtra("userdate", date);
-					 nxtP4.putExtra("pickerDate", pickerDate);
-					 nxtP4.putExtra("flgOrderType", flgOrderType);
-
-					 startActivity(nxtP4);
-					 finish();*/
-
-				 }
-				 else
-				 {
-					 Intent prevP2 = new Intent(ProductOrderFilterSearch.this, StoreSelection.class);
-					 String routeID=dbengine.GetActiveRouteIDSunil();
-					 //Location_Getting_Service.closeFlag = 0;
-					 prevP2.putExtra("imei", imei);
-					 prevP2.putExtra("userDate", date);
-					 prevP2.putExtra("pickerDate", pickerDate);
-					 prevP2.putExtra("rID", routeID);
-					 startActivity(prevP2);
-					 finish();
-					/* Intent fireBackDetPg=new Intent(ProductOrderFilterSearch.this,LastVisitDetails.class);
-					 fireBackDetPg.putExtra("storeID", storeID);
-					 fireBackDetPg.putExtra("SN", SN);
-					 fireBackDetPg.putExtra("bck", 1);
-					 fireBackDetPg.putExtra("imei", imei);
-					 fireBackDetPg.putExtra("userdate", date);
-					 fireBackDetPg.putExtra("pickerDate", pickerDate);
-					 //fireBackDetPg.putExtra("rID", routeID);
-					 startActivity(fireBackDetPg);
-					 finish();*/
 				 }
 
 			 }
@@ -10548,7 +10548,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 	public void alertForRetailerCreditLimit(final int btnClkd)
 	{
-		AlertDialog.Builder alertDialogSubmitConfirm = new AlertDialog.Builder(ProductOrderFilterSearch.this);
+		/*AlertDialog.Builder alertDialogSubmitConfirm = new AlertDialog.Builder(ProductOrderFilterSearch.this);
 		alertDialogSubmitConfirm.setTitle(ProductOrderFilterSearch.this.getResources().getString(R.string.genTermInformation));
 		alertDialogSubmitConfirm.setMessage(getText(R.string.credit_retailer_balance));
 		alertDialogSubmitConfirm.setCancelable(false);
@@ -10583,8 +10583,8 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 		AlertDialog alert = alertDialogSubmitConfirm.create();
 
 		alert.show();
-
-
+*/
+		nextStepAfterRetailerCreditBal(btnClkd);
 	}
 
 	public void nextStepAfterRetailerCreditBal(int btnClkd)

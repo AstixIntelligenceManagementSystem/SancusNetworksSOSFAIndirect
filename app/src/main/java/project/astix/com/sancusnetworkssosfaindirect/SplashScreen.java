@@ -156,8 +156,8 @@ public class SplashScreen extends AppCompatActivity
        //imei="866924020424622"; // Test release
 
       //  imei="862103031525560"; //given by gaurav sir
-         imei="352801088236109"; //for development given by avinash sir
-
+        imei="358958066686533"; //for development given by avinash sir
+        //imei="359473079352536";
         CommonInfo.imei = imei;
 
 
@@ -237,6 +237,9 @@ public class SplashScreen extends AppCompatActivity
 
     {
 
+        setLanguage("en");
+        onCreateFunctionalityAllcode();
+/*
         SharedPreferences sharedPreferences=getSharedPreferences("LanguagePref", MODE_PRIVATE);
         SharedPreferences.Editor ed;
         if(!sharedPreferences.contains("Language")){
@@ -286,7 +289,7 @@ public class SplashScreen extends AppCompatActivity
             loadLocale();
             onCreateFunctionalityAllcode();
 
-        }
+        }*/
 
 
     }
@@ -1080,7 +1083,7 @@ public class SplashScreen extends AppCompatActivity
                     }
                     if(mm==6)
                     {
-                        getRouteservice = getRouteservice.fnGetIncentiveData(getApplicationContext(), fDate, imei);
+                       // getRouteservice = getRouteservice.fnGetIncentiveData(getApplicationContext(), fDate, imei);
 
                     }
 

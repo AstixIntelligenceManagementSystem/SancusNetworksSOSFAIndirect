@@ -421,9 +421,12 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
 
                 }
                 else{
-                    Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
+                  /*  Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
                     i.putExtra("IntentFrom", 0);
                     startActivity(i);
+                    finish();*/
+                    Intent intent = new Intent(DSR_Registration.this, AllButtonActivity.class);
+                    startActivity(intent);
                     finish();
                 }
 
@@ -890,9 +893,12 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
 
                     }
                     else{
-                        Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
+                        /*Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
                         i.putExtra("IntentFrom", 0);
                         startActivity(i);
+                        finish();*/
+                        Intent intent = new Intent(DSR_Registration.this, AllButtonActivity.class);
+                        startActivity(intent);
                         finish();
                     }
 
@@ -2118,9 +2124,12 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
 
             }
             else{
-                Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
+               /* Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
                 i.putExtra("IntentFrom", 0);
                 startActivity(i);
+                finish();*/
+                Intent intent = new Intent(DSR_Registration.this, AllButtonActivity.class);
+                startActivity(intent);
                 finish();
             }
 
@@ -2233,9 +2242,12 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
 
                             }
                             else{
-                                Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
+                               /* Intent i=new Intent(DSR_Registration.this,SalesValueTarget.class);
                                 i.putExtra("IntentFrom", 0);
                                 startActivity(i);
+                                finish();*/
+                                Intent intent = new Intent(DSR_Registration.this, AllButtonActivity.class);
+                                startActivity(intent);
                                 finish();
                             }
 

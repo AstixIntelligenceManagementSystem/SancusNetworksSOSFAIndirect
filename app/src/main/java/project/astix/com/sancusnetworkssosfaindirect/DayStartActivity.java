@@ -635,9 +635,9 @@ public class DayStartActivity extends BaseActivity implements InterfaceClass,OnM
                     ll_NoWorking_parent.setVisibility(View.GONE);
                     ll_map.setVisibility(View.VISIBLE);
                     ll_comment.setVisibility(View.VISIBLE);
-                    if(isLateApplicable)
+                    if(isLateApplicable)//if(isLateApplicable)
                     {
-                        ll_reason.setVisibility(View.VISIBLE);
+                      //  ll_reason.setVisibility(View.VISIBLE);
                     }
 
                     but_Next.setVisibility(View.VISIBLE);
@@ -879,7 +879,7 @@ public class DayStartActivity extends BaseActivity implements InterfaceClass,OnM
             public void onClick(View view)
             {
                 otherReasonForLate="NA";
-                if(rb_workingYes.isChecked())
+                /*if(rb_workingYes.isChecked())
                 {
                     if(parseDateTime(crntServerTime).after(crntDateTime(crntAttndncTime)))
                     {
@@ -942,7 +942,7 @@ public class DayStartActivity extends BaseActivity implements InterfaceClass,OnM
                         //Toast.makeText(DayStartActivity.this,"Time before 9:30",Toast.LENGTH_SHORT).show();
                     }
 
-                }
+                }*/
                 //New Distributor","Other Location"
                 if((!spinner_location.getSelectedItem().toString().equals("New Distributor")) && (!spinner_location.getSelectedItem().toString().equals("Other Location")) )
 
@@ -2008,10 +2008,10 @@ public class DayStartActivity extends BaseActivity implements InterfaceClass,OnM
 
                 if(parseDateTime(crntServerTime).after(crntDateTime(crntAttndncTime)) )
                 {
-                    isLateApplicable=true;
+                   // isLateApplicable=true;
                     if(rb_workingYes.isChecked())
                     {
-                        ll_reason.setVisibility(View.VISIBLE);
+                      //  ll_reason.setVisibility(View.VISIBLE);
                     }
 
                     //Toast.makeText(DayStartActivity.this,"Time between 9:30 and 10:30",Toast.LENGTH_SHORT).show();

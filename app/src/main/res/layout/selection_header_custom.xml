@@ -59,6 +59,7 @@
         android:text="@string/PurchaseOrder"
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
+        android:visibility="gone"
         android:textSize="14sp"/>
 
     <Button android:id="@+id/butn_Change_dsr"
@@ -94,6 +95,7 @@
         android:gravity="left|center_vertical"
         android:text="@string/DSR_Wise_Report"
         android:textColor="#000000"
+        android:visibility="gone"
         android:textSize="14sp" />
 
 
@@ -116,6 +118,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/txtAttndnc" />
     <Button
         android:id="@+id/btnScndryUdt"
@@ -126,6 +129,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/txtScndryUpdate" />
 
      <Button
@@ -137,6 +141,7 @@
         android:gravity="left|center_vertical"
          android:drawableRight="@drawable/ic_right2"
            android:textSize="14sp"
+         android:visibility="gone"
         android:text="@string/StoreMapping" />
 
     <Button
@@ -148,6 +153,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/Execution" />
     <Button
         android:id="@+id/btnSurvey"
@@ -157,6 +163,7 @@
         android:textColor="#000000"
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
+        android:visibility="gone"
         android:textSize="14sp"
         android:text="@string/Survey" />
 
@@ -169,6 +176,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/DistributorStock" />
 
     <Button
@@ -191,6 +199,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/MapDistributor" />
 
     <Button
@@ -202,6 +211,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/TargetVsAchieved" />
      
        <Button
@@ -246,6 +256,7 @@
         android:gravity="left|center_vertical"
         android:drawableRight="@drawable/ic_right2"
         android:textSize="14sp"
+        android:visibility="gone"
         android:text="@string/ChangeLanguage" />
 
     <Button

@@ -2338,18 +2338,24 @@ public void DayEndWithoutalert()
 			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
-		/*		Intent intent = new Intent(StoreSelection.this, AddNewStore_DynamicSectionWiseSO.class);
+				Intent intent = new Intent(StoreSelection.this, AddNewStore_DynamicSectionWiseSO.class);
 				//Intent intent = new Intent(StoreSelection.this, Add_New_Store_NewFormat.class);
 				//Intent intent = new Intent(StoreSelection.this, Add_New_Store.class);
+				CommonInfo.flgNewStoreORStoreValidation=1;
 				intent.putExtra("storeID", "0");
 				intent.putExtra("activityFrom", "StoreSelection");
 				intent.putExtra("userdate", userDate);
 				intent.putExtra("pickerDate", pickerDate);
 				intent.putExtra("imei", imei);
 				intent.putExtra("rID", rID);
+			/*	CoverageAreaID=Integer.parseInt(extras.getStringExtra("CoverageAreaID"));
+				RouteNodeID=Integer.parseInt(extras.getStringExtra("RouteNodeID"));
+				StoreCategoryType=    extras.getStringExtra("StoreCategoryType");
+				StoreSectionCount=Integer.parseInt(extras.getStringExtra("StoreSectionCount"));*/
+				intent.putExtra("FLAG_NEW_UPDATE","NEW");
 				StoreSelection.this.startActivity(intent);
 				finish();
-*/
+
 					/*// TODO Auto-generated method stub
 					Intent intent = new Intent(StoreSelection.this, Add_New_Store_DynamicSectionWise.class);
 					intent.putExtra("activityFrom", "StoreSelection");
@@ -2699,6 +2705,7 @@ public void DayEndWithoutalert()
 									intent.putExtra("pickerDate", pickerDate);
 									intent.putExtra("imei", imei);
 									intent.putExtra("rID", rID);
+									intent.putExtra("FLAG_NEW_UPDATE","NEW");
 									StoreSelection.this.startActivity(intent);
 									finish();
 								}
@@ -3090,6 +3097,7 @@ public void DayEndWithoutalert()
 											intent.putExtra("pickerDate", pickerDate);
 											intent.putExtra("imei", imei);
 											intent.putExtra("rID", rID);
+											intent.putExtra("FLAG_NEW_UPDATE","NEW");
 											StoreSelection.this.startActivity(intent);
 											finish();
 										}

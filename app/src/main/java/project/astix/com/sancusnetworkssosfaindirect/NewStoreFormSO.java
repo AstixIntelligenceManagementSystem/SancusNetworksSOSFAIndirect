@@ -103,6 +103,7 @@ public class NewStoreFormSO extends Fragment  {
 	LinkedHashMap<String,String> hmapCityAgainstState;
 	String defaultCity="";
 
+	String selectedRoute="";
 	LinkedHashMap<String, String> hmapState_details=new LinkedHashMap<String, String>();
 	String previousSlctdState="Select";
 	String previousSlctdCity="Select";
@@ -210,7 +211,7 @@ public class NewStoreFormSO extends Fragment  {
 	SimpleDateFormat output = new SimpleDateFormat("dd-MM-yyyy",Locale.ENGLISH);
 	StringBuilder sbMultiple=new StringBuilder();
 	boolean isSelectedSearch=false;
-
+	String getActiveRouteId="";
 	View headerView;
 	DBAdapterKenya helperDb;
 	LinearLayout ll_Image;
@@ -443,7 +444,9 @@ public class NewStoreFormSO extends Fragment  {
 	public void createView()
 	{
 
-
+		helperDb.open();
+		getActiveRouteId=helperDb.GetActiveRouteID();
+		helperDb.close();
 		// getActivity() loop is for section i.e page
 		for(Entry<String,ArrayList<String>> entry:AddNewStore_DynamicSectionWiseSO.hmapSctnId_GrpId.entrySet())
 		{
@@ -679,15 +682,22 @@ public class NewStoreFormSO extends Fragment  {
 			}
 
 			ll_local_area.setVisibility(View.GONE);
-			ll_address_section.setVisibility(View.GONE);
+			ll_address_section.setVisibility(View.VISIBLE);
 		}
 		/*if(AddNewStore_DynamicSectionWise.StoreCategoryType.equals("0-2-80") || AddNewStore_DynamicSectionWise.StoreCategoryType.equals("0-3-80"))
 		{*/
+
 		if(section==AddNewStore_DynamicSectionWiseSO.hmapSctnId_GrpId.size())
 		{
 			View viewPaymentMode=getActivity().getLayoutInflater().inflate(R.layout.payment_mode_layout, null);
 			ll_Section.addView(viewPaymentMode);
-
+			if (AddNewStore_DynamicSectionWiseSO.FLAG_NEW_UPDATE.equals("UPDATE")) {
+				viewPaymentMode.setVisibility(View.VISIBLE);
+			}
+			else
+			{
+				viewPaymentMode.setVisibility(View.GONE);
+			}
 			//  parentOfCheckBox= (LinearLayout) viewPaymentMode.findViewById(R.id.ss);
 			parentOfCreditPayMentMode= (LinearLayout) viewPaymentMode.findViewById(R.id.parentOfCreditPayMentMode);
 			parentOfOnDeliveryPayMentMode= (LinearLayout) viewPaymentMode.findViewById(R.id.parentOfOnDeliveryPayMentMode);
@@ -758,6 +768,8 @@ public class NewStoreFormSO extends Fragment  {
 			}
 
 
+
+
 		}
 		//}
 		if(section==AddNewStore_DynamicSectionWiseSO.hmapSctnId_GrpId.size())
@@ -773,6 +785,14 @@ public class NewStoreFormSO extends Fragment  {
 		ll_data.addView(ll_Section);
 		if(section > 1) {
 			ll_Section.setVisibility(View.GONE);
+		/*	if (AddNewStore_DynamicSectionWiseSO.FLAG_NEW_UPDATE.equals("UPDATE")) {
+				ll_Section.setVisibility(View.GONE);
+			}
+			else
+			{
+				ll_Section.setVisibility(View.VISIBLE);
+			}*/
+
 		}
 	}
 	public void fillValuesInPaymentSection(String allValuesOfPaymentStageID) {
@@ -3963,6 +3983,25 @@ public class NewStoreFormSO extends Fragment  {
 				}
 			});
 		}
+
+		if(tagVal.split(Pattern.quote("^"))[2].toString().equals("1"))
+		{
+			if(AddNewStore_DynamicSectionWiseSO.activityFrom!=null && (!TextUtils.isEmpty(AddNewStore_DynamicSectionWiseSO.activityFrom)))
+			{
+				if(AddNewStore_DynamicSectionWiseSO.activityFrom.equals("StoreSelection"))
+				{
+					if (!TextUtils.isEmpty(selectedRoute))
+					{
+						int slectedActiveRouteIdPos = adapter.getPosition(selectedRoute);
+						spinner_view.setSelection(slectedActiveRouteIdPos);
+						spinner_view.setEnabled(false);
+
+					}
+				}
+
+			}
+
+		}
 		return viewSpinner;
 	}
 
@@ -4331,6 +4370,10 @@ public class NewStoreFormSO extends Fragment  {
 						if(index==0)
 						{
 							SpinnerValWithOther[0]="Select";
+						}
+						if(((listOptionVal.get(index).split(Pattern.quote("^"))[0].toString()).split(Pattern.quote("-"))[1]).equals(getActiveRouteId))
+						{
+							selectedRoute=listOptionVal.get(index).split(Pattern.quote("^"))[1].toString();
 						}
 						hmapOptionId.put(questGroupId+"^"+listOptionVal.get(index).split(Pattern.quote("^"))[1].toString(), listOptionVal.get(index).split(Pattern.quote("^"))[0].toString());
 						SpinnerValWithOther[index+1]=listOptionVal.get(index).split(Pattern.quote("^"))[1].toString();
@@ -6066,6 +6109,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 			else
 			{
 				hmapAddress.put("2","NA");
+				hmapAddress.put("4","0");
 			}
 			if(!etState.getText().toString().trim().equals("Select"))
 			{
@@ -6075,6 +6119,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 			else
 			{
 				hmapAddress.put("3","NA");
+				hmapAddress.put("5","0");
 			}
 
 			////new field added
@@ -7551,16 +7596,32 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 				// User pressed YES button. Write Logic Here
 
 
+
 				if(helperDb.checkCountIntblNewStoreMainTable(AddNewStore_DynamicSectionWiseSO.selStoreID)==0)
 				{
 					helperDb.open();
 					//	helperDb.fndeleteNewStoreSalesQuotePaymentDetails(AddNewStore_DynamicSectionWise.selStoreID);
 					helperDb.close();
 				}
-				Intent intent = new Intent(getActivity(), StorelistActivity.class);
-				intent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
-				getActivity().startActivity(intent);
-				getActivity().finish();
+				if(AddNewStore_DynamicSectionWiseSO.activityFrom.equals("StoreSelection"))
+				{
+					Date date1 = new Date();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+					String fDate = sdf.format(date1).trim();
+					Intent storeIntent = new Intent(getActivity(), StoreSelection.class);
+					storeIntent.putExtra("imei", imei);
+					storeIntent.putExtra("userDate", fDate);
+					storeIntent.putExtra("pickerDate", fDate);
+					getActivity().startActivity(storeIntent);
+					getActivity().finish();
+				}
+				else
+				{
+					Intent intent = new Intent(getActivity(), StorelistActivity.class);
+					intent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
+					getActivity().startActivity(intent);
+					getActivity().finish();
+				}
 
 
 
@@ -7568,11 +7629,12 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 		});
 
 		// Setting Negative "NO" Button
-		alertDialog.setNegativeButton("Save and Exit", new DialogInterface.OnClickListener() {
+		alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 
 				// User pressed No button. Write Logic Here
-				if(validateNameFilled())
+				dialog.dismiss();
+		/*		if(validateNameFilled())
 				{
 
 
@@ -7618,7 +7680,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 						helperDb.UpdateStoreReturnphotoFlag(AddNewStore_DynamicSectionWiseSO.selStoreID, currentStoreName);
 						helperDb.close();
 					} else {
-						/*String storeCountDeatails=helperDb.getTodatAndTotalStores();
+						*//*String storeCountDeatails=helperDb.getTodatAndTotalStores();
 						int  totaltarget = Integer.parseInt(storeCountDeatails.split(Pattern.quote("^"))[0]);
 						int todayTarget = Integer.parseInt(storeCountDeatails.split(Pattern.quote("^"))[1]);
 						helperDb.fnDeletesaveNewOutletFromOutletMstr(AddNewStore_DynamicSectionWise.selStoreID);
@@ -7629,7 +7691,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 						helperDb.saveTblStoreCountDetails(String.valueOf(totaltarget),String.valueOf(todayTarget));
 
 						helperDb.saveTblPreAddedStores(AddNewStore_DynamicSectionWise.selStoreID, currentStoreName, AddNewStore_DynamicSectionWise.latitudeToSave, AddNewStore_DynamicSectionWise.longitudeToSave, onlyDateString, 1, 1);
-						helperDb.close();*/
+						helperDb.close();*//*
 					}
 					Toast.makeText(getActivity(), "Data has been completely saved", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(getActivity(), StorelistActivity.class);
@@ -7640,7 +7702,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
 				else
 				{
 					Toast.makeText(getActivity(), getResources().getString(R.string.PleaseFillNameToSave), Toast.LENGTH_SHORT).show();
-				}
+				}*/
 
 
 			}

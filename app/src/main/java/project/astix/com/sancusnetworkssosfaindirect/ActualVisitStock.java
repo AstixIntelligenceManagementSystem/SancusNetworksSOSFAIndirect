@@ -3,16 +3,24 @@ package project.astix.com.sancusnetworkssosfaindirect;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,8 +29,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
 
+import com.astix.Common.CommonInfo;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -33,29 +47,33 @@ import java.util.regex.Pattern;
 
 public class ActualVisitStock extends Activity implements CategoryCommunicator {
 
-private LinearLayout lLayout_main;
-private DBAdapterKenya dbengine;
-private Button btnNext;
+    LinearLayout lLayout_main;
+    DBAdapterKenya dbengine;
+    Button btnNext;
+    public EditText   ed_search;
+    public ImageView  btn_go;
 
-    private String storeID;
-    private String imei;
-    private String date;
-    private String pickerDate;
-    private String selStoreName;
-    private List<String> categoryNames;
-    private int progressBarStatus=0;
+    public String storeID;
+    public String imei;
+    public String date;
+    public String pickerDate;
+    public String selStoreName;
+    int isStockAvlbl=0;
+    int isCmpttrAvlbl=0;
+    List<String> categoryNames;
+    int progressBarStatus=0;
+    public  Dialog dialog=null;
+    LinkedHashMap<String, String> hmapctgry_details=new LinkedHashMap<String, String>();
+    ImageView img_ctgry;
+    public int StoreCurrentStoreType=0;
+    String previousSlctdCtgry="";
 
-    private LinkedHashMap<String, String> hmapctgry_details= new LinkedHashMap<>();
-    private TextView img_ctgry;
-    private int StoreCurrentStoreType=0;
-    private String previousSlctdCtgry="";
+    LinkedHashMap<String,String> hmapPrdctData=new LinkedHashMap<>();
+    LinkedHashMap<String, String> hmapFilterProductList=new LinkedHashMap<String, String>();
 
-    private LinkedHashMap<String,String> hmapPrdctData=new LinkedHashMap<>();
-    private LinkedHashMap<String, String> hmapFilterProductList= new LinkedHashMap<>();
-
-private LinkedHashMap<String,String> hmapFetchPDASavedData=new LinkedHashMap<>();
-LinkedHashMap<String,String> hmapSaveDataInPDA=new LinkedHashMap<>();
-private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new LinkedHashMap<>();
+    LinkedHashMap<String,String> hmapFetchPDASavedData=new LinkedHashMap<>();
+    LinkedHashMap<String,String> hmapSaveDataInPDA=new LinkedHashMap<>();
+    LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new LinkedHashMap<>();
 
 
 
@@ -97,13 +115,16 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
 
     }
 
-    private void initializeallViews(){
+    public void initializeallViews(){
         lLayout_main= (LinearLayout) findViewById(R.id.lLayout_main);
         ImageView img_back_Btn= (ImageView) findViewById(R.id.img_back_Btn);
         btnNext= (Button) findViewById(R.id.btnNext);
 
 
-        img_ctgry=(TextView) findViewById(R.id.img_ctgry);
+        img_ctgry=(ImageView) findViewById(R.id.img_ctgry);
+        ed_search=(EditText) findViewById(R.id.ed_search);
+        btn_go=(ImageView) findViewById(R.id.btn_go);
+
 
         img_ctgry.setOnClickListener(new View.OnClickListener()
         {
@@ -116,6 +137,36 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
         });
 
 
+        btn_go.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+
+                if(!TextUtils.isEmpty(ed_search.getText().toString().trim()))
+                {
+
+                    if(!ed_search.getText().toString().trim().equals(""))
+                    {
+                        searchProduct(ed_search.getText().toString().trim(),"");
+
+                    }
+
+
+                }
+
+
+                else
+                {
+                    searchProduct("All","");
+                }
+
+            }
+
+
+        });
+
         img_back_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,43 +177,108 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
                 fireBackDetPg.putExtra("imei", imei);
                 fireBackDetPg.putExtra("userdate", date);
                 fireBackDetPg.putExtra("pickerDate", pickerDate);
+                fireBackDetPg.putExtra("flgOrderType", 1);
                 //fireBackDetPg.putExtra("rID", routeID);
                 startActivity(fireBackDetPg);
                 finish();
+
 
             }
         });
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbengine.deleteActualVisitData(storeID);
-                if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
+                if(isStockFilledProperly())
                 {
-                    for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
+                    dbengine.deleteActualVisitData(storeID);
 
-                        dbengine.saveTblActualVisitStock(storeID,entry.getKey(),entry.getValue(),1);
+                    if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
+                    {
+                        for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
+
+                            dbengine.saveTblActualVisitStock(storeID,entry.getKey(),entry.getValue(),1);
 
 
+                        }
                     }
+                    passIntentToProductOrderFilter();
+                }
+                else
+                {
+                    showAlertForEveryOne("It's compulsory to fill atleast one stock as you have mentioned Ltfoods Stock available.");
                 }
 
-                Intent nxtP4 = new Intent(ActualVisitStock.this,ProductOrderFilterSearch.class);
-                //Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch_RecycleView.class);
-                nxtP4.putExtra("storeID", storeID);
-                nxtP4.putExtra("SN", selStoreName);
-                nxtP4.putExtra("imei", imei);
-                nxtP4.putExtra("userdate", date);
-                nxtP4.putExtra("pickerDate", pickerDate);
-                nxtP4.putExtra("flgOrderType", 1);
-                startActivity(nxtP4);
-                finish();
+
             }
         });
 
     }
 
+    public void showAlertForEveryOne(String msg)
+    {
+        AlertDialog.Builder alertDialogNoConn = new AlertDialog.Builder(ActualVisitStock.this);
+        alertDialogNoConn.setTitle("Information");
+        alertDialogNoConn.setMessage(msg);
+        alertDialogNoConn.setCancelable(false);
+        alertDialogNoConn.setNeutralButton(R.string.txtOk,new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.dismiss();
 
-    private void inflatePrdctStockData(){
+
+            }
+        });
+        alertDialogNoConn.setIcon(R.drawable.info_ico);
+        AlertDialog alert = alertDialogNoConn.create();
+        alert.show();
+    }
+    public boolean isStockFilledProperly()
+    {
+        boolean stockFilledPrprly=false;
+        if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
+        {
+            for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
+
+                if(!TextUtils.isEmpty(entry.getValue()))
+                {
+                    if(Integer.parseInt(entry.getValue().toString())>0)
+                    {
+                        stockFilledPrprly=true;
+                        break;
+                    }
+                }
+
+
+
+            }
+        }
+        return stockFilledPrprly;
+    }
+
+    public void passIntentToProductOrderFilter(){
+        if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
+        {
+            for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
+
+                dbengine.saveTblActualVisitStock(storeID,entry.getKey(),entry.getValue(),1);
+
+
+            }
+        }
+
+        Intent nxtP4 = new Intent(ActualVisitStock.this,ProductOrderFilterSearch.class);
+        //Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch_RecycleView.class);
+        nxtP4.putExtra("storeID", storeID);
+        nxtP4.putExtra("SN", selStoreName);
+        nxtP4.putExtra("imei", imei);
+        nxtP4.putExtra("userdate", date);
+        nxtP4.putExtra("pickerDate", pickerDate);
+        nxtP4.putExtra("flgOrderType", 1);
+        startActivity(nxtP4);
+        finish();
+    }
+    public void inflatePrdctStockData(){
 
 
         if(hmapFilterProductList!=null && hmapFilterProductList.size()>0){
@@ -199,24 +315,24 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                       if(!TextUtils.isEmpty(et_stckVal.getText().toString().trim()))
-                       {
-                           String tagProductId=et_stckVal.getTag().toString().split(Pattern.quote("_"))[0];
-                           hmapFetchPDASavedData.put(tagProductId,et_stckVal.getText().toString().trim());
-                       }
-                       else
-                       {
-                           String tagProductId=et_stckVal.getTag().toString().split(Pattern.quote("_"))[0];
-                           if(hmapFetchPDASavedData.containsKey(tagProductId))
-                           {
-                               hmapFetchPDASavedData.remove(tagProductId);
-                           }
-                       }
+                        if(!TextUtils.isEmpty(et_stckVal.getText().toString().trim()))
+                        {
+                            String tagProductId=et_stckVal.getTag().toString().split(Pattern.quote("_"))[0];
+                            hmapFetchPDASavedData.put(tagProductId,et_stckVal.getText().toString().trim());
+                        }
+                        else
+                        {
+                            String tagProductId=et_stckVal.getTag().toString().split(Pattern.quote("_"))[0];
+                            if(hmapFetchPDASavedData.containsKey(tagProductId))
+                            {
+                                hmapFetchPDASavedData.remove(tagProductId);
+                            }
+                        }
                     }
                 });
                 lLayout_main.addView(viewProduct);
 
-             // btnNextClick(storeID,prdId,et_stckVal);
+                // btnNextClick(storeID,prdId,et_stckVal);
 
 
 
@@ -226,7 +342,7 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
     }
 
 
-    private void fetchDataFromDatabase(){
+    public void fetchDataFromDatabase(){
         dbengine.open();
         hmapPrdctData=dbengine.fetchProductDataForActualVisit();
         hmapFetchPDASavedData=dbengine.fetchActualVisitData(storeID);
@@ -245,8 +361,9 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
             hmapFetchPDASavedData.put(pair.getKey().toString(),pair.getValue().toString());
         }
 
-        img_ctgry.setText("All");
-        searchProduct("All","");
+        //  img_ctgry.setText("All");
+        //searchProduct("All","");
+        searchLoadDefaultProduct("All","");//********WE load defualt product on Oncreate
        /* if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0) {
 
 
@@ -280,15 +397,16 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
             storeID = passedvals.getStringExtra("storeID");
             imei = passedvals.getStringExtra("imei");
             date = passedvals.getStringExtra("userdate");
-
             pickerDate = passedvals.getStringExtra("pickerDate");
             selStoreName = passedvals.getStringExtra("SN");
+            isStockAvlbl=passedvals.getIntExtra("isStockAvlbl",0);
+            isCmpttrAvlbl=passedvals.getIntExtra("isCmpttrAvlbl",0);
 
         }
 
     }
 
-    private void customAlertStoreList(final List<String> listOption, String sectionHeader)
+    public void customAlertStoreList(final List<String> listOption, String sectionHeader)
     {
 
         final Dialog listDialog = new Dialog(ActualVisitStock.this);
@@ -352,7 +470,7 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
         dialog.dismiss();
         previousSlctdCtgry=selectedCategory;
 
-        img_ctgry.setText(selectedCategory);
+        //  img_ctgry.setText(selectedCategory);
 
         if(hmapctgry_details.containsKey(selectedCategory))
         {
@@ -369,8 +487,9 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
 
 
 
-    private void searchProduct(String filterSearchText, String ctgryId)
+    public void searchProduct(String filterSearchText,String ctgryId)
     {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         progressBarStatus = 0;
 
 
@@ -400,7 +519,7 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
 		}*/
 
 
-
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
     }
 
@@ -431,8 +550,8 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
         int index=0;
         if(hmapctgry_details!=null)
         {
-            categoryNames= new ArrayList<>();
-            LinkedHashMap<String, String> map = new LinkedHashMap<>(hmapctgry_details);
+            categoryNames=new ArrayList<String>();
+            LinkedHashMap<String, String> map = new LinkedHashMap<String, String>(hmapctgry_details);
             Set set2 = map.entrySet();
             Iterator iterator = set2.iterator();
             while(iterator.hasNext()) {
@@ -445,6 +564,57 @@ private LinkedHashMap<String,String> hmapProductStockFromPurchaseTable=new Linke
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(dialog!=null){
+            if(dialog.isShowing()){
+                dialog.dismiss();
+            }
+        }
+    }
 
+
+    public void searchLoadDefaultProduct(String filterSearchText,String ctgryId)
+    {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        progressBarStatus = 0;
+
+
+        hmapFilterProductList.clear();
+
+
+
+
+        hmapFilterProductList=dbengine.fetchProductListLastvisitAndOrderBasis(storeID);
+        if(hmapFilterProductList!=null && hmapFilterProductList.isEmpty()){
+            hmapFilterProductList=dbengine.getFileredProductListMap(filterSearchText.trim(),StoreCurrentStoreType,ctgryId);
+
+        }
+        //System.out.println("hmapFilterProductListCount :-"+ hmapFilterProductList.size());
+        lLayout_main.removeAllViews();
+
+		/*if(hmapFilterProductList.size()<250)
+		{*/
+        if(hmapFilterProductList.size()>0)
+        {
+            inflatePrdctStockData();
+        }
+        else
+        {
+            allMessageAlert(ActualVisitStock.this.getResources().getString(R.string.AlertFilter));
+        }
+
+		/*}
+
+		else
+		{
+			allMessageAlert("Please put some extra filter on Search-Box to fetch related product");
+		}*/
+
+
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+    }
 
 }

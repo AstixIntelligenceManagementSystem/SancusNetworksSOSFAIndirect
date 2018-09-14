@@ -71,6 +71,7 @@ import java.util.regex.Pattern;
 
 public class DialogActivity_MarketVisit extends BaseActivity implements LocationListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener
 {
+    public String userDate;
     private int chkFlgForErrorToCloseApp=0;
     private ProgressDialog pDialogGetStores;
     private boolean serviceException=false;
@@ -171,6 +172,13 @@ TextView txt_HdrVst;
         super.onCreate(savedInstanceState);
 
         locationManager=(LocationManager) this.getSystemService(LOCATION_SERVICE);
+
+
+        currDate = new Date();
+        currDateFormat = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
+
+        userDate = currDateFormat.format(currDate).toString();
+
 
         sharedPref = getSharedPreferences(CommonInfo.Preference, MODE_PRIVATE);
         if(sharedPref.contains("CoverageAreaNodeID"))
@@ -294,12 +302,12 @@ TextView txt_HdrVst;
 
                 if(rb_myVisit.isChecked())
                 {
-                   /* String SONodeIdAndNodeType= dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+                   String SONodeIdAndNodeType= dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
 
                     CommonInfo.PersonNodeID=Integer.parseInt(SONodeIdAndNodeType.split(Pattern.quote("^"))[0]);
-                    CommonInfo.PersonNodeType=Integer.parseInt(SONodeIdAndNodeType.split(Pattern.quote("^"))[1]);*//**//*
+                    CommonInfo.PersonNodeType=Integer.parseInt(SONodeIdAndNodeType.split(Pattern.quote("^"))[1]);
 
-                    String SONodeIdAndNodeType= dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+                    //String SONodeIdAndNodeType= dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
 
                     int tempSalesmanNodeId=Integer.parseInt(SONodeIdAndNodeType.split(Pattern.quote("^"))[0]);
                     int tempSalesmanNodeType=Integer.parseInt(SONodeIdAndNodeType.split(Pattern.quote("^"))[1]);
@@ -308,10 +316,62 @@ TextView txt_HdrVst;
 
                     shardPrefForCoverageArea(0,0);
                     flgDSRSOSharedPref(1);
-
+ /*
                     Intent i=new Intent(DialogActivity_MarketVisit.this,LauncherActivity.class);
                     startActivity(i);
                     finish();*/
+
+
+                    int routeExist=dbengine.fnGetRouteExistOrNot(0,0);
+                    if(routeExist==0)
+                    {
+                        showAlertForEveryOne("There are no Routes Available for You.");
+                        return;
+                    }
+
+                    dbengine.open();
+
+                    rID= dbengine.GetActiveRouteIDCrntDSR(0,0);
+                    dbengine.close();
+                    CommonInfo.CoverageAreaNodeID=0;
+                    CommonInfo.CoverageAreaNodeType=0;
+                    CommonInfo.FlgDSRSO=1;
+
+                    shardPrefForCoverageArea(0,0);
+                    if(rID.equals("0"))
+                    {
+
+                    }
+                            if(dbengine.isDataAlreadyExist(tempSalesmanNodeId,tempSalesmanNodeType))
+                            {
+                                shardPrefForCoverageArea(tempSalesmanNodeId,tempSalesmanNodeType);
+
+                                shardPrefForSalesman(tempSalesmanNodeId,tempSalesmanNodeType);
+
+                                flgDataScopeSharedPref(1);
+                                flgDSRSOSharedPref(1);
+                                Intent intent=new Intent(DialogActivity_MarketVisit.this,StoreSelection.class);
+                                intent.putExtra("imei", imei);
+                                intent.putExtra("userDate", userDate);
+                                intent.putExtra("pickerDate", fDate);
+                                intent.putExtra("rID", rID);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else
+                            {
+                                if(dbengine.isDBOpen())
+                                {
+                                    dbengine.close();
+                                }
+
+
+                                new GetStoresForDay(DialogActivity_MarketVisit.this).execute();
+                            }
+
+
+
+
                 }
                 else if(rb_dsrVisit.isChecked())
                 {

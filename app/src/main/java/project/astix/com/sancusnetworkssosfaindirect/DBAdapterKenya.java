@@ -39,6 +39,11 @@ public class DBAdapterKenya
 	private static final String TAG = "DBAdapterKenya";
 	private boolean isDBOpenflag = false;
 
+
+    private static final String DATABASE_TABLE_tblProductListLastVisitStockOrOrderMstr= "tblProductListLastVisitStockOrOrderMstr";
+    private static final String DATABASE_CREATE_TABLEtblProductListLastVisitStockOrOrderMstr = "create table tblProductListLastVisitStockOrOrderMstr (StoreID text null,PrdID text null);";
+
+
     private static final String TABLE_tblAttandanceDetails="tblAttandanceDetails";
     private static final String DATABASE_CREATE_TABLE_tblAttandanceDetails="create table tblAttandanceDetails(AttandanceTime text null," +
             "PersonNodeID text null, PersonNodeType text null," +
@@ -128,7 +133,7 @@ public class DBAdapterKenya
 			"RouteNodeID int null,RouteNodeType int null,City text null,State text null,PinCode text null,StoreCategoryType text null,StoreSectionCount int null," +
 			"flgApproveOrRejectOrNoActionOrReVisit int null,SOLatCode text null,SOLongCode text null,VisitStartTS text null,VisitEndTS text null," +
 			"LocProvider text null,Accuracy text null,BateryLeftStatus text null,IsStoreDataCompleteSaved int null,PaymentStage text null,flgLocationTrackEnabled int null," +
-			"flgStoreVisitMode int null,Sstat int null,StoreAddress text null,SOAccuracy text null,flgRemap int null,flgLocationServicesOnOff int null,flgGPSOnOff int null,flgNetworkOnOff int null,flgFusedOnOff int null,flgInternetOnOffWhileLocationTracking int null,flgRestart int null,flgStoreOrder int null,MapAddress text null,MapCity text null,MapPinCode text null,MapState text null,CityId text null,StateId text null);";
+			"flgStoreVisitMode int null,Sstat int null,StoreAddress text null,SOAccuracy text null,flgRemap int null,flgLocationServicesOnOff int null,flgGPSOnOff int null,flgNetworkOnOff int null,flgFusedOnOff int null,flgInternetOnOffWhileLocationTracking int null,flgRestart int null,flgStoreOrder int null,MapAddress text null,MapCity text null,MapPinCode text null,MapState text null,CityId text null,StateId text null,flgSelfStoreNode int null);";
 
 	private static final String DATABASE_TABLE_tblCoverageMaster = "tblCoverageMaster";
 	private static final String DATABASE_CREATE_TABLE_tblCoverageMaster = "create table tblCoverageMaster(CoverageAreaNodeID int null,CoverageAreaNodeType int null,CoverageArea text null);";
@@ -819,9 +824,9 @@ private static final String DATABASE_TABLE_MAIN101 = "tblFirstOrderDetailsOnLast
 	 private static final String DATABASE_CREATE_TABLE_12 = "create table tblDayStartEndDetails (IMEINo text null,SyncTime text null,RouteID text null,EndTime text null,DayEndFlag int null,ChangeRouteFlg int null,ForDate text null,AppVersionID string null,Sstat int null);";//,AppVersionID int null//, VersionNo string null
 	 
 	//private static final String DATABASE_CREATE_TABLE_13 = "create table tblStoreList (StoreID text not null, StoreType string not null, StoreName string not null, StoreLatitude real not null, StoreLongitude real not null, LastVisitDate string not null, LastTransactionDate string not null, Sstat integer not null, ForDate string not null, ActualLatitude text null, ActualLongitude text null, VisitStartTS text null, VisitEndTS text null, ISNewStore int null, AutoIdStore int null, LocProvider text null, Accuracy text null, BateryLeftStatus text null,StoreRouteID text null);";
-	
-	
-	private static final String DATABASE_CREATE_TABLE_13 = "create table tblStoreList(StoreID text not null, StoreType string not null, StoreName string not null, StoreLatitude real not null, StoreLongitude real not null, LastVisitDate string not null, LastTransactionDate string not null, Sstat integer not null, ForDate string not null, ActualLatitude text null, ActualLongitude text null, VisitStartTS text null, VisitEndTS text null,AutoIdStore int null, LocProvider text null, Accuracy text null, BateryLeftStatus text null,StoreClose integer null,StoreNextDay integer null,chainID integer null,ISNewStore int null,StoreRouteID int null,RouteNodeType int null,StoreCatNodeId int null,IsNewStoreDataCompleteSaved int null,flgFromWhereSubmitStatus int null,StoreAddress text null,PaymentStage text null,flgHasQuote int null,flgAllowQuotation int null,flgSubmitFromQuotation int null,flgGSTCapture text null,flgGSTCompliance text null,GSTNumber text null,flgGSTRecordFromServer int null,DistanceNear int null,flgLocationServicesOnOff int null,flgGPSOnOff int null,flgNetworkOnOff int null,flgFusedOnOff int null,flgInternetOnOffWhileLocationTracking int null,flgRestart int null,flgStoreOrder int null,StoreCity text null,StorePinCode text not null,StoreState text null,flgRetailerCreditBalnce integer null,DBR text null,CoverageAreaNodeID integer null,CoverageAreaNodeType integer null,FlgDSRSO integer null,flgOrderType int null);";
+
+
+    private static final String DATABASE_CREATE_TABLE_13 = "create table tblStoreList(StoreID text not null, StoreType string not null, StoreName string not null, StoreLatitude real not null, StoreLongitude real not null, LastVisitDate string not null, LastTransactionDate string not null, Sstat integer not null, ForDate string not null, ActualLatitude text null, ActualLongitude text null, VisitStartTS text null, VisitEndTS text null,AutoIdStore int null, LocProvider text null, Accuracy text null, BateryLeftStatus text null,StoreClose integer null,StoreNextDay integer null,chainID integer null,ISNewStore int null,StoreRouteID int null,RouteNodeType int null,StoreCatNodeId int null,IsNewStoreDataCompleteSaved int null,flgFromWhereSubmitStatus int null,StoreAddress text null,PaymentStage text null,flgHasQuote int null,flgAllowQuotation int null,flgSubmitFromQuotation int null,flgGSTCapture text null,flgGSTCompliance text null,GSTNumber text null,flgGSTRecordFromServer int null,DistanceNear int null,flgLocationServicesOnOff int null,flgGPSOnOff int null,flgNetworkOnOff int null,flgFusedOnOff int null,flgInternetOnOffWhileLocationTracking int null,flgRestart int null,flgStoreOrder int null,StoreCity text null,StorePinCode text not null,StoreState text null,flgRetailerCreditBalnce integer null,DBR text null,CoverageAreaNodeID integer null,CoverageAreaNodeType integer null,FlgDSRSO integer null,flgOrderType int null,OwnerName text null,StoreContactNo text null,StoreCatType text null);";
 	
 	//private static final String DATABASE_CREATE_TABLE_2 = "create table tblProductList (ProductID text not null, ProductShortName text not null, ProductMRP real not null, ProductRLP real not null, ProductTaxAmount real not null, KGLiter string nulll);";//,DisplayUnit string nul 
 	
@@ -999,6 +1004,7 @@ private static final String DATABASE_TABLE_MAIN101 = "tblFirstOrderDetailsOnLast
 		{
 			try
 			{
+                db.execSQL(DATABASE_CREATE_TABLEtblProductListLastVisitStockOrOrderMstr);
                 db.execSQL(DATABASE_CREATE_TABLE_tblAttandanceDetails);
                 db.execSQL(DATABASE_CREATE_TABLE_tblLastOutstanding);
                 db.execSQL(DATABASE_CREATE_TABLE_tblInvoiceLastVisitDetails);
@@ -1274,6 +1280,9 @@ private static final String DATABASE_TABLE_MAIN101 = "tblFirstOrderDetailsOnLast
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			try 
 			{
+
+                db.execSQL("DROP TABLE IF EXISTS tblProductListLastVisitStockOrOrderMstr");
+
                 db.execSQL("DROP TABLE IF EXISTS tblAttandanceDetails");
                 db.execSQL("DROP TABLE IF EXISTS tblLastOutstanding");
 
@@ -3219,69 +3228,57 @@ db.execSQL("Update tblStoreProductClassificationTypeListMstr Set SubCategoryValu
 
 
 	}
-	
-	public void savetblStoreMain(String RouteID,String StoreID,String StoreName,String RetailerName,String emailID,
-			String TinNo,
-			String RetailerContactNo,String StoreAddress,String StorePincode,String City,String KeyAccount,
-			int TradeChannelID, int StoreTypeId,
-			int StoreCategoryId,int RetailSalesTypeId,int StorePotentialId,String StoreProductClassificationId,
-			String VisitStartTS, String Imei,String BatteryStatus,int Sstat,int CityId,String ActualLatitude,
-			String ActualLongitude,String Accuracy,String LocProvider,int IsNewStoreDataCompleteSaved,
-			String fetchAddress,String PaymentStage,int flgHasQuote,int flgAllowQuotation,
-			int flgSubmitFromQuotation,String flgGSTCapture,String flgGSTCompliance,String GSTNumber,int flgGSTRecordFromServer, int flgLocationServicesOnOff, int flgGPSOnOff, int flgNetworkOnOff, int flgFusedOnOff, int flgInternetOnOffWhileLocationTracking, int flgRestart, int flgStoreOrder, String StoreCity,String StorePinCode, String StoreState,String DBR)
-	  {
-		
-		int MaxAutoStore = 0;
-		int cntTotStore=0;
-		cntTotStore=fnGetCountForNewStore();
-		String strGetMaxIDForNewStore="0";
-		//String activeRid;
-		//activeRid = GetActiveRouteID();
-		if(cntTotStore>0)
-		{
-		MaxAutoStore = fnGetMaxAutoStoreIncrementForNewStore();
-		MaxAutoStore = MaxAutoStore + 1;
-		strGetMaxIDForNewStore = fnGetMaxIdWithIncrementForNewStore(MaxAutoStore);
-		}
-		else
-		{
-			MaxAutoStore=0;
-			MaxAutoStore = MaxAutoStore + 1;
-			
-			strGetMaxIDForNewStore = "-000^" + (1) + "$" + MaxAutoStore;
-			
-		}
-		
-		if (!StoreID.equals("") && !StoreID.equals(null) && !StoreID.equals(0))
-		{
-			
-			String prevDate2Send = GetPrevDate();
-			
-			 if(prevDate2Send.equals("") || prevDate2Send.equals("NA"))
-			   {
-			    long syncTIMESTAMP = System.currentTimeMillis();
-			    Date dateobj = new Date(syncTIMESTAMP);
-			    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
-			    prevDate2Send = df.format(dateobj);
-			   }
 
-			//saveSOAPdataStoreList = DBR,flgRetailerCredit
-			saveSOAPdataStoreListNewStore(StoreID, ""+StoreTypeId, StoreName, Double.parseDouble(ActualLatitude.trim()), Double.parseDouble(ActualLongitude.trim()), "", "", prevDate2Send, MaxAutoStore,Sstat,Accuracy.trim(),LocProvider.trim(),RouteID,BatteryStatus,IsNewStoreDataCompleteSaved,fetchAddress,PaymentStage,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,flgGSTCapture,flgGSTCompliance,GSTNumber,flgGSTRecordFromServer,flgLocationServicesOnOff,flgGPSOnOff,flgNetworkOnOff,flgFusedOnOff,flgInternetOnOffWhileLocationTracking,flgRestart,flgStoreOrder,StoreCity,StorePinCode,StoreState,DBR); // in last parameter Fdate
-			
-			//saveSOAPdataStoreListNewStore(strGetMaxIDForNewStore.trim(), StoreType.trim(), RetailerName.trim(), Double.parseDouble(ActualLatitude), Double.parseDouble(ActualLongitude), "", "", fDate, MaxAutoStore,1,Accuracy,LocProvider,activeRid,BateryLevel); // in last parameter Fdate
-			
-			
-			/*savetblStoreMainAfterCountNUmberOfStore(RouteID,StoreID,StoreName,RetailerName,emailID,TinNo,
-					RetailerContactNo,StoreAddress,StorePincode,City,KeyAccount,TradeChannelID,StoreTypeId,
-					StoreCategoryId,RetailSalesTypeId,StorePotentialId,StoreProductClassificationId,
-					VisitStartTS,Imei,BatteryStatus,Sstat,CityId,ActualLatitude,ActualLongitude,Accuracy,LocProvider);
-			
-			fnUpdateFlgForNewSoreInMainStoreTable(StoreID);*/
-			
-			
-			//saveSOAPdataStoreListDetailsInNewTable(strGetMaxIDForNewStore.trim(), RetailerName.toString().trim(), OwnerName.toString().trim(), Address.toString().trim(),phoneSendValue,ActualLatitude,ActualLongitude,Accuracy,LocProvider,activeRid);
-			
-		}
+    public void savetblStoreMain(String RouteID,String StoreID,String StoreName,String RetailerName,String emailID,
+                                 String TinNo,
+                                 String RetailerContactNo,String StoreAddress,String StorePincode,String City,String KeyAccount,
+                                 int TradeChannelID, int StoreTypeId,
+                                 int StoreCategoryId,int RetailSalesTypeId,int StorePotentialId,String StoreProductClassificationId,
+                                 String VisitStartTS, String Imei,String BatteryStatus,int Sstat,String ActualLatitude,
+                                 String ActualLongitude,String Accuracy,String LocProvider,int IsNewStoreDataCompleteSaved,
+                                 String fetchAddress,String PaymentStage,int flgHasQuote,int flgAllowQuotation,
+                                 int flgSubmitFromQuotation,String flgGSTCapture,String flgGSTCompliance,String GSTNumber,int flgGSTRecordFromServer, int flgLocationServicesOnOff, int flgGPSOnOff, int flgNetworkOnOff, int flgFusedOnOff, int flgInternetOnOffWhileLocationTracking, int flgRestart, int flgStoreOrder, String StoreCity,String StorePinCode, String StoreState,String CityId,String StateId,String MapAddress,String MapCity,String MapPinCode,String MapState)
+    {
+
+        int MaxAutoStore = 0;
+        int cntTotStore=0;
+        cntTotStore=fnGetCountForNewStore();
+        String strGetMaxIDForNewStore="0";
+        //String activeRid;
+        //activeRid = GetActiveRouteID();
+        if(cntTotStore>0)
+        {
+            MaxAutoStore = fnGetMaxAutoStoreIncrementForNewStore();
+            MaxAutoStore = MaxAutoStore + 1;
+            strGetMaxIDForNewStore = fnGetMaxIdWithIncrementForNewStore(MaxAutoStore);
+        }
+        else
+        {
+            MaxAutoStore=0;
+            MaxAutoStore = MaxAutoStore + 1;
+
+            strGetMaxIDForNewStore = "-000^" + (1) + "$" + MaxAutoStore;
+
+        }
+
+        if (!StoreID.equals("") && !StoreID.equals(null) && !StoreID.equals(0))
+        {
+
+            String prevDate2Send = GetPrevDate();
+
+            if(prevDate2Send.equals("") || prevDate2Send.equals("NA"))
+            {
+                long syncTIMESTAMP = System.currentTimeMillis();
+                Date dateobj = new Date(syncTIMESTAMP);
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
+                prevDate2Send = df.format(dateobj);
+            }
+
+
+            saveSOAPdataStoreListNewStore(StoreID, ""+StoreTypeId, StoreName, Double.parseDouble(ActualLatitude.trim()), Double.parseDouble(ActualLongitude.trim()), "", "", prevDate2Send, MaxAutoStore,Sstat,Accuracy.trim(),LocProvider.trim(),RouteID,BatteryStatus,IsNewStoreDataCompleteSaved,fetchAddress,PaymentStage,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,flgGSTCapture,flgGSTCompliance,GSTNumber,flgGSTRecordFromServer,flgLocationServicesOnOff,flgGPSOnOff,flgNetworkOnOff,flgFusedOnOff,flgInternetOnOffWhileLocationTracking,flgRestart,flgStoreOrder,StoreCity,StorePinCode,StoreState); // in last parameter Fdate
+
+
+        }
 						
 						
 	}	
@@ -14483,114 +14480,118 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
 		   }
 
      }
-	 
-	 
-	public long saveSOAPdataStoreList(String StoreID, String StoreName, String StoreType,
-			Double StoreLatitude, Double StoreLongitude, String LastVisitDate, String LastTransactionDate,
-			String ForDate, int AutoIdStore, int Sstat, int StoreClose, int StoreNextDay, int StoreRouteID,
-			int StoreCatNodeId,String StoreAddress,String PaymentStage,int flgHasQuote,int flgAllowQuotation,
-			int flgSubmitFromQuotation,String flgGSTCapture,String flgGSTCompliance,String GSTNumber,
-                                      int flgGSTRecordFromServer,String DBR,String RouteNodeType,int flgOrderType)
-	{
 
 
-		int flgIfStoreHasRecords=0;
-		try {
-			flgIfStoreHasRecords=CheckTotalStoreCount();
-		}
-		catch (Exception ex)
-		{
-
-		}
-
-		if(flgGSTCapture.equals(""))
-		{
-			flgGSTCapture="1";
-		}				
-		if(flgGSTCompliance.equals(""))
-		{
-			flgGSTCompliance="0";
-		}
-		if(GSTNumber.equals(""))
-		{
-			GSTNumber="0";
-		}
-		
-		ContentValues initialValues = new ContentValues();
-		
-		//String rID=GetActiveRouteID();
-		//String RouteNodeType=FetchRouteType(rID);
+    public long saveSOAPdataStoreList(String StoreID, String StoreName, String StoreType,
+                                      Double StoreLatitude, Double StoreLongitude, String LastVisitDate, String LastTransactionDate,
+                                      String ForDate, int AutoIdStore, int Sstat, int StoreClose, int StoreNextDay, int StoreRouteID,
+                                      int StoreCatNodeId,String StoreAddress,String PaymentStage,int flgHasQuote,int flgAllowQuotation,
+                                      int flgSubmitFromQuotation,String flgGSTCapture,String flgGSTCompliance,String GSTNumber,
+                                      int flgGSTRecordFromServer,String DBR,String RouteNodeType,int flgOrderType,String OwnerName,
+                                      String StoreContactNo,String StoreCatType)
+    {
 
 
-		initialValues.put("StoreID", StoreID.trim());
-		initialValues.put("StoreType", StoreType.trim());
-		initialValues.put("StoreName", StoreName.trim());
-		initialValues.put("StoreLatitude", StoreLatitude);
-		initialValues.put("StoreLongitude", StoreLongitude);
-		initialValues.put("LastVisitDate", LastVisitDate.trim());
-		initialValues.put("LastTransactionDate", LastTransactionDate.trim());
-		initialValues.put("Sstat", Sstat);
-		
-		initialValues.put("ForDate", ForDate.trim());
-		initialValues.put("ActualLatitude", "0");
-		initialValues.put("ActualLongitude", "0");
-		initialValues.put("VisitStartTS", "0");
-		initialValues.put("VisitEndTS", "0");
-		initialValues.put("AutoIdStore", AutoIdStore);
-		initialValues.put("LocProvider", "0");
-		initialValues.put("Accuracy", "0");
-		initialValues.put("BateryLeftStatus", "0");
-		initialValues.put("StoreClose", StoreClose);
-		initialValues.put("StoreNextDay", StoreNextDay);
-		
-		initialValues.put("chainID", 1);
-		initialValues.put("ISNewStore", 0);
-		initialValues.put("StoreRouteID", StoreRouteID);
-		initialValues.put("RouteNodeType", RouteNodeType);
-		initialValues.put("StoreCatNodeId", StoreCatNodeId);
-		initialValues.put("IsNewStoreDataCompleteSaved", 0);
-		initialValues.put("flgFromWhereSubmitStatus", 0);
-		initialValues.put("StoreAddress", StoreAddress);
-		
-		initialValues.put("PaymentStage", PaymentStage);
-		
-		initialValues.put("flgHasQuote", flgHasQuote);
-		initialValues.put("flgAllowQuotation", flgAllowQuotation);
-		initialValues.put("flgSubmitFromQuotation", flgSubmitFromQuotation);
-		
-		 initialValues.put("flgGSTCapture", flgGSTCapture);
-	     initialValues.put("flgGSTCompliance", flgGSTCompliance);
-	     initialValues.put("GSTNumber", GSTNumber);
-	     initialValues.put("flgGSTRecordFromServer", flgGSTRecordFromServer);
-		 initialValues.put("DistanceNear", 1000);
+        int flgIfStoreHasRecords=0;
+        try {
+            flgIfStoreHasRecords=CheckTotalStoreCount();
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        if(flgGSTCapture.equals(""))
+        {
+            flgGSTCapture="1";
+        }
+        if(flgGSTCompliance.equals(""))
+        {
+            flgGSTCompliance="0";
+        }
+        if(GSTNumber.equals(""))
+        {
+            GSTNumber="0";
+        }
+
+        ContentValues initialValues = new ContentValues();
+
+        //String rID=GetActiveRouteID();
+        //String RouteNodeType=FetchRouteType(rID);
+
+
+        initialValues.put("StoreID", StoreID.trim());
+        initialValues.put("StoreType", StoreType.trim());
+        initialValues.put("StoreName", StoreName.trim());
+        initialValues.put("StoreLatitude", StoreLatitude);
+        initialValues.put("StoreLongitude", StoreLongitude);
+        initialValues.put("LastVisitDate", LastVisitDate.trim());
+        initialValues.put("LastTransactionDate", LastTransactionDate.trim());
+        initialValues.put("Sstat", Sstat);
+
+        initialValues.put("ForDate", ForDate.trim());
+        initialValues.put("ActualLatitude", "0");
+        initialValues.put("ActualLongitude", "0");
+        initialValues.put("VisitStartTS", "0");
+        initialValues.put("VisitEndTS", "0");
+        initialValues.put("AutoIdStore", AutoIdStore);
+        initialValues.put("LocProvider", "0");
+        initialValues.put("Accuracy", "0");
+        initialValues.put("BateryLeftStatus", "0");
+        initialValues.put("StoreClose", StoreClose);
+        initialValues.put("StoreNextDay", StoreNextDay);
+
+        initialValues.put("chainID", 1);
+        initialValues.put("ISNewStore", 0);
+        initialValues.put("StoreRouteID", StoreRouteID);
+        initialValues.put("RouteNodeType", RouteNodeType);
+        initialValues.put("StoreCatNodeId", StoreCatNodeId);
+        initialValues.put("IsNewStoreDataCompleteSaved", 0);
+        initialValues.put("flgFromWhereSubmitStatus", 0);
+        initialValues.put("StoreAddress", StoreAddress);
+
+        initialValues.put("PaymentStage", PaymentStage);
+
+        initialValues.put("flgHasQuote", flgHasQuote);
+        initialValues.put("flgAllowQuotation", flgAllowQuotation);
+        initialValues.put("flgSubmitFromQuotation", flgSubmitFromQuotation);
+
+        initialValues.put("flgGSTCapture", flgGSTCapture);
+        initialValues.put("flgGSTCompliance", flgGSTCompliance);
+        initialValues.put("GSTNumber", GSTNumber);
+        initialValues.put("flgGSTRecordFromServer", flgGSTRecordFromServer);
+        initialValues.put("DistanceNear", 1000);
 
 
 
-		initialValues.put("flgLocationServicesOnOff", 0);
-		initialValues.put("flgGPSOnOff", 0);
-		initialValues.put("flgNetworkOnOff", 0);
-		initialValues.put("flgFusedOnOff", 0);
-		initialValues.put("flgInternetOnOffWhileLocationTracking", 0);
-		initialValues.put("flgRestart", 0);
+        initialValues.put("flgLocationServicesOnOff", 0);
+        initialValues.put("flgGPSOnOff", 0);
+        initialValues.put("flgNetworkOnOff", 0);
+        initialValues.put("flgFusedOnOff", 0);
+        initialValues.put("flgInternetOnOffWhileLocationTracking", 0);
+        initialValues.put("flgRestart", 0);
 
-		initialValues.put("flgStoreOrder", (flgIfStoreHasRecords+1));
+        initialValues.put("flgStoreOrder", (flgIfStoreHasRecords+1));
 
 
-		initialValues.put("StoreCity", "NA");
-		initialValues.put("StorePinCode", "NA");
-		initialValues.put("StoreState", "NA");
-		initialValues.put("flgRetailerCreditBalnce", -1);
+        initialValues.put("StoreCity", "NA");
+        initialValues.put("StorePinCode", "NA");
+        initialValues.put("StoreState", "NA");
+        initialValues.put("flgRetailerCreditBalnce", -1);
         initialValues.put("DBR", DBR);
         initialValues.put("CoverageAreaNodeID", CommonInfo.CoverageAreaNodeID);
         initialValues.put("CoverageAreaNodeType", CommonInfo.CoverageAreaNodeType);
         initialValues.put("FlgDSRSO", CommonInfo.FlgDSRSO);
 
         initialValues.put("flgOrderType", flgOrderType);
+        initialValues.put("OwnerName", OwnerName.trim());
+        initialValues.put("StoreContactNo", StoreContactNo.trim());
+        initialValues.put("StoreCatType", StoreCatType);
 
         ////// System.out.println("inserting records in StoreList table..");
 
-		return db.insert(DATABASE_TABLE_MAIN13, null, initialValues);
-	}
+        return db.insert(DATABASE_TABLE_MAIN13, null, initialValues);
+    }
 	
 	// (CategoryID text  null,ProductID text  null, ProductShortName text  null, DisplayUnit text null, CalculateKilo real  null);";
 
@@ -16185,102 +16186,102 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
 
 //	saveSOAPdataStoreList
 
-	private long saveSOAPdataStoreListNewStore(String sCode, String sType, String sName,
-                                               Double sLat, Double sLon, String LVdate, String LTdate,
-                                               String sForDate, int AutoIdStore, int newStat, String Accuracy, String LocProvider,
-                                               String activeRid, String BateryLevel, int IsNewStoreDataCompleteSaved, String fetchAddress,
-                                               String PaymentStage, int flgHasQuote, int flgAllowQuotation, int flgSubmitFromQuotation
-            , String flgGSTCapture, String flgGSTCompliance, String GSTNumber, int flgGSTRecordFromServer, int flgLocationServicesOnOff, int flgGPSOnOff, int flgNetworkOnOff, int flgFusedOnOff, int flgInternetOnOffWhileLocationTracking, int flgRestart, int flgStoreOrder, String StoreCity, String StorePinCode, String StoreState, String DBR) {
+    public long saveSOAPdataStoreListNewStore(String sCode, String sType, String sName,
+                                              Double sLat, Double sLon, String LVdate, String LTdate,
+                                              String sForDate, int AutoIdStore, int newStat, String Accuracy, String LocProvider,
+                                              String activeRid,String BateryLevel,int IsNewStoreDataCompleteSaved,String fetchAddress,
+                                              String PaymentStage,int flgHasQuote,int flgAllowQuotation,int flgSubmitFromQuotation
+            ,String flgGSTCapture,String flgGSTCompliance,String GSTNumber,int flgGSTRecordFromServer, int flgLocationServicesOnOff, int flgGPSOnOff, int flgNetworkOnOff, int flgFusedOnOff, int flgInternetOnOffWhileLocationTracking, int flgRestart, int flgStoreOrder, String StoreCity,String StorePinCode, String StoreState) {
 
 
-		int flgIfStoreHasRecords=0;
-		try {
-			flgIfStoreHasRecords=CheckTotalStoreCount();
-		}
-		catch (Exception ex)
-		{
+        int flgIfStoreHasRecords=0;
+        try {
+            flgIfStoreHasRecords=CheckTotalStoreCount();
+        }
+        catch (Exception ex)
+        {
 
-		}
+        }
 
-		ContentValues initialValues = new ContentValues();
-			////// System.out.println("Saved code:" + sCode + "Saved name:" + "" + sName);
-		long syncTIMESTAMP = System.currentTimeMillis();
-		Date dateobj = new Date(syncTIMESTAMP);
-		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss",Locale.ENGLISH);
-		String startTS = df.format(dateobj);
+        ContentValues initialValues = new ContentValues();
+        ////// System.out.println("Saved code:" + sCode + "Saved name:" + "" + sName);
+        long syncTIMESTAMP = System.currentTimeMillis();
+        Date dateobj = new Date(syncTIMESTAMP);
+        SimpleDateFormat df = new SimpleDateFormat(
+                "dd-MMM-yyyy HH:mm:ss",Locale.ENGLISH);
+        String startTS = df.format(dateobj);
 
-		activeRid = GetActiveRouteID();
-		String RouteNodeType=FetchRouteType(activeRid);
-
-
-		initialValues.put("StoreID", sCode.trim());
-		initialValues.put("StoreType", sType);
-		initialValues.put("StoreName", sName.trim());
-		initialValues.put("ActualLatitude", ""+sLat);
-		initialValues.put("ActualLongitude",""+ sLon);
-		initialValues.put("StoreLatitude", sLat);
-		initialValues.put("StoreLongitude", sLon);
-		initialValues.put("LastVisitDate", "NA");
-		initialValues.put("LastTransactionDate","NA");
-		initialValues.put("Sstat", newStat);
-		initialValues.put("ISNewStore", 1);
-		initialValues.put("StoreClose", 0);
-		initialValues.put("StoreNextDay", 0);
-		// System.out.println("DateTimeNitish fnDBkenya saveSOAPdataStoreListNewStore = "+startTS);
-		initialValues.put("VisitStartTS", startTS);
-		initialValues.put("VisitEndTS", startTS);
-		initialValues.put("LocProvider", LocProvider);
-		initialValues.put("Accuracy", Accuracy);
-		initialValues.put("BateryLeftStatus", BateryLevel);
-		// initialValues.put(KEY_snxtday, 0);
-		// initialValues.put(KEY_sDone, 0);
-		initialValues.put("ForDate", sForDate.trim());
-		initialValues.put("AutoIdStore", AutoIdStore);
-		initialValues.put("StoreRouteID", activeRid);
-		initialValues.put("RouteNodeType", RouteNodeType);
-		initialValues.put("StoreCatNodeId", 0);
-		initialValues.put("IsNewStoreDataCompleteSaved", IsNewStoreDataCompleteSaved);
-		initialValues.put("flgFromWhereSubmitStatus", 0);
-		initialValues.put("StoreAddress", fetchAddress);
-		initialValues.put("PaymentStage", PaymentStage);
-		initialValues.put("flgHasQuote", flgHasQuote);
-		initialValues.put("flgAllowQuotation", flgAllowQuotation);
-		initialValues.put("flgSubmitFromQuotation", flgSubmitFromQuotation);
-
-		initialValues.put("flgGSTCapture", flgGSTCapture);
-		initialValues.put("flgGSTCompliance", flgGSTCompliance);
-		initialValues.put("GSTNumber", GSTNumber);
-		initialValues.put("flgGSTRecordFromServer", flgGSTRecordFromServer);
-		initialValues.put("DistanceNear", 1000);
+        activeRid = GetActiveRouteID();
+        String RouteNodeType=FetchRouteType(activeRid);
 
 
+        initialValues.put("StoreID", sCode.trim());
+        initialValues.put("StoreType", sType);
+        initialValues.put("StoreName", sName.trim());
+        initialValues.put("ActualLatitude", ""+sLat);
+        initialValues.put("ActualLongitude",""+ sLon);
+        initialValues.put("StoreLatitude", sLat);
+        initialValues.put("StoreLongitude", sLon);
+        initialValues.put("LastVisitDate", "NA");
+        initialValues.put("LastTransactionDate","NA");
+        initialValues.put("Sstat", newStat);
+        initialValues.put("ISNewStore", 1);
+        initialValues.put("StoreClose", 0);
+        initialValues.put("StoreNextDay", 0);
+        // System.out.println("DateTimeNitish fnDBkenya saveSOAPdataStoreListNewStore = "+startTS);
+        initialValues.put("VisitStartTS", startTS);
+        initialValues.put("VisitEndTS", startTS);
+        initialValues.put("LocProvider", LocProvider);
+        initialValues.put("Accuracy", Accuracy);
+        initialValues.put("BateryLeftStatus", BateryLevel);
+        // initialValues.put(KEY_snxtday, 0);
+        // initialValues.put(KEY_sDone, 0);
+        initialValues.put("ForDate", sForDate.trim());
+        initialValues.put("AutoIdStore", AutoIdStore);
+        initialValues.put("StoreRouteID", activeRid);
+        initialValues.put("RouteNodeType", RouteNodeType);
+        initialValues.put("StoreCatNodeId", 0);
+        initialValues.put("IsNewStoreDataCompleteSaved", IsNewStoreDataCompleteSaved);
+        initialValues.put("flgFromWhereSubmitStatus", 0);
+        initialValues.put("StoreAddress", fetchAddress);
+        initialValues.put("PaymentStage", PaymentStage);
+        initialValues.put("flgHasQuote", flgHasQuote);
+        initialValues.put("flgAllowQuotation", flgAllowQuotation);
+        initialValues.put("flgSubmitFromQuotation", flgSubmitFromQuotation);
 
-		initialValues.put("flgLocationServicesOnOff", flgLocationServicesOnOff);
-		initialValues.put("flgGPSOnOff", flgGPSOnOff);
-		initialValues.put("flgNetworkOnOff", flgNetworkOnOff);
-		initialValues.put("flgFusedOnOff", flgFusedOnOff);
-		initialValues.put("flgInternetOnOffWhileLocationTracking", flgInternetOnOffWhileLocationTracking);
-		initialValues.put("flgRestart", flgRestart);
+        initialValues.put("flgGSTCapture", flgGSTCapture);
+        initialValues.put("flgGSTCompliance", flgGSTCompliance);
+        initialValues.put("GSTNumber", GSTNumber);
+        initialValues.put("flgGSTRecordFromServer", flgGSTRecordFromServer);
+        initialValues.put("DistanceNear", 1000);
 
-		initialValues.put("flgStoreOrder", (flgIfStoreHasRecords+1));
 
-		initialValues.put("StoreCity", StoreCity.trim());
-		initialValues.put("StorePinCode", StorePinCode.trim());
-		initialValues.put("StoreState", StoreState.trim());
 
-		initialValues.put("flgRetailerCreditBalnce", -1);
-		initialValues.put("DBR", DBR);
-		//flgAllowQuotation
+        initialValues.put("flgLocationServicesOnOff", flgLocationServicesOnOff);
+        initialValues.put("flgGPSOnOff", flgGPSOnOff);
+        initialValues.put("flgNetworkOnOff", flgNetworkOnOff);
+        initialValues.put("flgFusedOnOff", flgFusedOnOff);
+        initialValues.put("flgInternetOnOffWhileLocationTracking", flgInternetOnOffWhileLocationTracking);
+        initialValues.put("flgRestart", flgRestart);
 
-		//flgAllowQuotation
-		//StoreCatNodeId
-		////// System.out.println("Total Records Present sunil in DBAdapter:"+checkNumberOfStore);
-		checkNumberOfStore++;
+        initialValues.put("flgStoreOrder", (flgIfStoreHasRecords+1));
 
-		////// System.out.println("inserting records..");
+        initialValues.put("StoreCity", StoreCity.trim());
+        initialValues.put("StorePinCode", StorePinCode.trim());
+        initialValues.put("StoreState", StoreState.trim());
 
-		return db.insert(DATABASE_TABLE_MAIN13, null, initialValues);
-	}
+        initialValues.put("flgOrderType", -1);
+        //flgAllowQuotation
+
+        //flgAllowQuotation
+        //StoreCatNodeId
+        ////// System.out.println("Total Records Present sunil in DBAdapter:"+checkNumberOfStore);
+        checkNumberOfStore++;
+
+        ////// System.out.println("inserting records..");
+
+        return db.insert(DATABASE_TABLE_MAIN13, null, initialValues);
+    }
 
 
     public int CheckTotalStoreCountSO() throws IOException
@@ -21999,6 +22000,35 @@ open();
 					       
 					       
 					      }
+    public void UpdateStoreFlagSO(String sID, int flag2set)
+    {
+
+        try
+        {
+
+            final ContentValues values = new ContentValues();
+            values.put("Sstat", flag2set);
+            int affected = db.update("tblPreAddedStores", values, "StoreID=?",new String[] { sID });
+
+            int affected1 = db.update("tblOutletQuestAnsMstr", values,"OutletID=?", new String[] { sID });
+
+
+            int affected3 = db.update("tblNewStoreSalesQuotePaymentDetails", values,"StoreId=?", new String[] { sID });
+            int affected5 = db.update("tblLatLongDetails", values,"StoreID=?", new String[] { sID });
+            if(flag2set==3)
+            {
+                int affected4 = db.update("tblsameLocationForStoreRestartDone", values,"CrntStoreID=?", new String[] { sID });
+            }
+
+
+
+        }
+        catch (Exception ex)
+        {
+            String ex1=ex.getMessage();
+        }
+
+    }
 
     public void fnDeleteUnNeededRecordsFromOtheTables(String StoreID)
     {
@@ -29947,55 +29977,55 @@ if(cursor.getCount()>0)
 		}
 		return count;
 	}
-	public LinkedHashMap<String, String> fnGeStoreListAllForSO(int CoverageAreadID,int RouteID)
-	{
-		LinkedHashMap<String, String> hmapStoreLisMstr= new LinkedHashMap<>();
-		open();
+    public LinkedHashMap<String, String> fnGeStoreListAllForSO(int CoverageAreadID,int RouteID)
+    {
+        LinkedHashMap<String, String> hmapStoreLisMstr=new LinkedHashMap<String, String>();
+        open();
 
 
 
 
-		try {
-			Cursor cursor=null;
-			if(CoverageAreadID==0 && RouteID==0)
-			{
-				cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore from tblPreAddedStores Where  Sstat<>4  ORDER BY DistanceNear", null);
-			}
-			else if(CoverageAreadID!=0 && RouteID!=0)
-			{
-				cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore from tblPreAddedStores WHERE CoverageAreadID="+CoverageAreadID+" AND RouteID="+RouteID+" and Sstat<>4 ORDER BY DistanceNear", null);//
-			}
-			else if(CoverageAreadID!=0 && RouteID==0)
-			{
-				cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore from tblPreAddedStores WHERE CoverageAreadID="+CoverageAreadID+" AND Sstat<>4 ORDER BY DistanceNear", null);//
-			}
-			else if(CoverageAreadID==0 && RouteID!=0)
-			{
-				cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore from tblPreAddedStores WHERE RouteID="+RouteID+" AND Sstat<>4 ORDER BY DistanceNear", null);//
-			}
+        try {
+            Cursor cursor=null;
+            if(CoverageAreadID==0 && RouteID==0)
+            {
+                cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore,flgRemap,flgSelfStoreNode from tblPreAddedStores Where  Sstat<>4  ORDER BY DistanceNear", null);
+            }
+            else if(CoverageAreadID!=0 && RouteID!=0)
+            {
+                cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore,flgRemap,flgSelfStoreNode from tblPreAddedStores WHERE CoverageAreadID="+CoverageAreadID+" AND RouteID="+RouteID+" and Sstat<>4 ORDER BY DistanceNear", null);//
+            }
+            else if(CoverageAreadID!=0 && RouteID==0)
+            {
+                cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore,flgRemap,flgSelfStoreNode from tblPreAddedStores WHERE CoverageAreadID="+CoverageAreadID+" AND Sstat<>4 ORDER BY DistanceNear", null);//
+            }
+            else if(CoverageAreadID==0 && RouteID!=0)
+            {
+                cursor = db.rawQuery("SELECT StoreID,StoreName,DateAdded,CoverageAreaID,RouteNodeID,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,Sstat,flgOldNewStore,flgRemap,flgSelfStoreNode from tblPreAddedStores WHERE RouteID="+RouteID+" AND Sstat<>4 ORDER BY DistanceNear", null);//
+            }
 
-			if(cursor.getCount()>0)
-			{
-				if (cursor.moveToFirst())
-				{
-					for (int i = 0; i <= (cursor.getCount() - 1); i++) {
-						hmapStoreLisMstr.put((String) cursor.getString(0),(String) cursor.getString(1) +"^"+(String) cursor.getString(2) +"^"+(String) cursor.getString(3) +"^"+(String) cursor.getString(4) +"^"+(String) cursor.getString(5) +"^"+(String) cursor.getString(6) +"^"+(String) cursor.getString(7) +"^"+(String) cursor.getString(8) +"^"+(String) cursor.getString(9));
-						cursor.moveToNext();
-					}
-				}
-			}
+            if(cursor.getCount()>0)
+            {
+                if (cursor.moveToFirst())
+                {
+                    for (int i = 0; i <= (cursor.getCount() - 1); i++) {
+                        hmapStoreLisMstr.put((String) cursor.getString(0).toString(),(String) cursor.getString(1).toString()+"^"+(String) cursor.getString(2).toString()+"^"+(String) cursor.getString(3).toString()+"^"+(String) cursor.getString(4).toString()+"^"+(String) cursor.getString(5).toString()+"^"+(String) cursor.getString(6).toString()+"^"+(String) cursor.getString(7).toString()+"^"+(String) cursor.getString(8).toString()+"^"+(String) cursor.getString(9).toString()+"^"+(String) cursor.getString(10).toString()+"^"+(String) cursor.getString(11).toString());
+                        cursor.moveToNext();
+                    }
+                }
+            }
 
-		}
-		catch (Exception e) {
-			System.out.println("Error fnGettblUOMMstr= "+e.toString());
-		}
-		finally
-		{
+        }
+        catch (Exception e) {
+            System.out.println("Error fnGettblUOMMstr= "+e.toString());
+        }
+        finally
+        {
 
-			close();
-			return hmapStoreLisMstr;
-		}
-	}
+            close();
+            return hmapStoreLisMstr;
+        }
+    }
 	public void UpdateStoreDistanceNearSO(String OutletID, int DistanceNear)
 	{
 		try
@@ -30125,7 +30155,7 @@ if(cursor.getCount()>0)
 	}
 	public String getTodatAndTotalStores()
 	{
-		String StoresData="0";
+		String StoresData="0^0";
 		open();
 		try {
 			Cursor cur=db.rawQuery("Select TotStoreAdded , TodayStoreAdded from tblStoreCountDetails", null);
@@ -30223,7 +30253,7 @@ if(cursor.getCount()>0)
 		open();
 		try
 		{
-			Cursor cursor = db.rawQuery("SELECT StoreName,IFNULL(tblNewStoreSalesQuotePaymentDetails.PymtStageId,'0') AS PaymentStage,IFNULL(StoreAddress,'NA') AS StoreAddress,IFNULL(City,'NA') AS City,IFNULL(PinCode,'NA') AS PinCode,IFNULL(State,'NA') AS State,LatCode,LongCode,Accuracy,SOLatCode,SOLongCode,IsStoreDataCompleteSaved,VisitStartTS,VisitEndTS FROM tblPreAddedStores LEFT OUTER JOIN tblNewStoreSalesQuotePaymentDetails on tblPreAddedStores.StoreID=tblNewStoreSalesQuotePaymentDetails.StoreId where tblPreAddedStores.StoreID='" + StoreID+"'", null);
+			Cursor cursor = db.rawQuery("SELECT StoreName,IFNULL(tblNewStoreSalesQuotePaymentDetails.PymtStageId,'0') AS PaymentStage,IFNULL(StoreAddress,'NA') AS StoreAddress,IFNULL(City,'NA') AS City,IFNULL(PinCode,'NA') AS PinCode,IFNULL(State,'NA') AS State,LatCode,LongCode,Accuracy,SOLatCode,SOLongCode,IsStoreDataCompleteSaved,VisitStartTS,VisitEndTS,flgOldNewStore,flgSelfStoreNode FROM tblPreAddedStores LEFT OUTER JOIN tblNewStoreSalesQuotePaymentDetails on tblPreAddedStores.StoreID=tblNewStoreSalesQuotePaymentDetails.StoreId where tblPreAddedStores.StoreID='" + StoreID+"'", null);
 // IFNULL(PymtStageId,0) from tblNewStoreSalesQuotePaymentDetails Where StoreId
 			// private static final String DATABASE_CREATE_TABLE_tblPreAddedStores = "create table tblPreAddedStores (StoreID text null,StoreName text null,LatCode text null," +
 /*
@@ -30255,6 +30285,8 @@ if(cursor.getCount()>0)
 						arrBasisDetailsAgainstStore.add((String) cursor.getString(11));
 						arrBasisDetailsAgainstStore.add((String) cursor.getString(12));
 						arrBasisDetailsAgainstStore.add((String) cursor.getString(13));
+                        arrBasisDetailsAgainstStore.add((String) cursor.getString(14));
+                        arrBasisDetailsAgainstStore.add((String) cursor.getString(15));
 
 
 
@@ -30281,6 +30313,8 @@ if(cursor.getCount()>0)
 				arrBasisDetailsAgainstStore.add("");
 				arrBasisDetailsAgainstStore.add("NA");
 				arrBasisDetailsAgainstStore.add("NA");
+                arrBasisDetailsAgainstStore.add("NA");
+                arrBasisDetailsAgainstStore.add("NA");
 
 			}
 
@@ -30350,7 +30384,11 @@ if(cursor.getCount()>0)
 		}
 		finally
 		{
-			cursor.close();
+            if(cursor!=null)
+            {
+                cursor.close();
+            }
+
 			close();
 		}
 	}
@@ -31054,7 +31092,7 @@ if(cursor.getCount()>0)
                 initialValues.put("MapCity", MapCity);
                 initialValues.put("MapPinCode", MapPinCode);
                 initialValues.put("MapState", MapState);
-
+                initialValues.put("flgSelfStoreNode", 1);
 
                 db.insert(DATABASE_TABLE_tblPreAddedStores, null, initialValues);
             }
@@ -31396,7 +31434,7 @@ if(cursor.getCount()>0)
         }
         return chkI;
     }
-    public long fnsaveTblPreAddedStores(String StoreID,String StoreName,String LatCode,String LongCode,String DateAdded,int flgOldNewStore,int Sstat,int CoverageAreaID,int CoverageAreaType,int RouteNodeID,int RouteNodeType,String City,String State,String PinCode,String StoreCategoryType,int StoreSectionCount,int flgApproveOrRejectOrNoActionOrReVisit,String SOLatCode,String SOLongCode,int flgStoreVisitMode,String VisitStartTS,String VisitEndTS,String LocProvider,String Accuracy,String BateryLeftStatus,int IsStoreDataCompleteSaved,String PaymentStage,int flgLocationTrackEnabled,String StoreAddress,String SOAccuracy,int flgRemap)
+    public long fnsaveTblPreAddedStores(String StoreID,String StoreName,String LatCode,String LongCode,String DateAdded,int flgOldNewStore,int Sstat,int CoverageAreaID,int CoverageAreaType,int RouteNodeID,int RouteNodeType,String City,String State,String PinCode,String StoreCategoryType,int StoreSectionCount,int flgApproveOrRejectOrNoActionOrReVisit,String SOLatCode,String SOLongCode,int flgStoreVisitMode,String VisitStartTS,String VisitEndTS,String LocProvider,String Accuracy,String BateryLeftStatus,int IsStoreDataCompleteSaved,String PaymentStage,int flgLocationTrackEnabled,String StoreAddress,String SOAccuracy,int flgRemap,int flgSelfStoreNode)
     {
 
         int flgIfStoreHasRecords=0;
@@ -31454,7 +31492,7 @@ if(cursor.getCount()>0)
             initialValues.put("SOAccuracy", SOAccuracy);
             initialValues.put("flgRemap", flgRemap);
 
-
+            initialValues.put("flgSelfStoreNode", flgSelfStoreNode);
             initialValues.put("flgLocationServicesOnOff", 0);
             initialValues.put("flgGPSOnOff", 0);
             initialValues.put("flgNetworkOnOff", 0);
@@ -31651,7 +31689,7 @@ if(cursor.getCount()>0)
         int check=0;
         try {
             //tbl_XMLfiles SET Sstat='4'
-
+//tblStorePaymentStageMapping
             cursor= db.rawQuery("SELECT StoreId FROM tblNewStoreSalesQuotePaymentDetails WHERE  StoreId='"+ StoreId +"'", null);
             if (cursor.getCount() > 0)
             {
@@ -34424,8 +34462,185 @@ if(cursor.getCount()>0)
         return count;
     }
 
+    public String FetchPersonNodeIDAndPersonNodeType(String CoverageAreaNodeID,String CoverageAreaNodeType)
+    {open();
+        String abc="0^0";
+        Cursor cursor = db.rawQuery("SELECT PersonNodeID,PersonNodeType from tblDSRCoverageMaster where CoverageAreaNodeID='"+CoverageAreaNodeID.trim()+"' and CoverageAreaNodeType='"+CoverageAreaNodeType.trim()+"'", null);
+
+        //Cursor cursor = db.rawQuery("SELECT PersonNodeID,PersonNodeType from tblUserAuthenticationMstr", null);
+        try {
+
+            if (cursor.moveToFirst()) {
+
+                for (int i = 0; i <= (cursor.getCount() - 1); i++)
+                {
+
+                    abc =(String) cursor.getString(0).toString()+"^"+(String) cursor.getString(1).toString();
+                    cursor.moveToNext();
+                }
+
+            }
+            return abc;
+        } finally {
+            cursor.close();
+            close();
+        }
+
+    }
+    public void deleteDsrLocationDetails(String DSRId,String DSRNodeType)
+    {
+        try {
+            db.execSQL("DELETE FROM tblDsrLocationDetails WHERE DSRId='"+ DSRId + "' AND DSRNodeType='"+ DSRNodeType + "'");// and sectionID="+sectionID
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
 
 
 
+    public int fnGetRouteExistOrNot(int CoverageAreaNodeID,int CoverageAreaNodeType)
+    {
+
+        int strStore = 0;
+        open();
+
+        Cursor cursor2 = db.rawQuery("SELECT Count(*) FROM tblRouteMstr WHERE CoverageAreaNodeID='"+CoverageAreaNodeID+"' and CoverageAreaNodeType='"+CoverageAreaNodeType+"'", null);
+        try {
+            if (cursor2.moveToFirst())
+            {
+
+                for (int i = 0; i < cursor2.getCount(); i++)
+                {
+                    strStore = Integer.parseInt(cursor2.getString(0));
+                    cursor2.moveToNext();
+
+                }
+
+            }
+            return strStore;
+        } finally {
+            cursor2.close();
+            close();
+        }
+
+    }
+    public Boolean checkIfRouteExist()
+    {
+        open();
+        Boolean isRoute=false;
+        Cursor cur=null;
+        try {
+            cur=db.rawQuery("Select * from tblRouteMstr",null);
+            if(cur.getCount()>0)
+            {
+                isRoute=true;
+            }
+        }catch(SQLiteException exception)
+        {
+            exception.printStackTrace();
+        }
+        finally
+        {
+            if(cur!=null)
+            {
+                cur.close();
+            }
+            close();
+            return isRoute;
+        }
+    }
+    public LinkedHashMap<String, String> fngetStoreBasicDetails(String StoreID)
+    {
+        LinkedHashMap<String, String> hmapStoreBasicDetails=new LinkedHashMap<String, String>();//=null;
+        Cursor cur=null;
+        open();
+        try {
+
+
+            cur=db.rawQuery("Select ifnull(StoreName,'NA'),ifnull(OwnerName,'NA'),ifnull(StoreContactNo,'NA'),ifnull(StoreAddress,'NA'),ifnull(StoreCatType,'NA') from tblStoreList where StoreID = '"+StoreID+"'", null);
+            if(cur.getCount()>0)
+            {
+                if(cur.moveToFirst())
+                {
+                    // System.out.println("System Value :"+cur.getString(0)+"="+ cur.getString(1)+"~"+cur.getString(2));
+                    hmapStoreBasicDetails.put("StoreName", cur.getString(0));
+                    hmapStoreBasicDetails.put("OwnerName", cur.getString(1));
+                    hmapStoreBasicDetails.put("StoreContactNo", cur.getString(2));
+                    hmapStoreBasicDetails.put("StoreAddress", cur.getString(3));
+                    hmapStoreBasicDetails.put("StoreCatType", cur.getString(4));
+
+                }
+
+            }
+
+        }
+        catch(Exception ex)
+        {
+            hmapStoreBasicDetails.put("StoreName", "NA");
+            hmapStoreBasicDetails.put("OwnerName", "NA");
+            hmapStoreBasicDetails.put("StoreContactNo","NA");
+            hmapStoreBasicDetails.put("StoreAddress", "NA");
+            hmapStoreBasicDetails.put("StoreCatType", "NA");
+        }
+        finally {
+            if (cur != null) {
+                cur.close();
+            }
+            close();
+        }
+        return hmapStoreBasicDetails;
+    }
+    public void deletetblProductListLastVisitStockOrOrderMstr()
+    {
+        db.execSQL("DELETE FROM tblProductListLastVisitStockOrOrderMstr");
+
+    }
+
+    public LinkedHashMap<String,String>   fetchProductListLastvisitAndOrderBasis(String StoreID){
+//tblActualVisitStock (ProductID text null,Stock text null);";
+        LinkedHashMap<String,String> hmapData=new LinkedHashMap<>();
+        Cursor cursor=null;
+        open();
+        try {
+            cursor = db.rawQuery("SELECT  Distinct tblProductListLastVisitStockOrOrderMstr.PrdID,tblProductList.ProductShortName from tblProductListLastVisitStockOrOrderMstr inner join tblProductList on tblProductListLastVisitStockOrOrderMstr.PrdID=tblProductList.ProductID   where tblProductListLastVisitStockOrOrderMstr.StoreID='"+StoreID+"'", null);
+            if(cursor.getCount()>0)
+            {
+                if (cursor.moveToFirst()) {
+
+                    for (int i = 0; i <= (cursor.getCount() - 1); i++)
+                    {
+
+                        hmapData.put(cursor.getString(0),cursor.getString(1));
+                        cursor.moveToNext();
+                    }
+                }
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }finally {
+            if(cursor !=null){
+                cursor.close();
+            }
+
+            close();
+            return hmapData;
+        }
+    }
+    public void savetblProductListLastVisitStockOrOrderMstr(String StoreID,String PrdID)
+    {
+//(tblActualVisitStock (storeID text null,ProductID text null,Stock text null,Sstat integer null);";
+
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("StoreID",StoreID);
+        initialValues.put("PrdID", PrdID.trim());
+
+
+
+        db.insert(DATABASE_TABLE_tblProductListLastVisitStockOrOrderMstr, null, initialValues);
+
+    }
 }
 

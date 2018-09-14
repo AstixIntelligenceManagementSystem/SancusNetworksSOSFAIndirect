@@ -181,7 +181,9 @@ public class ServiceWorker
 
 					String StoreIDPDAFromServer="NA";
 					String RouteNodeType="0";
-	            	
+					String OwnerName="NA";
+					String StoreContactNo="0000000000";
+					String StoreCatType="NA";
                        
 	                Element element = (Element) tblUOMMstrNode.item(i);
 		
@@ -546,7 +548,36 @@ public class ServiceWorker
 						}
 					}
 
+					if(!element.getElementsByTagName("OwnerName").equals(null))
+					{
+						NodeList OwnerNameNode = element.getElementsByTagName("OwnerName");
+						Element     line = (Element) OwnerNameNode.item(0);
+						if(OwnerNameNode.getLength()>0)
+						{
+							OwnerName=XMLParser.getCharacterDataFromElement(line);
+						}
+					}
 
+					if(!element.getElementsByTagName("StoreContactNo").equals(null))
+					{
+						NodeList StoreContactNoNode = element.getElementsByTagName("StoreContactNo");
+						Element     line = (Element) StoreContactNoNode.item(0);
+						if(StoreContactNoNode.getLength()>0)
+						{
+							StoreContactNo =XMLParser.getCharacterDataFromElement(line);
+						}
+					}
+
+
+					if(!element.getElementsByTagName("StoreCatType").equals(null))
+					{
+						NodeList StoreCatTypeNode = element.getElementsByTagName("StoreCatType");
+						Element     line = (Element) StoreCatTypeNode.item(0);
+						if(StoreCatTypeNode.getLength()>0)
+						{
+							StoreCatType=XMLParser.getCharacterDataFromElement(line);
+						}
+					}
 
 					if(flgGSTCompliance.equals("1"))
 		                 {
@@ -572,10 +603,8 @@ public class ServiceWorker
 					AutoIdStore= i +1;
 					String StoreAddress="";
 
-					if(!StoreIDPDAFromServer.equals(StoreID))
-					{
-						dbengine.saveSOAPdataStoreList(StoreID,StoreName,StoreType,StoreLatitude,StoreLongitude,LastVisitDate,LastTransactionDate,dateVAL.toString().trim(), AutoIdStore, Sstat,IsClose,IsNextDat,StoreRouteID,StoreCatNodeId,StoreAddress,PaymentStage,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,flgGSTCapture,flgGSTCompliance,GSTNumber,flgGSTRecordFromServer,DBR,RouteNodeType,flgOrderType);
-						System.out.println("STORELIST...."+StoreID+"+"+StoreName+"+"+StoreType);
+					if(!StoreIDPDAFromServer.equals(StoreID)) {
+						dbengine.saveSOAPdataStoreList(StoreID,StoreName,StoreType,StoreLatitude,StoreLongitude,LastVisitDate,LastTransactionDate,dateVAL.toString().trim(), AutoIdStore, Sstat,IsClose,IsNextDat,StoreRouteID,StoreCatNodeId,StoreAddress,PaymentStage,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,flgGSTCapture,flgGSTCompliance,GSTNumber,flgGSTRecordFromServer,DBR,RouteNodeType,flgOrderType,OwnerName,StoreContactNo, StoreCatType);
 					}
 	            }
 	            
@@ -642,7 +671,6 @@ public class ServiceWorker
 					
 		                if(AddressDetNode.getLength()>0)
 		                {
-							
 		                	AddressDet=xmlParser.getCharacterDataFromElement(line);
 		                }
 	            	 }
@@ -965,6 +993,24 @@ public class ServiceWorker
 						SalesAreaName=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
+				if(!element.getElementsByTagName("CoverageAreaNodeID").equals(null))
+				{
+					NodeList CoverageAreaNodeIdNode = element.getElementsByTagName("CoverageAreaNodeID");
+					line = (Element) CoverageAreaNodeIdNode.item(0);
+					if(CoverageAreaNodeIdNode.getLength()>0)
+					{
+						CoverageAreaNodeID=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("CoverageAreaNodeType").equals(null))
+				{
+					NodeList CoverageAreaNodeTypeNode = element.getElementsByTagName("CoverageAreaNodeType");
+					line = (Element) CoverageAreaNodeTypeNode.item(0);
+					if(CoverageAreaNodeTypeNode.getLength()>0)
+					{
+						CoverageAreaNodeType=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
 				if(FlgRegistered.equals("1"))
 				{
 
@@ -996,24 +1042,7 @@ public class ServiceWorker
 						}
 					}
 
-					if(!element.getElementsByTagName("CoverageAreaNodeID").equals(null))
-					{
-						NodeList CoverageAreaNodeIdNode = element.getElementsByTagName("CoverageAreaNodeID");
-						line = (Element) CoverageAreaNodeIdNode.item(0);
-						if(CoverageAreaNodeIdNode.getLength()>0)
-						{
-							CoverageAreaNodeID=xmlParser.getCharacterDataFromElement(line);
-						}
-					}
-					if(!element.getElementsByTagName("CoverageAreaNodeType").equals(null))
-					{
-						NodeList CoverageAreaNodeTypeNode = element.getElementsByTagName("CoverageAreaNodeType");
-						line = (Element) CoverageAreaNodeTypeNode.item(0);
-						if(CoverageAreaNodeTypeNode.getLength()>0)
-						{
-							CoverageAreaNodeType=xmlParser.getCharacterDataFromElement(line);
-						}
-					}
+
 					//,
 
 					if(SelfieNameURL!=null && SelfieName!=null){
@@ -18950,11 +18979,11 @@ public class ServiceWorker
 
 			String StoreListOld="";
 
-			dbengine.open();
+			//dbengine.open();
 
 			//HashMap<String,String> hmapStoreIdSstat=dbengine.checkForStoreIdSstat();
 			HashMap<String,String> hmapStoreIdSstat=dbengine.checkForStoreIdSstatStrMapping();
-			dbengine.close();
+			//dbengine.close();
 
 			/*if(dbengine.fncheckCountNearByStoreExistsOrNot(1000)==1)
 			{
@@ -19096,7 +19125,7 @@ public class ServiceWorker
 				String City="";
 				String State="";
 				String PinCode="";
-
+				int flgSelfStore=0;
 				String StoreCategoryType="0-0-0";
 				int StoreSectionCount=0;
 
@@ -19295,6 +19324,15 @@ public class ServiceWorker
 					}
 				}
 
+				if(!element.getElementsByTagName("flgSelfStore").equals(null))
+				{
+					NodeList flgSelfStoreNode = element.getElementsByTagName("flgSelfStore");
+					Element     line = (Element) flgSelfStoreNode.item(0);
+					if (flgSelfStoreNode.getLength()>0)
+					{
+						flgSelfStore=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
 
 				if(StoreName.equals("shivam"))
 				{
@@ -19345,7 +19383,7 @@ public class ServiceWorker
 
 
 
-				long count=dbengine.fnsaveTblPreAddedStores(StoreID, StoreName, LatCode, LongCode, DateAdded,flgOldNewStore,Sstat,CoverageAreaID,CoverageAreaType,RouteNodeID,RouteNodeType,City,State,PinCode,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,SOLatCode, SOLongCode,flgStoreVisitMode,VisitStartTS,VisitEndTS,LocProvider,Accuracy,BateryLeftStatus,IsStoreDataCompleteSaved,PaymentStage,flgLocationTrackEnabled,StoreAddress,SOAccuracy,flgRemap);
+				long count=dbengine.fnsaveTblPreAddedStores(StoreID, StoreName, LatCode, LongCode, DateAdded,flgOldNewStore,Sstat,CoverageAreaID,CoverageAreaType,RouteNodeID,RouteNodeType,City,State,PinCode,StoreCategoryType,StoreSectionCount,flgApproveOrRejectOrNoActionOrReVisit,SOLatCode, SOLongCode,flgStoreVisitMode,VisitStartTS,VisitEndTS,LocProvider,Accuracy,BateryLeftStatus,IsStoreDataCompleteSaved,PaymentStage,flgLocationTrackEnabled,StoreAddress,SOAccuracy,flgRemap,flgSelfStore);
 
 			}
 
@@ -19591,7 +19629,6 @@ public class ServiceWorker
 					}
 					dbengine.fnsaveNewStoreSalesQuotePaymentDetails(StoreID, PaymentStageDetails);
 				}
-
 
 
 			}
@@ -21425,5 +21462,154 @@ public class ServiceWorker
 
 			return serverTime;
 		}
+	}
+	public ServiceWorker getProductListLastVisitStockOrOrderMstr(Context ctx, String dateVAL, String uuid, String rID)
+	{
+		this.context = ctx;
+
+		DBAdapterKenya dbengine = new DBAdapterKenya(context);
+		dbengine.open();
+
+		final String SOAP_ACTION = "http://tempuri.org/fnGetProductListWithStockOrOrderLastVisit";//GetProductListMRNewProductFilterTest";
+		final String METHOD_NAME = "fnGetProductListWithStockOrOrderLastVisit";//GetProductListMRNewProductFilterTest
+		final String NAMESPACE = "http://tempuri.org/";
+		final String URL = UrlForWebService;
+
+		decimalFormat.applyPattern(pattern);
+		SoapObject table = null; // Contains table of dataset that returned
+		// throug SoapObject
+		SoapObject client = null; // Its the client petition to the web service
+		SoapObject tableRow = null; // Contains row of table
+		SoapObject responseBody = null; // Contains XML content of dataset
+
+		//SoapObject param
+		HttpTransportSE transport = null; // That call webservice
+		SoapSerializationEnvelope sse = null;
+
+
+
+		sse = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		//sse.addMapping(NAMESPACE, "ServiceWorker", this.getClass());
+		// Note if class name isn't "movie" ,you must change
+		sse.dotNet = true; // if WebService written .Net is result=true
+		HttpTransportSE androidHttpTransport = new HttpTransportSE(URL,timeout);
+
+
+		String RouteNodeType="0";
+		try
+		{
+			RouteNodeType=dbengine.FetchRouteType(rID);
+		}
+		catch(Exception e)
+		{
+			System.out.println("error"+e);
+		}
+
+
+
+		ServiceWorker setmovie = new ServiceWorker();
+		try {
+			client = new SoapObject(NAMESPACE, METHOD_NAME);
+
+			//String dateVAL = "00.00.0000";
+
+			//////// System.out.println("soap obj date: "+ dateVAL);
+			client.addProperty("bydate", dateVAL.toString());
+			client.addProperty("IMEINo", uuid.toString());
+			client.addProperty("rID", rID.toString());
+			client.addProperty("RouteType", RouteNodeType);
+			//client.addProperty("SysDate", SysDate.toString());
+			//client.addProperty("AppVersionID", dbengine.AppVersionID.toString());
+			client.addProperty("flgAllRoutesData", CommonInfo.flgAllRoutesData);
+			client.addProperty("CoverageAreaNodeID", 0);
+			client.addProperty("coverageAreaNodeType", 0);
+
+
+			/*client.addProperty("bydate", dateVAL.toString());
+			client.addProperty("IMEINo", uuid.toString());*/
+
+			sse.setOutputSoapObject(client);
+			sse.bodyOut = client;
+			androidHttpTransport.call(SOAP_ACTION, sse);
+			responseBody = (SoapObject)sse.bodyIn;
+			String resultString=androidHttpTransport.responseDump;
+			String name=responseBody.getProperty(0).toString();
+			// This step: get file XML
+			/*responseBody = (SoapObject) sse.getResponse();
+			  String name=responseBody.getProperty(0).toString();*/
+
+			// System.out.println("Kajol 3 :"+name);
+
+			XMLParser xmlParser = new XMLParser();
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			InputSource is = new InputSource();
+			is.setCharacterStream(new StringReader(name));
+			Document doc = db.parse(is);
+
+			dbengine.deletetblProductListLastVisitStockOrOrderMstr();
+
+
+
+			NodeList tblLastOutstanding = doc.getElementsByTagName("tblProductListLastVisitStockOrOrderMstr");
+			for (int i = 0; i < tblLastOutstanding.getLength(); i++)
+			{
+
+
+				String StoreID="NA";
+				String PrdID="0";
+
+
+				Element element = (Element) tblLastOutstanding.item(i);
+
+				if(!element.getElementsByTagName("StoreID").equals(null))
+				{
+
+					NodeList StoreIDNode = element.getElementsByTagName("StoreID");
+					Element     line = (Element) StoreIDNode.item(0);
+
+					if(StoreIDNode.getLength()>0)
+					{
+
+						StoreID=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+
+				if(!element.getElementsByTagName("PrdID").equals(null))
+				{
+
+					NodeList PrdIDNode = element.getElementsByTagName("PrdID");
+					Element     line = (Element) PrdIDNode.item(0);
+
+					if(PrdIDNode.getLength()>0)
+					{
+
+						PrdID=xmlParser.getCharacterDataFromElement(line);
+
+					}
+				}
+
+				dbengine.savetblProductListLastVisitStockOrOrderMstr(StoreID,PrdID);
+			}
+
+
+
+			dbengine.close();
+
+			setmovie.director = "1";
+			flagExecutedServiceSuccesfully=1;
+			// System.out.println("ServiceWorkerNitish getallProduct Inside");
+			return setmovie;
+//return counts;
+		} catch (Exception e) {
+
+			// System.out.println("Aman Exception occur in GetProductListMRNew :"+e.toString());
+			setmovie.director = e.toString();
+			setmovie.movie_name = e.toString();
+			flagExecutedServiceSuccesfully=0;
+			dbengine.close();
+			return setmovie;
+		}
+
 	}
 }

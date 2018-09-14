@@ -7,6 +7,7 @@ package project.astix.com.sancusnetworkssosfaindirect;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -53,6 +54,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 
+import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
 
@@ -66,7 +68,7 @@ public class SyncMasterSO extends Activity
     // New Sync way
     public Timer timerForDataSubmission;
     public	MyTimerTaskForDataSubmission myTimerTaskForDataSubmission;
-
+    String activityFrom="";
 
     SyncImageData task1;
     SyncXMLfileData task2;
@@ -104,6 +106,7 @@ public class SyncMasterSO extends Activity
     public String zipFileName;
     ProgressDialog PDpicTasker;
     public String whereTo;
+    String imei="";
     public int IMGsyOK = 0;
     ProgressDialog pDialog2;
     InputStream inputStream;
@@ -150,9 +153,24 @@ public class SyncMasterSO extends Activity
                     }
 
 
-                    Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                    startActivity(submitStoreIntent);
-                    finish();
+                    if(activityFrom.equals("StoreSelection"))
+                    {
+                        Date date1 = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                        String fDate = sdf.format(date1).trim();
+                        Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                        storeIntent.putExtra("imei", imei);
+                        storeIntent.putExtra("userDate", fDate);
+                        storeIntent.putExtra("pickerDate", fDate);
+                        startActivity(storeIntent);
+                        finish();
+                    }
+                    else
+                    {
+                        Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                        startActivity(submitStoreIntent);
+                        finish();
+                    }
                 }});
         }
 
@@ -176,9 +194,24 @@ public class SyncMasterSO extends Activity
             public void onClick(DialogInterface dialog, int which)
             {
                 dialog.dismiss();
-                Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                startActivity(submitStoreIntent);
-                finish();
+                if(activityFrom.equals("StoreSelection"))
+                {
+                    Date date1 = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                    String fDate = sdf.format(date1).trim();
+                    Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                    storeIntent.putExtra("imei", imei);
+                    storeIntent.putExtra("userDate", fDate);
+                    storeIntent.putExtra("pickerDate", fDate);
+                    startActivity(storeIntent);
+                    finish();
+                }
+                else
+                {
+                    Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                    startActivity(submitStoreIntent);
+                    finish();
+                }
 
             }
         });
@@ -199,9 +232,24 @@ public class SyncMasterSO extends Activity
             public void onClick(DialogInterface dialog, int which)
             {
                 dialog.dismiss();
-                Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                startActivity(submitStoreIntent);
-                finish();
+                if(activityFrom.equals("StoreSelection"))
+                {
+                    Date date1 = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                    String fDate = sdf.format(date1).trim();
+                    Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                    storeIntent.putExtra("imei", imei);
+                    storeIntent.putExtra("userDate", fDate);
+                    storeIntent.putExtra("pickerDate", fDate);
+                    startActivity(storeIntent);
+                    finish();
+                }
+                else
+                {
+                    Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                    startActivity(submitStoreIntent);
+                    finish();
+                }
             }
         });
         alertDialogSyncError.setIcon(R.drawable.sync_error_ico);
@@ -243,9 +291,24 @@ public class SyncMasterSO extends Activity
                         //  db.reCreateDB();
                         //  db.close();
 
-                        Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                        startActivity(submitStoreIntent);
-                        finish();
+                        if(activityFrom.equals("StoreSelection"))
+                        {
+                            Date date1 = new Date();
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                            String fDate = sdf.format(date1).trim();
+                            Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                            storeIntent.putExtra("imei", imei);
+                            storeIntent.putExtra("userDate", fDate);
+                            storeIntent.putExtra("pickerDate", fDate);
+                            startActivity(storeIntent);
+                            finish();
+                        }
+                        else
+                        {
+                            Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                            startActivity(submitStoreIntent);
+                            finish();
+                        }
 					/*destroyNcleanup(1);
 					imgs = null;
 					uComments.clear();*/
@@ -414,10 +477,25 @@ public class SyncMasterSO extends Activity
 
                 else
                 {*/
-                Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                submitStoreIntent.putExtra("FROM", "AddNewStore_DynamicSectionWise");
-                startActivity(submitStoreIntent);
-                finish();
+
+                if(activityFrom.equals("StoreSelection"))
+                {
+                    Date date1 = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                    String fDate = sdf.format(date1).trim();
+                    Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                    storeIntent.putExtra("imei", imei);
+                    storeIntent.putExtra("userDate", fDate);
+                    storeIntent.putExtra("pickerDate", fDate);
+                    startActivity(storeIntent);
+                    finish();
+                }
+                else
+                {
+                    Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                    startActivity(submitStoreIntent);
+                    finish();
+                }
                 // }
 
             }
@@ -491,6 +569,19 @@ public class SyncMasterSO extends Activity
         xmlForWeb[0] = syncIntent.getStringExtra("xmlPathForSync");
         zipFileName = syncIntent.getStringExtra("OrigZipFileName");
         whereTo = syncIntent.getStringExtra("whereTo");
+        activityFrom=syncIntent.getStringExtra("activityFrom");
+        TelephonyManager tManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        imei = tManager.getDeviceId();
+
+        if(CommonInfo.imei.trim().equals(null) || CommonInfo.imei.trim().equals(""))
+        {
+            imei = tManager.getDeviceId();
+            CommonInfo.imei=imei;
+        }
+        else
+        {
+            imei=CommonInfo.imei.trim();
+        }
 
 
 
@@ -1090,9 +1181,25 @@ public class SyncMasterSO extends Activity
                     else
                     {
 */
-                    Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                    startActivity(submitStoreIntent);
-                    finish();
+                    if(activityFrom.equals("StoreSelection"))
+                    {
+                        Date date1 = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                        String fDate = sdf.format(date1).trim();
+                        Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                        storeIntent.putExtra("imei", imei);
+                        storeIntent.putExtra("userDate", fDate);
+                        storeIntent.putExtra("pickerDate", fDate);
+                        startActivity(storeIntent);
+                        finish();
+                    }
+                    else
+                    {
+                        Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                        startActivity(submitStoreIntent);
+                        finish();
+                    }
+
                     // }
 
                 }
@@ -1158,9 +1265,24 @@ public class SyncMasterSO extends Activity
 
 
 
-                Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
-                startActivity(submitStoreIntent);
-                finish();
+                if(activityFrom.equals("StoreSelection"))
+                {
+                    Date date1 = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                    String fDate = sdf.format(date1).trim();
+                    Intent storeIntent = new Intent(SyncMasterSO.this, StoreSelection.class);
+                    storeIntent.putExtra("imei", imei);
+                    storeIntent.putExtra("userDate", fDate);
+                    storeIntent.putExtra("pickerDate", fDate);
+                    startActivity(storeIntent);
+                    finish();
+                }
+                else
+                {
+                    Intent submitStoreIntent = new Intent(SyncMasterSO.this, StorelistActivity.class);
+                    startActivity(submitStoreIntent);
+                    finish();
+                }
 
             }
 

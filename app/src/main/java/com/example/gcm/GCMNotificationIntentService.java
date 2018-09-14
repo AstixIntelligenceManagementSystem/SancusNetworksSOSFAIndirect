@@ -171,8 +171,6 @@ public class GCMNotificationIntentService extends IntentService
 		NotificationCompat.BigTextStyle bigtextStyle=new  NotificationCompat.BigTextStyle(mNotifyBuilder);
 		bigtextStyle.setBigContentTitle(title);
 		bigtextStyle.bigText(msg);
-
-
 		// Post a notification
 		mNotificationManager.notify(notifyID, mNotifyBuilder.build());
 		// startActivity(resultIntent);

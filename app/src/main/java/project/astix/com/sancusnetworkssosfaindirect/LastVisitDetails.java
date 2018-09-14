@@ -56,10 +56,10 @@ import com.astix.Common.CommonInfo;
 
 public class LastVisitDetails extends BaseActivity
 {
-
+	LinkedHashMap<String, String> hmapStoreBasicDetails=new LinkedHashMap<String, String>();
 	TextView tv_outstandingvalue,tv_overdueVal;
 	String[] strInvoiceData;
-	LinearLayout ll_InvoiceLastVisit,ll_inflateInvoiceData;
+	//LinearLayout ll_InvoiceLastVisit,ll_inflateInvoiceData;
 
 	public  LinearLayout ll_gstDetails,ll_gstDependent;
 	public  RadioButton rb_gst_yes,rb_gst_no,rb_pending;
@@ -381,8 +381,23 @@ public class LastVisitDetails extends BaseActivity
 	
 	public void setQuotationList()
 	{}
-	
-	
+
+	public void StoreNameAndSalesPersonInfo()
+	{
+		hmapStoreBasicDetails=dbengine.fngetStoreBasicDetails(storeID);
+
+
+		TextView storeName = (TextView)findViewById(R.id.txt_storeSummary);
+		TextView txt_SalesPersonName_Value = (TextView)findViewById(R.id.txt_SalesPersonName_Value);
+		TextView txt_SalesPersonContact_Value = (TextView)findViewById(R.id.txt_SalesPersonContact_Value);
+		TextView txt_StoreCatType_Value = (TextView)findViewById(R.id.txt_StoreCatType_Value);
+
+		storeName.setText(hmapStoreBasicDetails.get("StoreName")+" "+getText(R.string.Summary));
+		txt_SalesPersonName_Value.setText(hmapStoreBasicDetails.get("OwnerName"));
+		txt_SalesPersonContact_Value.setText(hmapStoreBasicDetails.get("StoreContactNo"));
+		txt_StoreCatType_Value.setText(hmapStoreBasicDetails.get("StoreCatType"));
+
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -429,8 +444,8 @@ public class LastVisitDetails extends BaseActivity
 		
 		
 		this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-		
-		
+
+		StoreNameAndSalesPersonInfo();
 		long syncTIMESTAMP;
 		String fullTS;
 		
@@ -441,8 +456,8 @@ public class LastVisitDetails extends BaseActivity
 		
 		
 		    TextView storeName = (TextView)findViewById(R.id.txt_storeSummary);
-		ll_InvoiceLastVisit=(LinearLayout) findViewById(R.id.ll_InvoiceLastVisit);
-		ll_inflateInvoiceData=(LinearLayout) findViewById(R.id.ll_inflateInvoiceData);
+		/*ll_InvoiceLastVisit=(LinearLayout) findViewById(R.id.ll_InvoiceLastVisit);
+		ll_inflateInvoiceData=(LinearLayout) findViewById(R.id.ll_inflateInvoiceData);*/
 		    /*LinkedHashMap<String, String> hmapListQuoteISOfUnmappedWithProducts= dbengine.fnGetListQuoteISOfUnmappedWithProducts(storeID);
 		    if(hmapListQuoteISOfUnmappedWithProducts.size()>0)
 		    {
@@ -1397,8 +1412,8 @@ final Button btn_Cancel=(Button) findViewById(R.id.btn_Cancel);
 					dbengine.open();
 					dbengine.UpdateStoreEndVisit(storeID,startTS);
 					dbengine.close();
-					//Intent nxtP4 = new Intent(LastVisitDetails.this,ActualVisitStock.class);
-					Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch.class);
+					Intent nxtP4 = new Intent(LastVisitDetails.this,ActualVisitStock.class);
+					//Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch.class);
 					nxtP4.putExtra("storeID", storeID);
 					nxtP4.putExtra("SN", selStoreName);
 					nxtP4.putExtra("imei", imei);
@@ -1482,14 +1497,14 @@ final Button btn_Cancel=(Button) findViewById(R.id.btn_Cancel);
 		});
 
 		tv_outstandingvalue=(TextView) findViewById(R.id.tv_outstandingvalue);
-		tv_overdueVal=(TextView) findViewById(R.id.tv_overdueVal);
+		//tv_overdueVal=(TextView) findViewById(R.id.tv_overdueVal);
 		Double outstandingvalue=dbengine.fnGetStoretblLastOutstanding(storeID);
 		Double overdueBal=dbengine.fnGetStoretblLastOverDue(storeID);
 		tv_outstandingvalue.setText(""+outstandingvalue);
-		tv_overdueVal.setText(""+overdueBal);
+		//tv_overdueVal.setText(""+overdueBal);
 
 
-		setInvoiceData();
+		//setInvoiceData();
 	}
 
 	public void showAlertForEveryOne(String msg)
@@ -2050,7 +2065,7 @@ final Button btn_Cancel=(Button) findViewById(R.id.btn_Cancel);
 
 
 
-	public void setInvoiceData(){
+	/*public void setInvoiceData(){
 
 		strInvoiceData=dbengine.fetch_Store_tblInvoiceLastVisitDetails(storeID);
 
@@ -2091,7 +2106,7 @@ final Button btn_Cancel=(Button) findViewById(R.id.btn_Cancel);
 		else {
 			ll_InvoiceLastVisit.setVisibility(View.GONE);
 		}
-	}
+	}*/
 
 
 

@@ -6,6 +6,14 @@
    <string name="app_name">SancusNetworks SO SFA Dev</string>
    <!--<string name="app_name">SancusNetworks SO SFA Test</string>-->
    <!--<string name="app_name">SancusNetworks SO SFA Test Release</string>-->
+
+
+   <string name="SalesPersonName">स्टोर मालिक का नाम :</string>
+   <string name="SalesPersonContact">स्टोर मालिक संपर्क करें :</string>
+   <string name="SalesPersonAddress">बिक्री व्यक्ति का पता :</string>
+   <string name="StoreCatType">स्टोर श्रेणी का प्रकार :</string>
+
+
    <string name="genTermFetchingTime">वर्तमान समय ला रहा है..</string>
    <string name="selectReasonForLate">आगे बढ़ने के लिए, कृपया एक कारण का चयन करें कि आप देर क्यों कर रहे थे.</string>
    <string name="selectOtherReasonForLate">आगे बढ़ने के लिए, कृपया अन्य कारण बताएं कि आप देर क्यों कर रहे थे।</string>
@@ -24,7 +32,7 @@
    <string name="today_Notworking">काम नहीं कर रहे हो</string>
     <string name="working">काम कर रहे हो</string>
     <string name="not_working">काम नहीं कर रहे हो</string>
-
+   <string name="NoRouteAvailable">No routes available for your device.</string>
 
  <string name="select_attendance_scope">उपस्थिति रिपोर्ट देखें</string>
     <string name="select_attendance_report">डीएसआर उपस्थिति रिपोर्ट</string>
@@ -750,7 +758,7 @@
     <string name="Dashboard">डैशबोर्ड</string>
     <string name="MarketVisit">मार्केट विजिट</string>
     <string name="Execution">निष्पादन</string>
-    <string name="StoreMapping">स्टोर मैपिंग और मान्यकरण</string>
+    <string name="StoreMapping">स्टोर मान्यकरण</string>
     <string name="DistributorStock">वितरक स्टॉक</string>
     <string name="DistributorCheckIn">वितरक चेक इन</string>
     <string name="DSMTracker">डीएसआर ट्रैकर</string>

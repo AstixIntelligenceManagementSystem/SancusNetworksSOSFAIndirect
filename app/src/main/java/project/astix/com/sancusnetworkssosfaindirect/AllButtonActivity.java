@@ -3377,6 +3377,7 @@ private void SurveyWorking(){
             finish();*/
 
             Intent intent =new Intent(AllButtonActivity.this,StorelistActivity.class);
+
             AllButtonActivity.this.startActivity(intent);
             finish();
         }
@@ -3750,7 +3751,7 @@ private void SurveyWorking(){
                 {
 
                 }
-                for(int mm = 1; mm < 40  ; mm++)
+                for(int mm = 1; mm < 41  ; mm++)
                 {
                    // System.out.println("Excecuted function : "+newservice.flagExecutedServiceSuccesfully);
                     if(mm==1)
@@ -4065,6 +4066,16 @@ private void SurveyWorking(){
 
                         newservice = newservice.getStoreWiseOutStandings(getApplicationContext(), fDate, imei, rID,RouteType);
                         if(ServiceWorker.flagExecutedServiceSuccesfully !=39)
+                        {
+                            serviceException=true;
+                            break;
+                        }
+                    }
+                    if(mm==40)
+                    {
+
+                        newservice = newservice.getProductListLastVisitStockOrOrderMstr(getApplicationContext(), fDate, imei, rID);
+                        if(newservice.flagExecutedServiceSuccesfully!=1)
                         {
                             serviceException=true;
                             break;
