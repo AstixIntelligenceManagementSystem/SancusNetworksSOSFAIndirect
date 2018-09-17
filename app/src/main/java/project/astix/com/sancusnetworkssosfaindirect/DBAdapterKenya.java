@@ -22308,7 +22308,7 @@ open();
 
 					        		}
                                     Cursor cur=null;
-					        		if(!TextUtils.isEmpty(ctgryId) && !ctgryId.equals("0"))
+					        		/*if(!TextUtils.isEmpty(ctgryId) && !ctgryId.equals("0"))
                                     {
                                          cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" AND tblProductList.CategoryID='"+ctgryId+"'order by PrdOrdr Asc", null);
                                     }
@@ -22316,6 +22316,19 @@ open();
                                     {
 
                                         cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" order by PrdOrdr Asc", null);
+                                    }*/
+
+                                    if(!TextUtils.isEmpty(ctgryId) && !ctgryId.equals("0"))
+                                    {
+                                        // cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" AND tblProductList.CategoryID='"+ctgryId+"'order by PrdOrdr Asc", null);
+                                        // cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID inner join tblDistributorStock on tblProductList.ProductID=tblDistributorStock.PrdctId where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" AND tblProductList.CategoryID='"+ctgryId+"'order by PrdOrdr Asc", null);
+                                        cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID inner join tblDistributorStock on tblProductList.ProductID=tblDistributorStock.PrdctId and tblDistributorStock.StockQntty<>0 where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" AND tblProductList.CategoryID='"+ctgryId+"'order by PrdOrdr Asc", null); }
+                                    else
+                                    {
+
+                                        // cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" order by PrdOrdr Asc", null);
+                                        // cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID inner join tblDistributorStock on tblProductList.ProductID=tblDistributorStock.PrdctId where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" order by PrdOrdr Asc", null);
+                                        cur=db.rawQuery("Select tblProductList.ProductID,ProductShortName from tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID inner join tblDistributorStock on tblProductList.ProductID=tblDistributorStock.PrdctId and tblDistributorStock.StockQntty<>0 where ("+searchString+") and tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" order by PrdOrdr Asc", null);
                                     }
 
 					        	if(cur.getCount()>0)
