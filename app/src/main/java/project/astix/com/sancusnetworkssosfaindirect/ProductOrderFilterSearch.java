@@ -123,7 +123,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 	int countSubmitClicked=0;
 	ArrayList<String> productFullFilledSlabGlobal=new ArrayList<String>();
 
-	TextView img_ctgry;
+	ImageView img_ctgry;
 	String previousSlctdCtgry="";
 	LocationRequest mLocationRequest;
 	public int StoreCurrentStoreType=0;
@@ -1225,7 +1225,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 
 		//	spinner_product=(TextView) findViewById(R.id.spinner_product);
-			img_ctgry= (TextView) findViewById(R.id.img_ctgry);
+			img_ctgry= (ImageView) findViewById(R.id.img_ctgry);
 			ed_search=(EditText) findViewById(R.id.ed_search);
 
 			ed_search.setOnTouchListener(new View.OnTouchListener() {
@@ -1963,14 +1963,14 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			final EditText et_Stock=(EditText) viewProduct.findViewById(R.id.et_Stock);
 			final EditText et_LstStock=(EditText) viewProduct.findViewById(R.id.et_LstStock);
 
-			/*if(hmapProductIdLastStock.containsKey(productIdDynamic))
+			if(hmapProductIdLastStock.containsKey(productIdDynamic))
 			{
 				et_LstStock.setText(""+hmapProductIdLastStock.get(productIdDynamic));
 			}
 			else
 			{
 				et_LstStock.setText("");
-			}*/
+			}
 
 			et_Stock.setTag("etStock"+"_"+productIdDynamic);
 
@@ -10085,7 +10085,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 		dialog.dismiss();
 		previousSlctdCtgry=selectedCategory;
 		String lastTxtSearch=ed_search.getText().toString().trim();
-		img_ctgry.setText(selectedCategory);
+		//img_ctgry.setText(selectedCategory);
 
 		if(hmapctgry_details.containsKey(selectedCategory))
 		{

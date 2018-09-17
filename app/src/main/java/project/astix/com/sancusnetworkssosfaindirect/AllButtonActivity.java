@@ -3757,12 +3757,7 @@ private void SurveyWorking(){
                     if(mm==1)
                     {
 
-                        newservice = newservice.getallStores(getApplicationContext(), fDate, imei, rID,RouteType);
-                        if(ServiceWorker.flagExecutedServiceSuccesfully !=1)
-                        {
-                            serviceException=true;
-                            break;
-                        }
+
                     }
                     if(mm==2)
                     {
@@ -3879,7 +3874,12 @@ private void SurveyWorking(){
                     }
                     if(mm==14)
                     {
-
+                        newservice = newservice.getProductListLastVisitStockOrOrderMstr(getApplicationContext(), fDate, imei, rID);
+                        if(newservice.flagExecutedServiceSuccesfully!=1)
+                        {
+                            serviceException=true;
+                            break;
+                        }
                     }
                     if(mm==15)
                     {
@@ -4073,13 +4073,13 @@ private void SurveyWorking(){
                     }
                     if(mm==40)
                     {
-
-                        newservice = newservice.getProductListLastVisitStockOrOrderMstr(getApplicationContext(), fDate, imei, rID);
-                        if(newservice.flagExecutedServiceSuccesfully!=1)
+                        newservice = newservice.getallStores(getApplicationContext(), fDate, imei, rID,RouteType);
+                        if(ServiceWorker.flagExecutedServiceSuccesfully !=1)
                         {
                             serviceException=true;
                             break;
                         }
+
                     }
                 }
 

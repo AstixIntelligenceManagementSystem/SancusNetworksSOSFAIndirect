@@ -58,8 +58,6 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
     public String date;
     public String pickerDate;
     public String selStoreName;
-    int isStockAvlbl=0;
-    int isCmpttrAvlbl=0;
     List<String> categoryNames;
     int progressBarStatus=0;
     public  Dialog dialog=null;
@@ -69,6 +67,10 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
     String previousSlctdCtgry="";
 
     LinkedHashMap<String,String> hmapPrdctData=new LinkedHashMap<>();
+    LinkedHashMap<String,String> hmapPrdctAndDisplayUnitData=new LinkedHashMap<>();
+
+
+
     LinkedHashMap<String, String> hmapFilterProductList=new LinkedHashMap<String, String>();
 
     LinkedHashMap<String,String> hmapFetchPDASavedData=new LinkedHashMap<>();
@@ -181,94 +183,89 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
                 //fireBackDetPg.putExtra("rID", routeID);
                 startActivity(fireBackDetPg);
                 finish();
-
+                //aa
 
             }
         });
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isStockFilledProperly())
+                dbengine.deleteActualVisitData(storeID);
+                if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
                 {
-                    dbengine.deleteActualVisitData(storeID);
+                    for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
 
-                    if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
-                    {
-                        for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
-
-                            dbengine.saveTblActualVisitStock(storeID,entry.getKey(),entry.getValue(),1);
+                        dbengine.saveTblActualVisitStock(storeID,entry.getKey(),entry.getValue(),1);
 
 
-                        }
                     }
+                }
+                passIntentToProductOrderFilter();
+                //---------------********Video page open code
+    /*            dbengine.open();
+               String VideoData=      dbengine.getVideoNameByStoreID(storeID,"2");
+                dbengine.close();
+                int flagPlayVideoForStore=0;
+                String Video_Name="0";
+                String VIDEO_PATH="0";
+                String VideoViewed="0";
+                String Contentype="0";
+                if(!VideoData.equals("0") && VideoData.contains("^")){
+                     Video_Name=   VideoData.toString().split(Pattern.quote("^"))[0];
+                     flagPlayVideoForStore=   Integer.parseInt( VideoData.toString().split(Pattern.quote("^"))[1]);
+                    VideoViewed=    VideoData.toString().split(Pattern.quote("^"))[2];
+                    Contentype=    VideoData.toString().split(Pattern.quote("^"))[3];
+                }
+
+                *//*  VIDEO_PATH= "/sdcard/WhatsApp/Media/WhatsApp Video/VID-20180303-WA0030.mp4";
+                VIDEO_PATH= "/sdcard/VideoLTFOODS/SampleVideo5mb.mp4";*//*
+                VIDEO_PATH=   Environment.getExternalStorageDirectory() + "/" + CommonInfo.VideoFolder + "/"+Video_Name;
+                Uri intentUri;
+                //if videoShown check
+                if(flagPlayVideoForStore==1 && !(VIDEO_PATH.equals("0")) && VideoViewed.equals("0")&& Contentype.equals("2")){
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                        File file = new File(VIDEO_PATH);
+                         intentUri = FileProvider.getUriForFile(getBaseContext(), getApplicationContext().getPackageName() + ".provider", file);
+                    }
+                    else{
+                         intentUri = Uri.parse(VIDEO_PATH);
+                    }
+
+
+                    if(intentUri!=null) {
+                        Intent intent = new Intent(ActualVisitStock.this,VideoPlayerActivityForStore.class);
+                        intent.putExtra("FROM","ActualVisitStock");
+                        intent.putExtra("STRINGPATH",VIDEO_PATH);
+                        intent.putExtra("storeID", storeID);
+                        intent.putExtra("SN", selStoreName);
+                        intent.putExtra("imei", imei);
+                        intent.putExtra("userdate", date);
+                        intent.putExtra("pickerDate", pickerDate);
+                        intent.putExtra("flgOrderType", 1);
+                        startActivity(intent);
+                        finish();
+                       // openVideoPlayerDialog(VIDEO_PATH);
+
+                    }
+                    else{
+                        Toast.makeText(ActualVisitStock.this, "No video Found", Toast.LENGTH_LONG).show();
+                        passIntentToProductOrderFilter();
+                    }
+
+                }
+                else{
+
                     passIntentToProductOrderFilter();
-                }
-                else
-                {
-                    showAlertForEveryOne("It's compulsory to fill atleast one stock as you have mentioned Ltfoods Stock available.");
-                }
-
-
+                }*/
+                //---------------********Video page open code  end
             }
         });
 
-    }
-
-    public void showAlertForEveryOne(String msg)
-    {
-        AlertDialog.Builder alertDialogNoConn = new AlertDialog.Builder(ActualVisitStock.this);
-        alertDialogNoConn.setTitle("Information");
-        alertDialogNoConn.setMessage(msg);
-        alertDialogNoConn.setCancelable(false);
-        alertDialogNoConn.setNeutralButton(R.string.txtOk,new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
-                dialog.dismiss();
-
-
-            }
-        });
-        alertDialogNoConn.setIcon(R.drawable.info_ico);
-        AlertDialog alert = alertDialogNoConn.create();
-        alert.show();
-    }
-    public boolean isStockFilledProperly()
-    {
-        boolean stockFilledPrprly=false;
-        if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
-        {
-            for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
-
-                if(!TextUtils.isEmpty(entry.getValue()))
-                {
-                    if(Integer.parseInt(entry.getValue().toString())>0)
-                    {
-                        stockFilledPrprly=true;
-                        break;
-                    }
-                }
-
-
-
-            }
-        }
-        return stockFilledPrprly;
     }
 
     public void passIntentToProductOrderFilter(){
-        if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
-        {
-            for (Map.Entry<String,String> entry:hmapFetchPDASavedData.entrySet()){
-
-                dbengine.saveTblActualVisitStock(storeID,entry.getKey(),entry.getValue(),1);
-
-
-            }
-        }
-
+        // Intent nxtP4 = new Intent(ActualVisitStock.this,FeedbackCompetitorActivity.class);
         Intent nxtP4 = new Intent(ActualVisitStock.this,ProductOrderFilterSearch.class);
-        //Intent nxtP4 = new Intent(LastVisitDetails.this,ProductOrderFilterSearch_RecycleView.class);
         nxtP4.putExtra("storeID", storeID);
         nxtP4.putExtra("SN", selStoreName);
         nxtP4.putExtra("imei", imei);
@@ -293,6 +290,8 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
 
                 TextView prdName= (TextView) viewProduct.findViewById(R.id.prdName);
                 final EditText et_stckVal= (EditText) viewProduct.findViewById(R.id.et_stckVal);
+                final EditText et_unit= (EditText) viewProduct.findViewById(R.id.et_unit);
+                et_unit.setText(hmapPrdctAndDisplayUnitData.get(prdId.trim()));
                 prdName.setText(value);
                 prdName.setTag(prdId);
 
@@ -345,6 +344,7 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
     public void fetchDataFromDatabase(){
         dbengine.open();
         hmapPrdctData=dbengine.fetchProductDataForActualVisit();
+        hmapPrdctAndDisplayUnitData=dbengine.fetchProductAndDisplayUnitDataForActualVisit();
         hmapFetchPDASavedData=dbengine.fetchActualVisitData(storeID);
         hmapProductStockFromPurchaseTable=dbengine.fetchProductStockFromPurchaseTable(storeID);
         StoreCurrentStoreType=Integer.parseInt(dbengine.fnGetStoreTypeOnStoreIdBasis(storeID));
@@ -399,8 +399,6 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
             date = passedvals.getStringExtra("userdate");
             pickerDate = passedvals.getStringExtra("pickerDate");
             selStoreName = passedvals.getStringExtra("SN");
-            isStockAvlbl=passedvals.getIntExtra("isStockAvlbl",0);
-            isCmpttrAvlbl=passedvals.getIntExtra("isCmpttrAvlbl",0);
 
         }
 
@@ -523,7 +521,8 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
 
     }
 
-    private void allMessageAlert(String message) {
+    private void allMessageAlert(String message)
+    {
         AlertDialog.Builder alertDialogNoConn = new AlertDialog.Builder(ActualVisitStock.this);
         alertDialogNoConn.setTitle(ActualVisitStock.this.getResources().getString(R.string.genTermInformation));
         alertDialogNoConn.setMessage(message);
@@ -563,6 +562,7 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
 
 
     }
+
 
     @Override
     protected void onStop() {
@@ -618,3 +618,4 @@ public class ActualVisitStock extends Activity implements CategoryCommunicator {
     }
 
 }
+

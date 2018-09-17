@@ -1744,7 +1744,7 @@ private void marketVisitGetRoutesClick(){
                 {
 
                 }
-                for(int mm = 1; mm < 39  ; mm++)
+                for(int mm = 1; mm < 41  ; mm++)
                 {
                     System.out.println("mm PRINT...."+mm);
                     if(mm==1)
@@ -2047,6 +2047,26 @@ private void marketVisitGetRoutesClick(){
 
                         newservice=newservice.fnGetDistStockData(getApplicationContext(),imei);
                         if(ServiceWorker.flagExecutedServiceSuccesfully !=38)
+                        {
+                            serviceException=true;
+                            break;
+                        }
+                    }
+                    if(mm==39)
+                    {
+
+                        newservice = newservice.getStoreWiseOutStandings(getApplicationContext(), fDate, imei, rID,RouteType);
+                        if(ServiceWorker.flagExecutedServiceSuccesfully !=39)
+                        {
+                            serviceException=true;
+                            break;
+                        }
+                    }
+                    if(mm==40)
+                    {
+
+                        newservice = newservice.getProductListLastVisitStockOrOrderMstr(getApplicationContext(), fDate, imei, rID);
+                        if(newservice.flagExecutedServiceSuccesfully!=1)
                         {
                             serviceException=true;
                             break;

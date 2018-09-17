@@ -754,7 +754,7 @@
 
 
     <string name="ClickPhoto">फोटो क्लिक करें</string>
-
+   <string name="StockUnit">Unit</string>
     <string name="Dashboard">डैशबोर्ड</string>
     <string name="MarketVisit">मार्केट विजिट</string>
     <string name="Execution">निष्पादन</string>

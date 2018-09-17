@@ -150,7 +150,7 @@ public class DatabaseAssistant
 			exportTable("tblStoreCloseReasonSaving");
 			exportTable("tblAllCollectionData");
 			exportTableAttandance("tblAttandanceDetails");
-
+			exportTable("tblMerchandisingInstructionDetails");
 			//String routeID=GetActiveRouteIDSunil();
 		}
 		String xmlString = xmlBuilder.end();

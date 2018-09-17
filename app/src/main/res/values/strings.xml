@@ -765,7 +765,7 @@
     <string name="crntInvoice">Current Invoice: </string>
     <string name="minAmountDue">Minimum Amount Due: </string>
 
-
+    <string name="StockUnit">Unit</string>
     <!--All button Activity-->
     <string name="Dashboard">Dashboard</string>
     <string name="MarketVisit">Market Visit</string>

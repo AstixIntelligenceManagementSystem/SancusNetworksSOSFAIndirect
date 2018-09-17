@@ -14,7 +14,7 @@ import java.io.OutputStream;
 
 public class CommonFunction {
 
-    public Bitmap normalizeImageForUri(Context context, Uri uri)
+    public static Bitmap normalizeImageForUri(Context context, Uri uri)
     {
         Bitmap rotatedBitmap = null;
 
@@ -35,7 +35,7 @@ public class CommonFunction {
         return rotatedBitmap;
     }
 
-    private  Bitmap rotateBitmap(Bitmap bitmap, int orientation) {
+    private static Bitmap rotateBitmap(Bitmap bitmap, int orientation) {
         Matrix matrix = new Matrix();
         switch (orientation) {
             case ExifInterface.ORIENTATION_NORMAL:
@@ -78,7 +78,7 @@ public class CommonFunction {
         }
     }
 
-    private  void saveBitmapToFile(Context context, Bitmap croppedImage, Uri saveUri) {
+    private static void saveBitmapToFile(Context context, Bitmap croppedImage, Uri saveUri) {
         if (saveUri != null) {
             OutputStream outputStream = null;
             try {
@@ -95,7 +95,7 @@ public class CommonFunction {
         }
     }
 
-    private  void closeSilently(@Nullable Closeable c) {
+    private static void closeSilently(@Nullable Closeable c) {
         if (c == null) {
             return;
         }

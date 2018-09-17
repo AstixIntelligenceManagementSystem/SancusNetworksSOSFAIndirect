@@ -92,7 +92,7 @@ import java.util.regex.Pattern;
 public class OrderReview extends BaseActivity implements OnItemSelectedListener, OnClickListener, OnFocusChangeListener, LocationListener,GoogleApiClient.ConnectionCallbacks,
 GoogleApiClient.OnConnectionFailedListener{
 
-
+	public static boolean isSubmitClicked;
 	Double outstandingvalue=0.0;
 	LinkedHashMap<String, String> hmapSchmDscrptnAndBenfit;
 	LinkedHashMap<String,ArrayList<String>> hmapProductMinMax;
@@ -462,10 +462,17 @@ GoogleApiClient.OnConnectionFailedListener{
 			{
 				// TODO Auto-generated method stub
 				super.onResume();
-				
-				
-				
-				
+
+
+
+				if(isSubmitClicked)
+				{
+					submitFunctionalityAfterMerchandisingInstruction();
+				}
+				else
+				{
+
+				}
 				
 			/*	dbengine.open();
 				String Noti_textWithMsgServerID=dbengine.fetchNoti_textFromtblNotificationMstr();
@@ -865,8 +872,7 @@ public void loadPurchaseProductDefault()
 					    setInvoiceTableView();
 }
 
-		public void
-		initializeFields() {
+		public void initializeFields() {
 
 			//nitika
 			mCustomKeyboardNum= new CustomKeyboard(this, R.id.keyboardviewNum, R.xml.num );
@@ -1602,134 +1608,135 @@ public void loadPurchaseProductDefault()
 
 			   }
 			  });
-			  final Button btn_Submit=(Button) findViewById(R.id.btn_sbmt);
-			  btn_Submit.setTag("0_0");
-			  btn_Submit.setOnClickListener(new OnClickListener() {
-			   
-			   @Override
-			   public void onClick(View v) 
-			   {
-			    // TODO Auto-generated method stub
+			final Button btn_Submit=(Button) findViewById(R.id.btn_sbmt);
+			btn_Submit.setTag("0_0");
+			btn_Submit.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v)
+				{
+					// TODO Auto-generated method stub
 
 
-				   if(ed_LastEditextFocusd!=null)
-				   {
-					   String tag=ed_LastEditextFocusd.getTag().toString();
-					   if(tag.contains("etOrderQty"))
-					   {
-						   if (hmapDistPrdctStockCount.containsKey(ProductIdOnClickedEdit)) {
-							   if(hmapPrdctIdOutofStock!=null && hmapPrdctIdOutofStock.size()>0)
-							   {
-								   if(hmapPrdctIdOutofStock.containsKey(ProductIdOnClickedEdit))
-								   {
-									   int lastOrgnlQntty=Integer.parseInt(hmapPrdctIdOutofStock.get(ProductIdOnClickedEdit));
+					if(ed_LastEditextFocusd!=null)
+					{
+						String tag=ed_LastEditextFocusd.getTag().toString();
+						if(tag.contains("etOrderQty"))
+						{
+							if (hmapDistPrdctStockCount.containsKey(ProductIdOnClickedEdit)) {
+								if(hmapPrdctIdOutofStock!=null && hmapPrdctIdOutofStock.size()>0)
+								{
+									if(hmapPrdctIdOutofStock.containsKey(ProductIdOnClickedEdit))
+									{
+										int lastOrgnlQntty=Integer.parseInt(hmapPrdctIdOutofStock.get(ProductIdOnClickedEdit));
 
 
-									   //hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-									   // int updatedStock=lastOrgnlQntty-originalQntty;
-									   int netStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit)+lastOrgnlQntty;
-									   hmapDistPrdctStockCount.put(ProductIdOnClickedEdit,netStockLeft);
-
-
-
-
-								   }
-							   }
-							   int originalNetQntty=0;
-							   if(!TextUtils.isEmpty(ed_LastEditextFocusd.getText().toString()))
-							   {
-								   originalNetQntty=Integer.parseInt(ed_LastEditextFocusd.getText().toString());
-							   }
-							   int totalStockLeft = hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-
-							   int netStock=totalStockLeft-originalNetQntty;
-							   hmapDistPrdctStockCount.put(ProductIdOnClickedEdit,netStock);
-							   if(originalNetQntty!=0)
-							   {
-								   hmapPrdctIdOutofStock.put(ProductIdOnClickedEdit,ed_LastEditextFocusd.getText().toString().trim());
-							   }
-							   else
-							   {
-								   hmapPrdctIdOutofStock.remove(ProductIdOnClickedEdit);
-								   dbengine.deleteExistStockTable(distID,strGlobalOrderID,ProductIdOnClickedEdit);
-							   }  if (originalNetQntty>totalStockLeft)
-							   {
-
-								   alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,2);
-							   }
-							   else
-							   {
-								   if(dbengine.isFlgCrediBalSubmitted(storeID))
-								   {
-
-									   nextStepAfterRetailerCreditBal(2);
-
-								   }
-								   else
-								   {
-
-									   alertForRetailerCreditLimit(2);
-								   }
-							   }
-
-						   }
-						   else
-						   {
-							   if(dbengine.isFlgCrediBalSubmitted(storeID))
-							   {
-
-								   nextStepAfterRetailerCreditBal(2);
-
-							   }
-							   else
-							   {
-
-								   alertForRetailerCreditLimit(2);
-							   }
-						   }
-					   }
-
-
-					   else
-					   {
-						   if(dbengine.isFlgCrediBalSubmitted(storeID))
-						   {
-
-							   nextStepAfterRetailerCreditBal(2);
-
-						   }
-						   else
-						   {
-
-							   alertForRetailerCreditLimit(2);
-						   }
-					   }
-
-
-
-				   }
-				   else
-				   {
-					   if(dbengine.isFlgCrediBalSubmitted(storeID))
-					   {
-
-						   nextStepAfterRetailerCreditBal(2);
-
-					   }
-					   else
-					   {
-
-						   alertForRetailerCreditLimit(2);
-					   }
-				   }
+										//hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+										// int updatedStock=lastOrgnlQntty-originalQntty;
+										int netStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit)+lastOrgnlQntty;
+										hmapDistPrdctStockCount.put(ProductIdOnClickedEdit,netStockLeft);
 
 
 
 
-			   }
-			  });
-			  
-			  img_return=(ImageView) findViewById(R.id.img_return);
+									}
+								}
+								int originalNetQntty=0;
+								if(!TextUtils.isEmpty(ed_LastEditextFocusd.getText().toString()))
+								{
+									originalNetQntty=Integer.parseInt(ed_LastEditextFocusd.getText().toString());
+								}
+								int totalStockLeft = hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+
+								int netStock=totalStockLeft-originalNetQntty;
+								hmapDistPrdctStockCount.put(ProductIdOnClickedEdit,netStock);
+								if(originalNetQntty!=0)
+								{
+									hmapPrdctIdOutofStock.put(ProductIdOnClickedEdit,ed_LastEditextFocusd.getText().toString().trim());
+								}
+								else
+								{
+									hmapPrdctIdOutofStock.remove(ProductIdOnClickedEdit);
+									dbengine.deleteExistStockTable(distID,strGlobalOrderID,ProductIdOnClickedEdit);
+								}  if (originalNetQntty>totalStockLeft)
+								{
+
+									alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,2);
+								}
+								else
+								{
+									if(dbengine.isFlgCrediBalSubmitted(storeID))
+									{
+
+										nextStepAfterRetailerCreditBal(2);
+
+									}
+									else
+									{
+
+										alertForRetailerCreditLimit(2);
+									}
+								}
+
+							}
+							else
+							{
+								if(dbengine.isFlgCrediBalSubmitted(storeID))
+								{
+
+									nextStepAfterRetailerCreditBal(2);
+
+								}
+								else
+								{
+
+									alertForRetailerCreditLimit(2);
+								}
+							}
+						}
+
+
+						else
+						{
+							if(dbengine.isFlgCrediBalSubmitted(storeID))
+							{
+
+								nextStepAfterRetailerCreditBal(2);
+
+							}
+							else
+							{
+
+								alertForRetailerCreditLimit(2);
+							}
+						}
+
+
+
+					}
+					else
+					{
+						if(dbengine.isFlgCrediBalSubmitted(storeID))
+						{
+
+							nextStepAfterRetailerCreditBal(2);
+
+						}
+						else
+						{
+
+							alertForRetailerCreditLimit(2);
+						}
+					}
+
+
+
+
+				}
+			});
+
+
+			img_return=(ImageView) findViewById(R.id.img_return);
 			  img_return.setOnClickListener(new OnClickListener() {
 			   
 			   @Override
@@ -8934,7 +8941,13 @@ public void loadPurchaseProductDefault()
 
 	 if(valBtnClickedFrom==3)//Clicked By Btn Submitt
 	 {
-	     //Send Data for Sync
+
+		 Intent in=new Intent(OrderReview.this,MerchandisingInstruction.class);
+		 in.putExtra("storeID", storeID);
+		 in.putExtra("OrderPDAID", strGlobalOrderID);
+		 startActivity(in);
+
+	    /* //Send Data for Sync
 		
 		 // Changes By Sunil 
 		   AlertDialog.Builder alertDialogSubmitConfirm = new AlertDialog.Builder(OrderReview.this);
@@ -8963,7 +8976,7 @@ public void loadPurchaseProductDefault()
 								}
 							 else
 							 {
-								/* dbengine.close();
+								*//* dbengine.close();
 
 									// TODO Auto-generated method stub
 									boolean isGPSok = false;
@@ -8998,17 +9011,17 @@ public void loadPurchaseProductDefault()
 											new standBYtask().execute()); // Thread keeping 1 minute time
 															// watch
 									
-									(new Thread(chkSTANDBY)).start();*/
+									(new Thread(chkSTANDBY)).start();*//*
 							      
 									
 								
 								 appLocationService=new AppLocationService();
 								 
-								/* pm = (PowerManager) getSystemService(POWER_SERVICE);
-								 *//*  wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
+								*//* pm = (PowerManager) getSystemService(POWER_SERVICE);
+								 *//**//*  wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
 							                | PowerManager.ACQUIRE_CAUSES_WAKEUP
 							                | PowerManager.ON_AFTER_RELEASE, "INFO");
-							        wl.acquire();*/
+							        wl.acquire();*//*
 							       
 							        
 							        pDialog2STANDBY=ProgressDialog.show(OrderReview.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
@@ -9042,7 +9055,7 @@ public void loadPurchaseProductDefault()
 							// storeSubmit.setEnabled(false);
 							//storeSave4Later.setEnabled(false);
 							//storeSaveContinue4Later.setEnabled(false);
-							/* int Outstat=3;
+							*//* int Outstat=3;
 							TransactionTableDataDeleteAndSaving(Outstat);
 							InvoiceTableDataDeleteAndSaving(Outstat);
 						 
@@ -9058,7 +9071,7 @@ public void loadPurchaseProductDefault()
 							
 							dbengine.UpdateStoreFlag(storeID.trim(), 3);
 							//dbengine.deleteStoreRecordFromtblStoreSchemeFreeProQtyOtherDetailsOnceSubmitted(fStoreID);
-							dbengine.close();*/
+							dbengine.close();*//*
 							
 							//new FullSyncDataNow().execute();
 							
@@ -9081,7 +9094,7 @@ public void loadPurchaseProductDefault()
 			alert.show();
 			
 
-		    
+		    */
 		 
 	 }
 	 if(valBtnClickedFrom==1)//Clicked By Btn Save
@@ -11713,6 +11726,7 @@ public void loadPurchaseProductDefault()
 		alert.show();
 
 
+
 	}
 
 
@@ -12757,5 +12771,143 @@ public void loadPurchaseProductDefault()
 		}
 
 	}
+	public void submitFunctionalityAfterMerchandisingInstruction()
+	{
+		isSubmitClicked=false;
+		submitWithoutAlert();
+				/* AlertDialog.Builder alertDialogSubmitConfirm = new AlertDialog.Builder(OrderReview.this);
+				 alertDialogSubmitConfirm.setTitle(getText(R.string.genTermNoDataConnection));
+				 alertDialogSubmitConfirm.setMessage(getText(R.string.submitConfirmAlert));
+				 alertDialogSubmitConfirm.setCancelable(false);
 
+				 alertDialogSubmitConfirm.setNeutralButton(OrderReview.this.getResources().getString(R.string.AlertDialogYesButton), new DialogInterface.OnClickListener() {
+					 public void onClick(DialogInterface dialog, int which)
+					 {
+						 butClickForGPS=3;
+						 dbengine.open();
+						 if ((dbengine.PrevLocChk(storeID.trim())) )
+						 {
+							 dbengine.close();
+							 try
+							 {
+								 FullSyncDataNow task = new FullSyncDataNow(OrderReview.this);
+								 task.execute();
+							 }
+							 catch (Exception e) {
+								 // TODO Autouuid-generated catch block
+								 e.printStackTrace();
+
+							 }
+						 }
+						 else
+						 {
+
+
+
+							 appLocationService=new AppLocationService();
+
+
+							 pDialog2STANDBY=ProgressDialog.show(OrderReview.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
+							 pDialog2STANDBY.setIndeterminate(true);
+
+							 pDialog2STANDBY.setCancelable(false);
+							 pDialog2STANDBY.show();
+
+							 if(isGooglePlayServicesAvailable()) {
+								 createLocationRequest();
+
+								 mGoogleApiClient = new GoogleApiClient.Builder(OrderReview.this)
+										 .addApi(LocationServices.API)
+										 .addConnectionCallbacks(OrderReview.this)
+										 .addOnConnectionFailedListener(OrderReview.this)
+										 .build();
+								 mGoogleApiClient.connect();
+							 }
+
+							 startService(new Intent(OrderReview.this, AppLocationService.class));
+							 Location nwLocation=appLocationService.getLocation(locationManager,LocationManager.GPS_PROVIDER,location);
+							 Location gpsLocation=appLocationService.getLocation(locationManager,LocationManager.NETWORK_PROVIDER,location);
+							 countDownTimer2 = new CoundownClass2(startTime, interval);
+							 countDownTimer2.start();
+
+
+
+
+						 }
+
+
+
+					 }
+				 });
+
+				 alertDialogSubmitConfirm.setNegativeButton(OrderReview.this.getResources().getString(R.string.AlertDialogNoButton), new DialogInterface.OnClickListener() {
+
+					 @Override
+					 public void onClick(DialogInterface dialog, int which) {
+						 // TODO Auto-generated method stub
+						 dialog.dismiss();
+					 }
+				 });
+
+				 alertDialogSubmitConfirm.setIcon(R.drawable.info_ico);
+
+				 AlertDialog alert = alertDialogSubmitConfirm.create();
+
+				 alert.show();*/
+	}
+	public void submitWithoutAlert()
+	{
+		butClickForGPS=3;
+		dbengine.open();
+		if ((dbengine.PrevLocChk(storeID.trim())) )
+		{
+			dbengine.close();
+			try
+			{
+				FullSyncDataNow task = new FullSyncDataNow(OrderReview.this);
+				task.execute();
+			}
+			catch (Exception e) {
+				// TODO Autouuid-generated catch block
+				e.printStackTrace();
+
+			}
+		}
+		else
+		{
+
+
+
+			appLocationService=new AppLocationService();
+
+
+			pDialog2STANDBY=ProgressDialog.show(OrderReview.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
+			pDialog2STANDBY.setIndeterminate(true);
+
+			pDialog2STANDBY.setCancelable(false);
+			pDialog2STANDBY.show();
+
+			if(isGooglePlayServicesAvailable()) {
+				createLocationRequest();
+
+				mGoogleApiClient = new GoogleApiClient.Builder(OrderReview.this)
+						.addApi(LocationServices.API)
+						.addConnectionCallbacks(OrderReview.this)
+						.addOnConnectionFailedListener(OrderReview.this)
+						.build();
+				mGoogleApiClient.connect();
+			}
+
+			startService(new Intent(OrderReview.this, AppLocationService.class));
+			Location nwLocation=appLocationService.getLocation(locationManager,LocationManager.GPS_PROVIDER,location);
+			Location gpsLocation=appLocationService.getLocation(locationManager,LocationManager.NETWORK_PROVIDER,location);
+			countDownTimer2 = new CoundownClass2(startTime, interval);
+			countDownTimer2.start();
+
+
+
+
+		}
+
+	}
 }
