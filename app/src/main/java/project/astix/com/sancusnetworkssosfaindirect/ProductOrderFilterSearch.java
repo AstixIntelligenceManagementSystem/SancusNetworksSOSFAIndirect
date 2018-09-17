@@ -422,7 +422,9 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 		 public int isbtnExceptionVisible=0;
 		 ImageView img_return;
 
-
+	 Button btn_Save;
+	 Button btn_SaveExit;
+	 Button btn_orderReview;
 		 public LocationManager locationManager;
 
 		  boolean isGPSEnabled = false;
@@ -1496,7 +1498,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			     });
 
 
-			final Button btn_orderReview=(Button) findViewById(R.id.btn_orderReview);
+			 btn_orderReview=(Button) findViewById(R.id.btn_orderReview);
 			btn_orderReview.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -1506,7 +1508,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 
 				    //TODO Auto-generated method stub
-
+					btn_bck.setEnabled(false);
+					btn_SaveExit.setEnabled(false);
+					btn_Save.setEnabled(false);
+					btn_orderReview.setEnabled(false);
 
 					fnCreditAndStockCal(0);
 
@@ -1514,7 +1519,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 				}
 			});
-			final Button btn_Save=(Button) findViewById(R.id.btn_save);
+			 btn_Save=(Button) findViewById(R.id.btn_save);
 		    btn_Save.setTag("0_0");
 		    btn_Save.setOnClickListener(new OnClickListener()
 		    {
@@ -1524,7 +1529,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			   {
 			    // TODO Auto-generated method stub
 
-
+				   btn_bck.setEnabled(false);
+				   btn_SaveExit.setEnabled(false);
+				   btn_Save.setEnabled(false);
+				   btn_orderReview.setEnabled(false);
 				   fnCreditAndStockCal(1);
 
 
@@ -1536,7 +1544,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			   }
 			  });
 
-			  final Button btn_SaveExit=(Button) findViewById(R.id.btn_saveExit);
+			 btn_SaveExit=(Button) findViewById(R.id.btn_saveExit);
 		      btn_SaveExit.setTag("0_0");
 			  btn_SaveExit.setOnClickListener(new OnClickListener()
 			  {
@@ -1544,7 +1552,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 			   @Override
 			   public void onClick(View v) {
 			    // TODO Auto-generated method stub
-
+				   btn_bck.setEnabled(false);
+				   btn_SaveExit.setEnabled(false);
+				   btn_Save.setEnabled(false);
+				   btn_orderReview.setEnabled(false);
 				   fnCreditAndStockCal(2);
 
 
@@ -1621,7 +1632,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 			   @Override
 			   public void onClick(View v) {
-
+				   btn_bck.setEnabled(false);
+				   btn_SaveExit.setEnabled(false);
+				   btn_Save.setEnabled(false);
+				   btn_orderReview.setEnabled(false);
 				   fnCreditAndStockCal(5);
 
 
@@ -8812,6 +8826,11 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 		   @Override
 		         protected void onPostExecute(Void args) {
 
+			   btn_bck.setEnabled(true);
+			   btn_SaveExit.setEnabled(true);
+			   btn_Save.setEnabled(true);
+			   btn_orderReview.setEnabled(true);
+
 			   if(mProgressDialog.isShowing()==true)
 	           {
 		     mProgressDialog.dismiss();
@@ -10522,7 +10541,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 					alertForRetailerCreditLimit(flagClkdButton);
 				}
 			}
-
+				btn_bck.setEnabled(true);
+				btn_SaveExit.setEnabled(true);
+				btn_Save.setEnabled(true);
+				btn_orderReview.setEnabled(true);
 				dialog.dismiss();
 
 			}
@@ -10535,6 +10557,10 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 				edOrderCurrent.clearFocus();
 				edOrderCurrentLast.requestFocus();
+				btn_bck.setEnabled(true);
+				btn_SaveExit.setEnabled(true);
+				btn_Save.setEnabled(true);
+				btn_orderReview.setEnabled(true);
 				dialog.dismiss();
 			}
 		});
@@ -11117,6 +11143,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator
 
 			}
 		}
+
 	}
 
 	public void fnCreditAndStockCal(int butnClkd)
