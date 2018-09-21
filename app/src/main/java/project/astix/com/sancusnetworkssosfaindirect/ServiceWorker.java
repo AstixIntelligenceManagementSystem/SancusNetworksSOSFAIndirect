@@ -6386,6 +6386,7 @@ public class ServiceWorker
 						int CatOrdr=0;
 						int PrdOrdr=0;
 						int ManufacturerID=0;
+						int flagPriority=0;
 						 Element element = (Element) tblPrdctMstrNode.item(i);
 							
 			                if(!element.getElementsByTagName("CatID").equals(null))
@@ -6533,11 +6534,23 @@ public class ServiceWorker
 				                	ManufacturerID=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
 				                	
 				                }
-			            	 }	
-			                
+			            	 }
+						if(!element.getElementsByTagName("flagPriority").equals(null))
+						{
+
+							NodeList flagPriorityNode = element.getElementsByTagName("flagPriority");
+							Element     line = (Element) flagPriorityNode.item(0);
+
+							if(flagPriorityNode.getLength()>0)
+							{
+
+								flagPriority=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+
+							}
+						}
 						
 						//SearchField	
-						dbengine.saveSOAPdataProductList(CatID,ProductID,ProductShortName,DisplayUnit,CalculateKilo,KGLiter,CatOrdr,PrdOrdr,StoreCatNodeId,SearchField,ManufacturerID);						
+						dbengine.saveSOAPdataProductList(CatID,ProductID,ProductShortName,DisplayUnit,CalculateKilo,KGLiter,CatOrdr,PrdOrdr,StoreCatNodeId,SearchField,ManufacturerID,flagPriority);
 						
 						
 					}

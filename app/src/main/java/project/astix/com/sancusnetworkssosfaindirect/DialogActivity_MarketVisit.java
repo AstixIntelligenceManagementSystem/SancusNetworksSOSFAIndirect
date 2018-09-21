@@ -342,9 +342,9 @@ TextView txt_HdrVst;
                     {
 
                     }
-                            if(dbengine.isDataAlreadyExist(tempSalesmanNodeId,tempSalesmanNodeType))
+                            if(dbengine.isDataAlreadyExist(0,0))
                             {
-                                shardPrefForCoverageArea(tempSalesmanNodeId,tempSalesmanNodeType);
+                                shardPrefForCoverageArea(0,0);
 
                                 shardPrefForSalesman(tempSalesmanNodeId,tempSalesmanNodeType);
 

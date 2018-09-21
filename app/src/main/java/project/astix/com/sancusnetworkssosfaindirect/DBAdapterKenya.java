@@ -839,7 +839,7 @@ private static final String DATABASE_TABLE_MAIN101 = "tblFirstOrderDetailsOnLast
 	//private static final String DATABASE_CREATE_TABLE_2 = "create table tblProductList (ProductID text not null, ProductShortName text not null, ProductMRP real not null, ProductRLP real not null, ProductTaxAmount real not null, KGLiter string nulll);";//,DisplayUnit string nul 
 	
 	
-	private static final String DATABASE_CREATE_TABLE_14 = "create table tblProductList(CategoryID text  null,ProductID text  null, ProductShortName text  null, DisplayUnit text null, CalculateKilo real  null,ProductMRP real null, ProductRLP real null, ProductTaxAmount real null, KGLiter string null,RetMarginPer real null,VatTax real null,StandardRate real null,StandardRateBeforeTax real null,StandardTax real null,CatOrdr int null,PrdOrdr int null,StoreCatNodeId int null,SearchField text null,ManufacturerID int null);";
+	private static final String DATABASE_CREATE_TABLE_14 = "create table tblProductList(CategoryID text  null,ProductID text  null, ProductShortName text  null, DisplayUnit text null, CalculateKilo real  null,ProductMRP real null, ProductRLP real null, ProductTaxAmount real null, KGLiter string null,RetMarginPer real null,VatTax real null,StandardRate real null,StandardRateBeforeTax real null,StandardTax real null,CatOrdr int null,PrdOrdr int null,StoreCatNodeId int null,SearchField text null,ManufacturerID int null,flagPriority int null);";
 	
 	private static final String DATABASE_CREATE_TABLE_ProductSegementMap = "create table tblProductSegementMap(ProductID text  null,ProductMRP real not null, ProductRLP real not null, ProductTaxAmount real not null,RetMarginPer real null,VatTax real null,StandardRate real null,StandardRateBeforeTax real null,StandardTax real null,BusinessSegmentId int null,flgPriceAva int null);";
 	
@@ -14571,8 +14571,6 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
         initialValues.put("flgGSTRecordFromServer", flgGSTRecordFromServer);
         initialValues.put("DistanceNear", 1000);
 
-
-
         initialValues.put("flgLocationServicesOnOff", 0);
         initialValues.put("flgGPSOnOff", 0);
         initialValues.put("flgNetworkOnOff", 0);
@@ -14581,7 +14579,6 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
         initialValues.put("flgRestart", 0);
 
         initialValues.put("flgStoreOrder", (flgIfStoreHasRecords+1));
-
 
         initialValues.put("StoreCity", "NA");
         initialValues.put("StorePinCode", "NA");
@@ -14614,7 +14611,7 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
 			Double RetMarginPer, Double VatTax,Double StandardRate,Double StandardRateBeforeTax,
 			Double StandardTax,int CatOrdr,int PrdOrdr,int StoreCatNodeId,String SearchField)*/
 	public long saveSOAPdataProductList(String CategoryID,String ProductID, String ProductShortName,
-			String DisplayUnit, Double CalculateKilo, String KGLiter,int CatOrdr,int PrdOrdr,int StoreCatNodeId,String SearchField,int ManufacturerID)
+			String DisplayUnit, Double CalculateKilo, String KGLiter,int CatOrdr,int PrdOrdr,int StoreCatNodeId,String SearchField,int ManufacturerID,int flagPriority)
 	{
 		ContentValues initialValues = new ContentValues();
 		
@@ -14639,7 +14636,7 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
 		initialValues.put("StoreCatNodeId", StoreCatNodeId);
 		initialValues.put("SearchField", SearchField);
 		initialValues.put("ManufacturerID", ManufacturerID);
-		
+        initialValues.put("flagPriority", flagPriority);
 		return db.insert(DATABASE_TABLE_MAIN14, null, initialValues);
 	}
 	
@@ -16844,7 +16841,7 @@ public void deleteStoreTblsRecordsInCaseCancelOrderInOrderBooking(String StoreID
 			   
 			   
 			 //Cursor cursor = db.rawQuery("SELECT ProductID,CategoryID,ProductShortName,KGLiter ||'^'||ProductRLP||'^'||ProductTaxAmount AS ProductVolumeRateTax,'NA/0' As LODQty,0 AS SampleQty,0 AS ProductFreeQty,0 AS ProductOrderQty,0.00 As PrdctDiscount,RetMarginPer,VatTax,ProductMRP,0.00 AS DiscountPercentageGivenOnProduct,0 AS Per,0.00 AS TaxValue,0.00 AS OrderValue,StandardRate,StandardRateBeforeTax,StandardTax,0 As Stock  FROM tblProductList order by CategoryID,ProductID",null);
-			   Cursor cursor = db.rawQuery("SELECT tblProductList.ProductID,tblProductList.CategoryID,tblProductList.ProductShortName,tblProductList.KGLiter ||'^'||tblProductSegementMap.ProductRLP||'^'||tblProductSegementMap.ProductTaxAmount AS ProductVolumeRateTax,'NA/0' As LODQty,0 AS SampleQty,0 AS ProductFreeQty,0 AS ProductOrderQty,0.00 As PrdctDiscount,tblProductSegementMap.RetMarginPer,tblProductSegementMap.VatTax,tblProductSegementMap.ProductMRP,0.00 AS DiscountPercentageGivenOnProduct,0 AS Per,0.00 AS TaxValue,0.00 AS OrderValue,tblProductSegementMap.StandardRate,tblProductSegementMap.StandardRateBeforeTax,tblProductSegementMap.StandardTax,0 As Stock,tblProductSegementMap.flgPriceAva  FROM tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID Where tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+"  order by tblProductList.CategoryID,tblProductList.PrdOrdr",null);
+			   Cursor cursor = db.rawQuery("SELECT tblProductList.ProductID,tblProductList.CategoryID,tblProductList.ProductShortName,tblProductList.KGLiter ||'^'||tblProductSegementMap.ProductRLP||'^'||tblProductSegementMap.ProductTaxAmount AS ProductVolumeRateTax,'NA/0' As LODQty,0 AS SampleQty,0 AS ProductFreeQty,0 AS ProductOrderQty,0.00 As PrdctDiscount,tblProductSegementMap.RetMarginPer,tblProductSegementMap.VatTax,tblProductSegementMap.ProductMRP,0.00 AS DiscountPercentageGivenOnProduct,0 AS Per,0.00 AS TaxValue,0.00 AS OrderValue,tblProductSegementMap.StandardRate,tblProductSegementMap.StandardRateBeforeTax,tblProductSegementMap.StandardTax,0 As Stock,tblProductSegementMap.flgPriceAva  FROM tblProductList inner join tblProductSegementMap on tblProductList.ProductID=tblProductSegementMap.ProductID inner join tblDistributorStock ON tblProductList.ProductID=tblDistributorStock.PrdctId Where tblProductSegementMap.BusinessSegmentId="+BusinessSegmentId+" AND tblDistributorStock.OriginalStock>0  order by tblProductList.CategoryID,tblProductList.PrdOrdr,tblProductList.flagPriority",null);
 			
 			   //tblProductList.ProductID------------->0
 			   //tblProductList.CategoryID------------>1

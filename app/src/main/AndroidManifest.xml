@@ -384,6 +384,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC1Q0AAUOMRDfrAsV9OX_Pgi34jCV-qko4" />
 
+
         <service
             android:name="project.astix.com.sancusnetworkssosfaindirect.GeocodeAddressIntentService"
             android:exported="false" />
