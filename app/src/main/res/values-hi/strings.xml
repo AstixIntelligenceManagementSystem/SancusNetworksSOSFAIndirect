@@ -1,16 +1,16 @@
 <resources>
 
-  <!-- <string name="app_name">SancusNetworks SO SFA</string>-->
+   <string name="app_name">SancusNetworks SO SFA</string>
    <!-- <string name="app_name">SancusNetworks SO SFA Stagging</string>-->
    <!--<string name="app_name">SancusNetworks SO SFA Training</string>-->
-   <string name="app_name">SancusNetworks SO SFA Dev</string>
+   <!--<string name="app_name">SancusNetworks SO SFA Dev</string>-->
    <!--<string name="app_name">SancusNetworks SO SFA Test</string>-->
    <!--<string name="app_name">SancusNetworks SO SFA Test Release</string>-->
 
 
    <string name="SalesPersonName">स्टोर मालिक का नाम :</string>
    <string name="SalesPersonContact">स्टोर मालिक संपर्क करें :</string>
-   <string name="SalesPersonAddress">बिक्री व्यक्ति का पता :</string>
+   <string name="SalesPersonAddress">स्टोर का पता :</string>
    <string name="StoreCatType">स्टोर श्रेणी का प्रकार :</string>
 
 

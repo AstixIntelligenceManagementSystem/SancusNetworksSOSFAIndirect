@@ -53,10 +53,10 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginLeft="15dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="1dp"
 					android:text="@string/SalesPersonName"
 					android:textColor="#000000"
-					android:textSize="12sp" />
+					android:textSize="11sp" />
 
 				<TextView
 					android:id="@+id/txt_SalesPersonName_Value"
@@ -67,7 +67,7 @@
 					android:layout_toRightOf="@id/txt_SalesPersonName"
 					android:text=""
 					android:textColor="#000000"
-					android:textSize="12sp" />
+					android:textSize="11sp" />
 
 
 				<TextView
@@ -77,10 +77,10 @@
 					android:layout_alignParentLeft="true"
 					android:layout_below="@id/txt_SalesPersonName"
 					android:layout_marginLeft="15dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="5dp"
 					android:text="@string/SalesPersonContact"
 					android:textColor="#000000"
-					android:textSize="12sp" />
+					android:textSize="11sp" />
 
 				<TextView
 					android:id="@+id/txt_SalesPersonContact_Value"
@@ -92,7 +92,7 @@
 					android:layout_toRightOf="@id/txt_SalesPersonContact"
 					android:text=""
 					android:textColor="#000000"
-					android:textSize="12sp" />
+					android:textSize="11sp" />
 
 
 				<TextView
@@ -102,11 +102,11 @@
 					android:layout_alignParentLeft="true"
 					android:layout_below="@id/txt_SalesPersonContact"
 					android:layout_marginLeft="15dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="5dp"
 					android:text="@string/StoreCatType"
 					android:textColor="#000000"
 
-					android:textSize="12sp" />
+					android:textSize="11sp" />
 
 				<TextView
 					android:id="@+id/txt_StoreCatType_Value"
@@ -115,25 +115,25 @@
 					android:layout_alignBaseline="@id/txt_StoreCatType"
 					android:layout_alignLeft="@id/txt_SalesPersonContact_Value"
 					android:layout_below="@id/txt_SalesPersonContact_Value"
-					android:layout_marginBottom="10dp"
+					android:layout_marginTop="5dp"
 					android:layout_toRightOf="@id/txt_StoreCatType"
 					android:text=""
 					android:textColor="#000000"
-					android:textSize="12sp" />
+					android:textSize="11sp" />
 
 				<TextView
 					android:id="@+id/txt_SalesPersonAddress"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_alignParentLeft="true"
-					android:layout_below="@id/txt_SalesPersonContact"
-					android:layout_marginBottom="10dp"
+					android:layout_below="@id/txt_StoreCatType_Value"
+
 					android:layout_marginLeft="15dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="5dp"
 					android:text="@string/SalesPersonAddress"
 					android:textColor="#000000"
-					android:textSize="12sp"
-					android:visibility="gone" />
+					android:textSize="11sp"
+					android:visibility="visible" />
 
 				<TextView
 					android:id="@+id/txt_SalesPersonAddress_Value"
@@ -143,10 +143,11 @@
 					android:layout_alignLeft="@id/txt_SalesPersonContact_Value"
 					android:layout_below="@id/txt_SalesPersonContact_Value"
 					android:layout_toRightOf="@id/txt_SalesPersonAddress"
-					android:text="DLF Phase-3 Gurgaon,Haryana"
+					android:text=""
 					android:textColor="#000000"
-					android:textSize="12sp"
-					android:visibility="gone" />
+					android:layout_marginTop="5dp"
+					android:textSize="11sp"
+					android:visibility="visible" />
 
 
 			</RelativeLayout>

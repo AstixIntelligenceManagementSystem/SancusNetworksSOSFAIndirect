@@ -391,12 +391,14 @@ public class LastVisitDetails extends BaseActivity
 		TextView txt_SalesPersonName_Value = (TextView)findViewById(R.id.txt_SalesPersonName_Value);
 		TextView txt_SalesPersonContact_Value = (TextView)findViewById(R.id.txt_SalesPersonContact_Value);
 		TextView txt_StoreCatType_Value = (TextView)findViewById(R.id.txt_StoreCatType_Value);
+		TextView txt_SalesPersonAddress_Value = (TextView)findViewById(R.id.txt_SalesPersonAddress_Value);
 
 		storeName.setText(hmapStoreBasicDetails.get("StoreName")+" "+getText(R.string.Summary));
 		txt_SalesPersonName_Value.setText(hmapStoreBasicDetails.get("OwnerName"));
 		txt_SalesPersonContact_Value.setText(hmapStoreBasicDetails.get("StoreContactNo"));
 		txt_StoreCatType_Value.setText(hmapStoreBasicDetails.get("StoreCatType"));
 
+		txt_SalesPersonAddress_Value.setText(hmapStoreBasicDetails.get("StoreAddress"));
 	}
 	
 	@Override
@@ -1716,7 +1718,7 @@ final Button btn_Cancel=(Button) findViewById(R.id.btn_Cancel);
 		
 		if(flgGSTCapture.equals("1")) 
 		  {
-			ll_gstDetails.setVisibility(View.VISIBLE);
+			//ll_gstDetails.setVisibility(View.VISIBLE);//varun sir said to hide it always
 			     if(flgGSTCompliance.equals("0"))
 			     {
 				      rb_gst_no.setEnabled(true);
@@ -1795,7 +1797,7 @@ final Button btn_Cancel=(Button) findViewById(R.id.btn_Cancel);
 			rb_pending.setChecked(false);
 			
 		}
-		
+		ll_gstDetails.setVisibility(View.GONE);//varun sir said to hide it always
 		
 		rb_gst_no.setOnClickListener(new OnClickListener()
 		{	

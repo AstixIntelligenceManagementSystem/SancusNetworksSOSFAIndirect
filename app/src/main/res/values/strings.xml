@@ -1,17 +1,17 @@
 <resources>
 
-    <!-- <string name="app_name">SancusNetworks SO SFA</string>-->
+     <string name="app_name">SancusNetworks SO SFA</string>
 
     <!-- <string name="app_name">SancusNetworks SO SFA Stagging</string>-->
     <!-- <string name="app_name">SancusNetworks SO SFA Test</string>-->
-    <string name="app_name">SancusNetworks SO SFA Dev</string>
+   <!-- <string name="app_name">SancusNetworks SO SFA Dev</string>-->
     <!--<string name="app_name">SancusNetworks SO SFA Training</string>-->
     <!-- <string name="app_name">SancusNetworks SO SFA Test Release</string>-->
 
 
     <string name="SalesPersonName">Store Owner Name :</string>
     <string name="SalesPersonContact">Store Owner Contact :</string>
-    <string name="SalesPersonAddress">Sales Person Address :</string>
+    <string name="SalesPersonAddress">Store Address :</string>
     <string name="StoreCatType">Store Category Type :</string>
 
 

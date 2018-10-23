@@ -184,6 +184,7 @@ public class ServiceWorker
 					String OwnerName="NA";
 					String StoreContactNo="0000000000";
 					String StoreCatType="NA";
+					String StoreAddress="NA";
                        
 	                Element element = (Element) tblUOMMstrNode.item(i);
 		
@@ -578,6 +579,15 @@ public class ServiceWorker
 							StoreCatType=XMLParser.getCharacterDataFromElement(line);
 						}
 					}
+					if(!element.getElementsByTagName("StoreAddress").equals(null))
+					{
+						NodeList StoreAddressNode = element.getElementsByTagName("StoreAddress");
+						Element     line = (Element) StoreAddressNode.item(0);
+						if(StoreAddressNode.getLength()>0)
+						{
+							StoreAddress=XMLParser.getCharacterDataFromElement(line);
+						}
+					}
 
 					if(flgGSTCompliance.equals("1"))
 		                 {
@@ -601,7 +611,8 @@ public class ServiceWorker
 	                //flgAllowQuotation
 					int AutoIdStore=0;
 					AutoIdStore= i +1;
-					String StoreAddress="";
+
+
 
 					if(!StoreIDPDAFromServer.equals(StoreID)) {
 						dbengine.saveSOAPdataStoreList(StoreID,StoreName,StoreType,StoreLatitude,StoreLongitude,LastVisitDate,LastTransactionDate,dateVAL.toString().trim(), AutoIdStore, Sstat,IsClose,IsNextDat,StoreRouteID,StoreCatNodeId,StoreAddress,PaymentStage,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,flgGSTCapture,flgGSTCompliance,GSTNumber,flgGSTRecordFromServer,DBR,RouteNodeType,flgOrderType,OwnerName,StoreContactNo, StoreCatType);

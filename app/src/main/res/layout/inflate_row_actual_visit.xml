@@ -43,6 +43,8 @@
         android:layout_weight=".2"
         android:padding="1dp"
         android:gravity="center"
+        android:textColor="#000"
+        android:enabled="false"
         android:textSize="11sp"
         android:background="@drawable/et_boundary"
         android:layout_marginRight="1dp"

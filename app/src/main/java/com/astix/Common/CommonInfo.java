@@ -14,6 +14,7 @@ public class CommonInfo
 
 /*
 
+
 	public static int flgAllRoutesData=1;
 	public static File imageF_savedInstance=null;
 	public static String imageName_savedInstance=null;
@@ -44,8 +45,8 @@ public class CommonInfo
 
 	public static int AnyVisit = 0;
 
-	public static int DATABASE_VERSIONID = 2;      // put this field value based on value in table on the server
-	public static String AppVersionID = "1.0";   // put this field value based on value in table on the server
+	public static int DATABASE_VERSIONID = 4;      // put this field value based on value in table on the server
+	public static String AppVersionID = "1.1";   // put this field value based on value in table on the server
 	public static int Application_TypeID = 4; //1=Parag Store Mapping,2=Parag SFA Indirect,3=Parag SFA Direct
 
 	public static String OrderSyncPath="http://103.20.212.194/ReadXML_SancusNetworksSFALive/DefaultSOSFA.aspx";
@@ -101,6 +102,7 @@ public class CommonInfo
 	public static String WebPageUrlDSMWiseReport="http://103.20.212.194/SancusNetworks/Mobile/frmDSMWiseReportCard.aspx?imei=";
 	public static String ImagesFolderServer="RMMSFAImagesServer";
 */
+
 
 	// Its for Test Path on 194 Server
 
@@ -228,8 +230,8 @@ public static String WebScndryUpdate="http://103.20.212.194/SancusNetworks_test/
 
 	public static int AnyVisit = 0;
 
-	public static int DATABASE_VERSIONID = 22;      // put this field value based on value in table on the server
-	public static String AppVersionID = "1.8";   // put this field value based on value in table on the server
+	public static int DATABASE_VERSIONID = 27;      // put this field value based on value in table on the server
+	public static String AppVersionID = "1.9";   // put this field value based on value in table on the server
 	public static int Application_TypeID = 4; //1=Parag Store Mapping,2=Parag SFA Indirect,3=Parag SFA Direct
 
 	public static String OrderSyncPath="http://103.20.212.194/ReadXML_SancusNetworksSFADevelopment/DefaultSOSFA.aspx";
