@@ -139,8 +139,10 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
     File file;
     View view;
     String DIRECTORY = Environment.getExternalStorageDirectory().getPath() + "/" + CommonInfo.ImagesFolder + "/";
-    String pic_name = new SimpleDateFormat("yyyyMMMdd_HHmmss", Locale.ENGLISH).format(new Date());
+    String timeStamp = new SimpleDateFormat("yyyyMMMdd_HHmmss", Locale.ENGLISH).format(new Date());
+    String pic_name="IMG_" + CommonInfo.imei+ timeStamp;
     String StoredPath = DIRECTORY + pic_name + ".png";
+
     ScrollView scrollViewParentOfMap;
     ImageView transparent_image;
     boolean signOrNot=false;
@@ -1301,7 +1303,7 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
         File mediaFile;
         //and make a media file:
         /// mediaFile = new File(mediaStorageDir.getPath() + File.separator + imgName);
-        mediaFile = new File(mediaStorageDir.getPath() + File.separator + "IMG_" +CommonInfo.imei+"$"+ timeStamp + ".jpg");
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + "IMG_" +CommonInfo.imei+ timeStamp + ".jpg");
 
         return mediaFile;
     }
